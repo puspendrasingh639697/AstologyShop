@@ -91,7 +91,7 @@ const useProductStore = create((set, get) => ({
     set({ loading: true, error: null });
     
     try {
-      const response = await fetch('http://localhost:5000/api/products/all', {
+      const response = await fetch('https://astologyshop-e.onrender.com/api/products/all', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

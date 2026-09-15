@@ -50,3 +50,7 @@ const useOtpStore = create((set) => ({
 }));
 
 export default useOtpStore;
+
+
+
+// https://astologyshop-e.onrender.com

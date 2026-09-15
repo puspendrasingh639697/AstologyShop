@@ -1,115 +1,4 @@
-// import React, { useState } from "react";
-// import { BiEdit } from "react-icons/bi";
 
-// export default function ProfileTab({ profile, setProfile }) {
-//   const [isEditing, setIsEditing] = useState(false);
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     setIsEditing(false);
-//     alert("Profile updated successfully!");
-//   };
-
-//   return (
-//     <div className="space-y-6">
-//       <div className="flex justify-between items-center pb-4 border-b border-stone-200">
-//         <div>
-//           <h3 className="text-base font-serif font-bold text-[#4a2e18]">Personal Profile</h3>
-//           <p className="text-xs text-stone-500">Manage your personal details and preferences.</p>
-//         </div>
-//         {!isEditing && (
-//           <button 
-//             onClick={() => setIsEditing(true)}
-//             className="bg-[#8c0a15] hover:bg-[#722d21] text-white text-xs font-bold uppercase px-4 py-2 rounded-sm cursor-pointer flex items-center gap-1.5 transition"
-//           >
-//             <BiEdit /> Edit Profile
-//           </button>
-//         )}
-//       </div>
-
-//       {!isEditing ? (
-//         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs font-serif">
-//           <div className="bg-stone-50 p-4 border border-stone-200 rounded-sm space-y-1">
-//             <span className="text-stone-400 block uppercase font-bold text-[10px]">Full Name</span>
-//             <p className="font-bold text-stone-800 text-sm">{profile.fullName}</p>
-//           </div>
-//           <div className="bg-stone-50 p-4 border border-stone-200 rounded-sm space-y-1">
-//             <span className="text-stone-400 block uppercase font-bold text-[10px]">Mobile Number</span>
-//             <p className="font-bold text-stone-800 text-sm">{profile.phone}</p>
-//           </div>
-//           <div className="bg-stone-50 p-4 border border-stone-200 rounded-sm space-y-1">
-//             <span className="text-stone-400 block uppercase font-bold text-[10px]">Email Address</span>
-//             <p className="font-bold text-stone-800 text-sm">{profile.email}</p>
-//           </div>
-//           <div className="bg-stone-50 p-4 border border-stone-200 rounded-sm space-y-1">
-//             <span className="text-stone-400 block uppercase font-bold text-[10px]">Gender & DOB</span>
-//             <p className="font-bold text-stone-800 text-sm">{profile.gender} | {profile.dob}</p>
-//           </div>
-//         </div>
-//       ) : (
-//         <form onSubmit={handleSubmit} className="space-y-4 text-xs">
-//           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-//             <div>
-//               <label className="block font-bold uppercase text-stone-600 mb-1">Full Name</label>
-//               <input 
-//                 type="text" 
-//                 value={profile.fullName}
-//                 onChange={(e) => setProfile({...profile, fullName: e.target.value})}
-//                 className="w-full p-2.5 border border-stone-300 rounded-sm bg-white focus:outline-none"
-//                 required
-//               />
-//             </div>
-//             <div>
-//               <label className="block font-bold uppercase text-stone-600 mb-1">Phone Number</label>
-//               <input 
-//                 type="text" 
-//                 value={profile.phone}
-//                 onChange={(e) => setProfile({...profile, phone: e.target.value})}
-//                 className="w-full p-2.5 border border-stone-300 rounded-sm bg-white focus:outline-none"
-//                 required
-//               />
-//             </div>
-//             <div>
-//               <label className="block font-bold uppercase text-stone-600 mb-1">Email Address</label>
-//               <input 
-//                 type="email" 
-//                 value={profile.email}
-//                 onChange={(e) => setProfile({...profile, email: e.target.value})}
-//                 className="w-full p-2.5 border border-stone-300 rounded-sm bg-white focus:outline-none"
-//                 required
-//               />
-//             </div>
-//             <div>
-//               <label className="block font-bold uppercase text-stone-600 mb-1">Date of Birth</label>
-//               <input 
-//                 type="date" 
-//                 value={profile.dob}
-//                 onChange={(e) => setProfile({...profile, dob: e.target.value})}
-//                 className="w-full p-2.5 border border-stone-300 rounded-sm bg-white focus:outline-none"
-//               />
-//             </div>
-//           </div>
-
-//           <div className="flex gap-3 pt-2">
-//             <button 
-//               type="button"
-//               onClick={() => setIsEditing(false)}
-//               className="bg-stone-200 hover:bg-stone-300 text-stone-700 px-5 py-2.5 font-bold uppercase cursor-pointer"
-//             >
-//               Cancel
-//             </button>
-//             <button 
-//               type="submit"
-//               className="bg-[#4a2e18] hover:bg-[#321e10] text-white px-5 py-2.5 font-bold uppercase tracking-wider cursor-pointer"
-//             >
-//               Save Changes
-//             </button>
-//           </div>
-//         </form>
-//       )}
-//     </div>
-//   );
-// }
 
 
 import React, { useState } from "react";
@@ -135,7 +24,7 @@ export default function ProfileTab({ profile, setProfile }) {
       const cleanedPhone = (profile.phone || '').replace(/\D/g, '').slice(-10);
 
       const response = await axios.put(
-        'http://localhost:5000/api/user/profile', 
+        'https://astologyshop-e.onrender.com/api/user/profile', 
         {
           name: profile.fullName,
           phone: cleanedPhone, // Cleaned 10-digit phone

@@ -8,7 +8,7 @@ const useCategoryStore = create((set) => ({
   fetchCategories: async () => {
     set({ loading: true, error: null });
     try {
-      const response = await fetch("http://localhost:5000/api/categories");
+      const response = await fetch("https://astologyshop-e.onrender.com/api/categories");
       const data = await response.json();
       
       if (data.success) {

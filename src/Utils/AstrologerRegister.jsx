@@ -25,7 +25,7 @@ const AstrologerRegister = () => {
 
         try {
             // Backend register API call with role fixed to 'astrologer'
-            const response = await axios.post('http://localhost:5000/api/auth/register', {
+            const response = await axios.post('https://astologyshop-e.onrender.com/api/auth/register', {
                 ...formData,
                 role: 'astrologer'
             });

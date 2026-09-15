@@ -25,7 +25,7 @@ const AstrologerLogin = () => {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+            const response = await axios.post('https://astologyshop-e.onrender.com/api/auth/login', formData);
 
             if (response.data.success) {
                 const { token, refreshToken, user } = response.data;

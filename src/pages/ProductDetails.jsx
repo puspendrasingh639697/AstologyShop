@@ -239,7 +239,7 @@ const ProductDetails = () => {
         comment: newRev.comment
       };
 
-      const response = await axios.post('http://localhost:5000/api/reviews/add', reviewPayload, {
+      const response = await axios.post('https://astologyshop-e.onrender.com/api/reviews/add', reviewPayload, {
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
