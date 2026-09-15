@@ -1,121 +1,315 @@
-import React, { useState, useEffect } from "react";
-import { yantraCollectionData } from "../data/yantraCollectionData";
-import promoBanner from "../assets/Upto_35_off_mobile_800x.png";
+// // import React, { useEffect } from 'react';
+// // import useProductStore from '../store/useProductStore';
+// // // import useProductStore from '../store/productStore';
+
+// // const YantraCollection = () => {
+// //   const { products, loading, error, fetchProducts, getProductsByCategory } = useProductStore();
+// //   const yantras = getProductsByCategory('Yantra');
+
+// //   useEffect(() => {
+// //     fetchProducts();
+// //   }, []);
+
+// //   // Debugging
+// //   useEffect(() => {
+// //     console.log('Yantra Collection - All Products:', products);
+// //     console.log('Yantra Collection - Filtered Yantras:', yantras);
+// //   }, [products, yantras]);
+
+// //   if (loading) {
+// //     return (
+// //       <div className="flex justify-center items-center py-12">
+// //         <div className="text-[#4a2e18]">Loading products...</div>
+// //       </div>
+// //     );
+// //   }
+
+// //   if (error) {
+// //     return (
+// //       <div className="flex justify-center items-center py-12">
+// //         <div className="text-red-600">Error: {error}</div>
+// //       </div>
+// //     );
+// //   }
+
+// //   if (!products || products.length === 0) {
+// //     return (
+// //       <div className="flex justify-center items-center py-12">
+// //         <div className="text-[#4a2e18]">No products found</div>
+// //       </div>
+// //     );
+// //   }
+
+// //   return (
+// //     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+// //       {yantras.length > 0 ? (
+// //         yantras.map((product) => (
+// //           <div
+// //             key={product._id}
+// //             className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+// //           >
+// //             <div className="aspect-square overflow-hidden">
+// //               <img
+// //                 src={product.image}
+// //                 alt={product.name}
+// //                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+// //                 onError={(e) => {
+// //                   e.target.src = 'https://via.placeholder.com/400x400?text=No+Image';
+// //                 }}
+// //               />
+// //             </div>
+// //             <div className="p-4">
+// //               <h3 className="text-sm font-medium text-[#4a2e18] line-clamp-2 min-h-[40px]">
+// //                 {product.name}
+// //               </h3>
+// //               <p className="text-[#8b3a2b] font-bold mt-2">
+// //                 ₹{product.price?.toLocaleString() || product.price}
+// //               </p>
+// //               <button className="mt-3 w-full bg-[#6b2314] text-white py-2 rounded-md hover:bg-[#8b3a2b] transition-colors duration-300 text-sm">
+// //                 Add to Cart
+// //               </button>
+// //             </div>
+// //           </div>
+// //         ))
+// //       ) : (
+// //         <div className="col-span-full text-center py-8 text-[#4a2e18]">
+// //           No Yantra available
+// //         </div>
+// //       )}
+// //     </div>
+// //   );
+// // };
+
+// // export default YantraCollection;
+
+
+// import React, { useEffect, useState } from 'react';
+// // import useProductStore from '../store/productStore';
+// // import useWishlistStore from '../store/wishlistStore';
+// import { Heart } from 'lucide-react';
+// import useProductStore from '../store/useProductStore';
+// import useWishlistStore from '../store/useWishlistStore';
+
+// const YantraCollection = () => {
+//   const { products, loading, error, fetchProducts, getProductsByCategory } = useProductStore();
+//   const { 
+//     wishlist, 
+//     addToWishlist, 
+//     removeFromWishlist, 
+//     fetchWishlist,
+//     isInWishlist 
+//   } = useWishlistStore();
+//   const [wishlistLoading, setWishlistLoading] = useState(null);
+//   const [showLoginToast, setShowLoginToast] = useState(false);
+
+//   useEffect(() => {
+//     fetchProducts();
+//     fetchWishlist();
+//   }, []);
+
+//   const handleWishlistToggle = async (productId) => {
+//     setWishlistLoading(productId);
+    
+//     if (isInWishlist(productId)) {
+//       const result = await removeFromWishlist(productId);
+//       if (!result.success && result.error?.includes('login')) {
+//         setShowLoginToast(true);
+//         setTimeout(() => setShowLoginToast(false), 3000);
+//       }
+//     } else {
+//       const result = await addToWishlist(productId);
+//       if (!result.success && result.error?.includes('login')) {
+//         setShowLoginToast(true);
+//         setTimeout(() => setShowLoginToast(false), 3000);
+//       }
+//     }
+    
+//     setWishlistLoading(null);
+//   };
+
+//   const yantras = getProductsByCategory('Yantra');
+
+//   if (loading) {
+//     return (
+//       <div className="flex justify-center items-center py-12">
+//         <div className="text-[#4a2e18]">Loading products...</div>
+//       </div>
+//     );
+//   }
+
+//   if (error) {
+//     return (
+//       <div className="flex justify-center items-center py-12">
+//         <div className="text-red-600">Error: {error}</div>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <>
+//       {showLoginToast && (
+//         <div className="fixed top-4 right-4 bg-[#6b2314] text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-down">
+//           Please login to manage wishlist
+//         </div>
+//       )}
+
+//       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+//         {yantras.map((product) => (
+//           <div
+//             key={product._id}
+//             className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 relative group"
+//           >
+//             {/* Wishlist Button */}
+//             <button
+//               onClick={() => handleWishlistToggle(product._id)}
+//               disabled={wishlistLoading === product._id}
+//               className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md hover:bg-red-50 transition-colors z-10"
+//             >
+//               <Heart 
+//                 className={`w-5 h-5 transition-colors ${
+//                   isInWishlist(product._id) 
+//                     ? 'fill-red-500 text-red-500' 
+//                     : 'text-gray-400 hover:text-red-500'
+//                 } ${wishlistLoading === product._id ? 'animate-pulse' : ''}`}
+//               />
+//             </button>
+
+//             <div className="aspect-square overflow-hidden">
+//               <img
+//                 src={product.image}
+//                 alt={product.name}
+//                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+//                 onError={(e) => {
+//                   e.target.src = 'https://via.placeholder.com/400x400?text=No+Image';
+//                 }}
+//               />
+//             </div>
+//             <div className="p-4">
+//               <h3 className="text-sm font-medium text-[#4a2e18] line-clamp-2 min-h-[40px]">
+//                 {product.name}
+//               </h3>
+//               <p className="text-[#8b3a2b] font-bold mt-2">
+//                 ₹{product.price?.toLocaleString() || product.price}
+//               </p>
+//               <button className="mt-3 w-full bg-[#6b2314] text-white py-2 rounded-md hover:bg-[#8b3a2b] transition-colors duration-300 text-sm">
+//                 Add to Cart
+//               </button>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </>
+//   );
+// };
+
+// export default YantraCollection;
+
+
+import React, { useEffect, useState } from 'react';
+import { Heart, ShoppingBag } from 'lucide-react';
+import useProductStore from '../store/useProductStore';
+import useWishlistStore from '../store/useWishlistStore';
+import useCartStore from '../store/useCartStore';
+import { useNavigate } from 'react-router-dom';
 
 const YantraCollection = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+  const { products, loading, error, fetchProducts, getYantras } = useProductStore();
+  const { wishlist, addToWishlist, removeFromWishlist, fetchWishlist, isInWishlist } = useWishlistStore();
+  const { addToCart, setUserId } = useCartStore();
+  
+  const [wishlistLoading, setWishlistLoading] = useState(null);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+  const [toastType, setToastType] = useState('info');
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 600);
-    return () => clearTimeout(timer);
-  }, []);
+    fetchProducts();
+    fetchWishlist();
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const actualUserId = user.id || user._id || localStorage.getItem('cartUserId');
+    if (actualUserId) {
+      setUserId(actualUserId);
+    }
+  }, [fetchProducts, fetchWishlist, setUserId]);
 
-  const handleAddToCart = (item, e) => {
-    e.stopPropagation();
-    console.log(`Added to cart: ${item.title}`);
+  const showToastMessage = (message, type = 'info') => {
+    setToastMessage(message);
+    setToastType(type);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
   };
 
-  const handleCardClick = (item) => {
-    console.log(`Viewing product: ${item.title}`);
+  const handleWishlistToggle = async (productId) => {
+    setWishlistLoading(productId);
+    if (isInWishlist(productId)) {
+      await removeFromWishlist(productId);
+      showToastMessage('Removed from wishlist', 'success');
+    } else {
+      await addToWishlist(productId);
+      showToastMessage('Added to wishlist ❤️', 'success');
+    }
+    setWishlistLoading(null);
   };
 
-  const handleBannerClick = () => {
-    console.log("Banner clicked: Navigating to offers");
+  const handleAddToCart = async (productId) => {
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const actualUserId = user.id || user._id || localStorage.getItem('cartUserId');
+
+    if (!token || !actualUserId) {
+      showToastMessage('Please login to add items to cart', 'error');
+      setTimeout(() => navigate('/login'), 2000);
+      return;
+    }
+    
+    setUserId(actualUserId);
+    const result = await addToCart(productId, 1);
+    if (result.success) {
+      showToastMessage('Item added to cart! 🛒', 'success');
+    } else {
+      showToastMessage(result.error || 'Failed to add to cart', 'error');
+    }
   };
+
+  const items = getYantras ? getYantras() : products.filter(p => p.category?.name === 'Yantra');
+
+  if (loading) return <div className="text-center py-12">Loading...</div>;
+  if (items.length === 0) return <div className="text-center py-12">No Yantras available</div>;
 
   return (
-    <section 
-      className="bg-[#fff3df] py-16 px-4 overflow-hidden border-y border-[#edd5b9]"
-      aria-label="Yantra Collection"
-    >
-      <div className="max-w-[1500px] mx-auto">
-
-        {/* Section Header Centered */}
-        <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-serif text-[#4a2e18] tracking-wide inline-block font-semibold">
-            Yantra Collection
-          </h2>
-          <div className="w-16 h-[2px] bg-[#8b3a2b] mx-auto mt-3 rounded-full"></div>
+    <>
+      {showToast && (
+        <div className={`fixed top-4 right-4 px-6 py-3 rounded-lg shadow-lg z-50 text-white ${toastType === 'success' ? 'bg-green-600' : 'bg-red-600'}`}>
+          {toastMessage}
         </div>
-
-        {/* Main Layout: Left Banner + Right Horizontal Card Slider */}
-        <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-8">
-
-          {/* Left Side: Single Promotional Banner */}
-          <div className="w-full lg:w-[320px] flex-shrink-0 flex justify-center items-center">
-            <div 
-              onClick={handleBannerClick}
-              className="w-full max-w-[320px] lg:max-w-none rounded-2xl overflow-hidden shadow-md border-2 border-[#e6d0b3] cursor-pointer transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl bg-white"
+      )}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {items.map((product) => (
+          <div key={product._id} className="bg-white rounded-lg shadow-md overflow-hidden relative group">
+            <button
+              onClick={() => handleWishlistToggle(product._id)}
+              className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md z-10"
             >
-              <img 
-                src={promoBanner} 
-                alt="Upto 35% Off Offer" 
-                className="w-full h-auto object-cover"
-              />
+              <Heart className={`w-5 h-5 ${isInWishlist(product._id) ? 'fill-red-500 text-red-500' : 'text-gray-400'}`} />
+            </button>
+            <div className="aspect-square bg-[#faf6f0]">
+              <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+            </div>
+            <div className="p-4">
+              <h3 className="text-sm font-medium text-[#4a2e18] line-clamp-2">{product.name}</h3>
+              <p className="text-lg font-bold text-[#6b2314] mt-2">₹{product.price}</p>
+              <button 
+                onClick={() => handleAddToCart(product._id)}
+                className="mt-3 w-full py-2.5 bg-[#6b2314] text-white rounded-md hover:bg-[#8b3a2b] transition-colors flex items-center justify-center gap-2 text-sm"
+              >
+                <ShoppingBag className="w-4 h-4" /> Add to Cart
+              </button>
             </div>
           </div>
-
-          {/* Right Side: Horizontal Scrollable Product Cards Slider */}
-          <div className="w-full lg:w-[calc(100%-340px)] overflow-x-auto pb-4 pt-2 scrollbar-thin scrollbar-thumb-[#d4bc9d] scrollbar-track-transparent">
-            {isLoading ? (
-              <div className="flex gap-6 py-2">
-                {[...Array(4)].map((_, index) => (
-                  <div key={index} className="w-[260px] sm:w-[280px] h-[360px] bg-[#ebd7bd] rounded-lg animate-pulse flex-shrink-0"></div>
-                ))}
-              </div>
-            ) : (
-              <div className="flex gap-6 w-max py-2">
-                {yantraCollectionData.map((item) => (
-                  <div 
-                    key={item.id} 
-                    onClick={() => handleCardClick(item)}
-                    className="w-[260px] sm:w-[280px] bg-white rounded-lg shadow-sm border border-[#e6d0b3] flex flex-col justify-between overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex-shrink-0"
-                  >
-                    {/* Top Image Container */}
-                    <div className="relative w-full h-[220px] bg-[#f9f5f0] overflow-hidden flex items-center justify-center p-4 border-b border-[#f0e4d7]">
-                      <img 
-                        src={item.image} 
-                        alt={item.title} 
-                        loading="lazy"
-                        className="w-full h-full object-contain object-center transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
-
-                    {/* Content Details */}
-                    <div className="p-4 flex flex-col items-center text-center">
-                      <span className="text-[10px] uppercase tracking-wider text-[#8b3a2b] font-medium mb-1">
-                        Pooja Hetu
-                      </span>
-                      <h3 className="text-xs sm:text-sm font-serif text-[#3d2314] font-medium leading-snug line-clamp-1 mb-2 group-hover:text-[#8b3a2b] transition-colors">
-                        {item.title}
-                      </h3>
-                      
-                      {/* Price Section */}
-                      <div className="flex items-center gap-2 mb-4">
-                        <span className="text-sm font-semibold text-[#8b3a2b]">Rs. 2,450.00</span>
-                        <span className="text-xs text-gray-400 line-through">Rs. 3,500.00</span>
-                      </div>
-                    </div>
-
-                    {/* Add to Cart Button */}
-                    <button 
-                      onClick={(e) => handleAddToCart(item, e)}
-                      className="w-full bg-[#4a2e18] hover:bg-[#8b3a2b] text-white text-xs font-semibold uppercase tracking-wider py-3 transition-colors duration-200"
-                    >
-                      Add to Cart
-                    </button>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-        </div>
-
+        ))}
       </div>
-    </section>
+    </>
   );
 };
 

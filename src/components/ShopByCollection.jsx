@@ -4,32 +4,30 @@ import PujaKits from "./PujaKits";
 import YantraCollection from "./YantraCollection";
 import RudrakshaMalas from "./RudrakshaMalas";
 import FestivalCollection from "./FestivalCollection";
-// import RudrakshaMalas from "./RudrakshaMalas"; // Agar ye component hai toh import karein
-// import FestivalCollection from "./FestivalCollection"; // Agar ye component hai toh import karein
 
+// ✅ Category names API ke hisaab se correct karo
 const collectionCategories = [
   "Best Sellers",
-  "Puja Kits",
-  "Yantra Collection",
-  "Rudraksha & Malas",
-  "Festival Collection"
+  "Puja Kits",           // API mein "Puja Kits" hai
+  "Yantra",              // ✅ API mein "Yantra" hai, "Yantra Collection" nahi
+  "Rudraksha & Malas",   // ✅ API mein "Rudraksha & Malas" hai
+  "Festival Collections" // ✅ API mein "Festival Collections" hai (plural)
 ];
 
 const ShopByCollection = () => {
   const [activeTab, setActiveTab] = useState("Best Sellers");
 
-  // Function to render the correct component based on the active tab click
   const renderActiveComponent = () => {
     switch (activeTab) {
       case "Best Sellers":
         return <Bestsellers />;
       case "Puja Kits":
         return <PujaKits />;
-      case "Yantra Collection":
+      case "Yantra":  // ✅ Yahan bhi change karo
         return <YantraCollection />;
       case "Rudraksha & Malas":
         return <RudrakshaMalas />;
-      case "Festival Collection":
+      case "Festival Collections":  // ✅ Yahan bhi change karo
         return <FestivalCollection />;
       default:
         return <Bestsellers />;
@@ -39,8 +37,6 @@ const ShopByCollection = () => {
   return (
     <div className="bg-[#fff3df] py-16 px-4 overflow-hidden border-y border-[#edd5b9]">
       <div className="max-w-[1400px] mx-auto">
-
-        {/* Section Header */}
         <div className="text-center mb-8">
           <h2 className="text-3xl sm:text-4xl font-serif text-[#4a2e18] tracking-wide inline-block font-semibold">
             {activeTab === "Best Sellers" ? (
@@ -52,7 +48,6 @@ const ShopByCollection = () => {
           <div className="w-16 h-[2px] bg-[#8b3a2b] mx-auto mt-3 rounded-full"></div>
         </div>
 
-        {/* Category Filter Tabs (Clickable Pills) */}
         <div className="flex flex-wrap justify-center items-center gap-3 mb-12">
           {collectionCategories.map((category, index) => (
             <button
@@ -69,11 +64,9 @@ const ShopByCollection = () => {
           ))}
         </div>
 
-        {/* Dynamically Rendered Component Based on Tab Click */}
         <div className="transition-all duration-500">
           {renderActiveComponent()}
         </div>
-
       </div>
     </div>
   );

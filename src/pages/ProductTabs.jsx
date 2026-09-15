@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { BiListCheck, BiStar } from "react-icons/bi";
 import AuthenticitySection from "./ProductPage/AuthenticitySection";
 import ShippingReturnsFAQ from "./ProductPage/ShippingReturnsFAQ";
-// import AuthenticitySection from "./AuthenticitySection";
-// import ShippingReturnsFAQ from "./ShippingReturnsFAQ";
+
 
 const ProductTabs = ({ product, reviewsList, onAddReview }) => {
   const [newReview, setNewReview] = useState({ name: "", rating: "5", comment: "" });
@@ -140,3 +139,4 @@ const ProductTabs = ({ product, reviewsList, onAddReview }) => {
 };
 
 export default ProductTabs;
+

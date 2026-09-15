@@ -169,7 +169,7 @@ const CartCheckoutFlow = () => {
       <div className="max-w-[1100px] mx-auto bg-white rounded-sm shadow-xl p-6 sm:p-10 border border-stone-200">
         
         {/* Header Progress Indicator */}
-        <div className="text-center mb-8 border-b border-stone-200 pb-6">
+        <div className="text-center mb-8  pb-6">
           <span className="text-xs uppercase tracking-widest text-[#8b3a2b] font-bold bg-[#8b3a2b]/10 px-3 py-1 rounded-full inline-flex items-center gap-1">
             <BiShield className="text-sm" /> Secure Sacred Checkout
           </span>

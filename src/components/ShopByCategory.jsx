@@ -1,224 +1,15 @@
-// // import React from "react";
-// // import { shopCategories } from "../data/categories";
-
-// // const ShopByCategory = () => {
-// //   return (
-// //     <section className="bg-[#fff3df] py-16 px-4 sm:px-6 lg:px-12">
-// //       <div className="max-w-[1400px] mx-auto">
-
-// //         {/* Section Heading */}
-// //         <div className="text-center mb-12">
-// //           <h2 className="text-3xl sm:text-4xl font-serif font-normal text-[#4a2e18] tracking-wide">
-// //             Shop by Category
-// //           </h2>
-// //           <div className="w-24 h-[1px] bg-[#4a2e18]/30 mx-auto mt-3"></div>
-// //         </div>
-
-// //         {/* Categories Grid - 4 Columns Layout */}
-// //         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-// //           {shopCategories.map((item) => (
-// //             <div 
-// //               key={item.id} 
-// //               className="group flex flex-col justify-between bg-white border border-stone-200/80 rounded-sm overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300"
-// //             >
-// //               <div>
-// //                 {/* Image & Top Tag Container */}
-// //                 <div className="relative w-full h-52 sm:h-60 bg-stone-50 overflow-hidden flex items-center justify-center p-4">
-                  
-// //                   {/* Top Badge Tag */}
-// //                   {item.tag && (
-// //                     <span className="absolute top-3 left-3 z-10 bg-[#8c0a15] text-white text-[10px] font-semibold tracking-wider px-2.5 py-1 uppercase shadow-md">
-// //                       {item.tag}
-// //                     </span>
-// //                   )}
-
-// //                   {/* Sold Out Overlay */}
-// //                   {item.isSoldOut && (
-// //                     <div className="absolute inset-0 bg-black/30 z-10 flex items-center justify-center backdrop-blur-[1px]">
-// //                       <span className="bg-white/95 text-[#4a2e18] font-bold text-xs tracking-widest px-5 py-2 uppercase shadow-lg">
-// //                         Sold Out
-// //                       </span>
-// //                     </div>
-// //                   )}
-
-// //                   <img 
-// //                     src={item.image} 
-// //                     alt={item.title} 
-// //                     className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-// //                   />
-// //                 </div>
-
-// //                 {/* Details Container with Clean & Sharp Font Styling */}
-// //                 <div className="p-5 text-center bg-[#fff3df]">
-// //                   <p className="text-[11px] text-stone-500 tracking-wider uppercase mb-1.5 font-medium">
-// //                     {item.vendor}
-// //                   </p>
-                  
-// //                   {/* Improved Clean Title Font Styling */}
-// //                   <h3 className="text-sm sm:text-[15px] font-semibold text-[#4a2e18] tracking-normal uppercase line-clamp-2 min-h-[44px] leading-relaxed">
-// //                     {item.title}
-// //                   </h3>
-
-// //                   <div className="mt-3 flex items-center justify-center gap-2.5 text-sm">
-// //                     <span className="font-bold text-[#8b3a2b] text-[16px]">
-// //                       Rs. {item.price}
-// //                     </span>
-// //                     {item.oldPrice && (
-// //                       <span className="text-stone-400 line-through text-xs font-normal">
-// //                         Rs. {item.oldPrice}
-// //                       </span>
-// //                     )}
-// //                   </div>
-// //                 </div>
-// //               </div>
-
-// //               {/* Action Button */}
-// //               <div className="p-5 pt-0 bg-[#fff3df] ">
-// //                 <button 
-// //                   disabled={item.isSoldOut}
-// //                   className={`w-full py-3 text-xs font-bold tracking-widest uppercase transition-all duration-300 rounded-none shadow-sm ${
-// //                     item.isSoldOut 
-// //                       ? "bg-[#8c0a15] text-white cursor-not-allowed" 
-// //                       : "bg-[#8c0a15] hover:bg-[#321e10] text-white active:scale-[0.98]"
-// //                   }`}
-// //                 >
-// //                   {item.isSoldOut ? "Sold Out" : "Add to Cart"}
-// //                 </button>
-// //               </div>
-
-// //             </div>
-// //           ))}
-// //         </div>
-
-// //       </div>
-// //     </section>
-// //   );
-// // };
-
-// // export default ShopByCategory;
-
-
-// import React from "react";
-// import { useNavigate } from "react-router-dom"; // 1. Import useNavigate
-// import { shopCategories } from "../data/categories";
-
-// const ShopByCategory = () => {
-//   const navigate = useNavigate(); // 2. Initialize navigate hook
-
-//   return (
-//     <section className="bg-[#fff3df] py-16 px-4 sm:px-6 lg:px-12">
-//       <div className="max-w-[1400px] mx-auto">
-
-//         {/* Section Heading */}
-//         <div className="text-center mb-12">
-//           <h2 className="text-3xl sm:text-4xl font-serif font-normal text-[#4a2e18] tracking-wide">
-//             Shop by Category
-//           </h2>
-//           <div className="w-24 h-[1px] bg-[#4a2e18]/30 mx-auto mt-3"></div>
-//         </div>
-
-//         {/* Categories Grid - 4 Columns Layout */}
-//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-//           {shopCategories.map((item) => (
-//             <div 
-//               key={item.id} 
-//               onClick={() => navigate(`/product/${item.id}`)} // 3. Click par Product Page par redirect karega
-//               className="group flex flex-col justify-between bg-white border border-stone-200/80 rounded-sm overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300"
-//             >
-//               <div>
-//                 {/* Image & Top Tag Container */}
-//                 <div className="relative w-full h-52 sm:h-60 bg-stone-50 overflow-hidden flex items-center justify-center p-4">
-                  
-//                   {/* Top Badge Tag */}
-//                   {item.tag && (
-//                     <span className="absolute top-3 left-3 z-10 bg-[#8c0a15] text-white text-[10px] font-semibold tracking-wider px-2.5 py-1 uppercase shadow-md">
-//                       {item.tag}
-//                     </span>
-//                   )}
-
-//                   {/* Sold Out Overlay */}
-//                   {item.isSoldOut && (
-//                     <div className="absolute inset-0 bg-black/30 z-10 flex items-center justify-center backdrop-blur-[1px]">
-//                       <span className="bg-white/95 text-[#4a2e18] font-bold text-xs tracking-widest px-5 py-2 uppercase shadow-lg">
-//                         Sold Out
-//                       </span>
-//                     </div>
-//                   )}
-
-//                   <img 
-//                     src={item.image} 
-//                     alt={item.title} 
-//                     className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-//                   />
-//                 </div>
-
-//                 {/* Details Container */}
-//                 <div className="p-5 text-center bg-[#fff3df]">
-//                   <p className="text-[11px] text-stone-500 tracking-wider uppercase mb-1.5 font-medium">
-//                     {item.vendor}
-//                   </p>
-                  
-//                   <h3 className="text-sm sm:text-[15px] font-semibold text-[#4a2e18] tracking-normal uppercase line-clamp-2 min-h-[44px] leading-relaxed">
-//                     {item.title}
-//                   </h3>
-
-//                   <div className="mt-3 flex items-center justify-center gap-2.5 text-sm">
-//                     <span className="font-bold text-[#8b3a2b] text-[16px]">
-//                       Rs. {item.price}
-//                     </span>
-//                     {item.oldPrice && (
-//                       <span className="text-stone-400 line-through text-xs font-normal">
-//                         Rs. {item.oldPrice}
-//                       </span>
-//                     )}
-//                   </div>
-//                 </div>
-//               </div>
-
-//               {/* Action Button */}
-//               <div className="p-5 pt-0 bg-[#fff3df]">
-//                 <button 
-//                   disabled={item.isSoldOut}
-//                   onClick={(e) => {
-//                     e.stopPropagation(); // Card click event ko rokne ke liye taaki direct add to cart alag chale ya page khule
-//                     alert(`Added ${item.title} to cart!`);
-//                   }}
-//                   className={`w-full py-3 text-xs font-bold tracking-widest uppercase transition-all duration-300 rounded-none shadow-sm ${
-//                     item.isSoldOut 
-//                       ? "bg-[#8c0a15] text-white cursor-not-allowed" 
-//                       : "bg-[#8c0a15] hover:bg-[#321e10] text-white active:scale-[0.98]"
-//                   }`}
-//                 >
-//                   {item.isSoldOut ? "Sold Out" : "Add to Cart"}
-//                 </button>
-//               </div>
-
-//             </div>
-//           ))}
-//         </div>
-
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default ShopByCategory;
-
-
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { shopCategories } from "../data/categories";
+import useCategoryStore from "../store/useCategoryStore";
 
 const ShopByCategory = () => {
   const navigate = useNavigate();
+  const { categories, loading, error, fetchCategories } = useCategoryStore();
 
-  // Discount percentage calculate karne ka helper function
-  const calculateDiscount = (price, oldPrice) => {
-    if (!oldPrice) return 0;
-    const numPrice = parseFloat(price.replace(/,/g, ''));
-    const numOldPrice = parseFloat(oldPrice.replace(/,/g, ''));
-    return Math.round(((numOldPrice - numPrice) / numOldPrice) * 100);
-  };
+  // Component load hote hi backend se categories fetch hongi
+  useEffect(() => {
+    fetchCategories();
+  }, [fetchCategories]);
 
   return (
     <section className="bg-[#fff3df] py-16 px-4 sm:px-6 lg:px-12">
@@ -232,97 +23,57 @@ const ShopByCategory = () => {
           <div className="w-24 h-[1px] bg-[#4a2e18]/30 mx-auto mt-3"></div>
         </div>
 
-        {/* Categories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {shopCategories.map((item) => {
-            const discountPercentage = calculateDiscount(item.price, item.oldPrice);
+        {/* Loading & Error States */}
+        {loading && <p className="text-center text-[#4a2e18] font-medium py-10">Loading categories...</p>}
+        {error && <p className="text-center text-red-600 font-medium py-10">Error: {error}</p>}
 
-            return (
+        {/* Categories Grid - 4 Columns Layout */}
+        {!loading && !error && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {categories.map((item) => (
               <div 
-                key={item.id} 
-                onClick={() => navigate(`/product/${item.id}`)}
+                key={item._id} 
+                onClick={() => navigate(`/category/${item.slug}`)} 
                 className="group flex flex-col justify-between bg-white border border-stone-200/80 rounded-sm overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300"
               >
                 <div>
-                  {/* Image & Top Tags Container */}
+                  {/* Image Container */}
                   <div className="relative w-full h-52 sm:h-60 bg-stone-50 overflow-hidden flex items-center justify-center p-4">
-                    
-                    {/* Top Badge Tag */}
-                    {item.tag && (
-                      <span className="absolute top-3 left-3 z-10 bg-[#8c0a15] text-white text-[10px] font-semibold tracking-wider px-2.5 py-1 uppercase shadow-md">
-                        {item.tag}
-                      </span>
-                    )}
-
-                    {/* Discount % Badge (New Added) */}
-                    {discountPercentage > 0 && (
-                      <span className="absolute top-3 right-3 z-10 bg-emerald-700 text-white text-[10px] font-bold tracking-wider px-2 py-1 uppercase shadow-md">
-                        {discountPercentage}% OFF
-                      </span>
-                    )}
-
-                    {/* Sold Out Overlay */}
-                    {item.isSoldOut && (
-                      <div className="absolute inset-0 bg-black/30 z-10 flex items-center justify-center backdrop-blur-[1px]">
-                        <span className="bg-white/95 text-[#4a2e18] font-bold text-xs tracking-widest px-5 py-2 uppercase shadow-lg">
-                          Sold Out
-                        </span>
-                      </div>
-                    )}
-
                     <img 
-                      src={item.image} 
-                      alt={item.title} 
+                      src={item.image} // 👈 Yahan seedha Cloudinary ka URL aayega bina localhost ke
+                      alt={item.name} 
                       className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                   </div>
 
                   {/* Details Container */}
                   <div className="p-5 text-center bg-[#fff3df]">
-                    <p className="text-[11px] text-stone-500 tracking-wider uppercase mb-1.5 font-medium">
-                      {item.vendor}
-                    </p>
-                    
-                    <h3 className="text-sm sm:text-[15px] font-semibold text-[#4a2e18] tracking-normal uppercase line-clamp-2 min-h-[44px] leading-relaxed">
-                      {item.title}
+                    <h3 className="text-sm sm:text-[15px] font-semibold text-[#4a2e18] tracking-normal uppercase line-clamp-1">
+                      {item.name}
                     </h3>
-
-                    {/* Price, MRP & Discount display */}
-                    <div className="mt-3 flex items-center justify-center gap-2.5 text-sm">
-                      <span className="font-bold text-[#8b3a2b] text-[16px]">
-                        Rs. {item.price}
-                      </span>
-                      {item.oldPrice && (
-                        <span className="text-stone-400 line-through text-xs font-normal">
-                          Rs. {item.oldPrice}
-                        </span>
-                      )}
-                    </div>
+                    <p className="text-xs text-stone-600 mt-2 line-clamp-2 leading-relaxed">
+                      {item.description}
+                    </p>
                   </div>
                 </div>
 
                 {/* Action Button */}
                 <div className="p-5 pt-0 bg-[#fff3df]">
                   <button 
-                    disabled={item.isSoldOut}
                     onClick={(e) => {
                       e.stopPropagation();
-                      alert(`Added ${item.title} to cart!`);
+                      navigate(`/category/${item.slug}`);
                     }}
-                    className={`w-full py-3 text-xs font-bold tracking-widest uppercase transition-all duration-300 rounded-none shadow-sm ${
-                      item.isSoldOut 
-                        ? "bg-[#8c0a15] text-white cursor-not-allowed" 
-                        : "bg-[#8c0a15] hover:bg-[#321e10] text-white active:scale-[0.98]"
-                    }`}
+                    className="w-full py-3 text-xs font-bold tracking-widest uppercase transition-all duration-300 rounded-none shadow-sm bg-[#8c0a15] hover:bg-[#321e10] text-white active:scale-[0.98]"
                   >
-                    {item.isSoldOut ? "Sold Out" : "Add to Cart"}
+                    Explore
                   </button>
                 </div>
 
               </div>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        )}
 
       </div>
     </section>
