@@ -74,13 +74,12 @@
 
 import axios from 'axios';
 
-// Backend ka base URL (development ke liye localhost)
 const API = axios.create({
-    baseURL: 'https://astologyshop-e.onrender.com/api',
+    baseURL: import.meta.env.VITE_API_URL || 'https://astologyshop-e.onrender.com/api',
     headers: {
         'Content-Type': 'application/json',
     },
-    withCredentials: true, // Agar refresh token httpOnly cookie mein save hai toh ye zaroori hai
+    withCredentials: true,
 });
 
 // 1. Request Interceptor: Har API request ke sath automatically Access Token attach karne ke liye

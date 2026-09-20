@@ -19,14 +19,7 @@ const MediaInNews = () => {
     <section className="bg-[#fff3df] py-6 px-0 w-full overflow-hidden border-b border-[#edd5b9]">
       <div className="w-full px-4 mx-auto text-center">
 
-        {/* Top Full Width Banner Image (`pop_2.webp`) */}
-        <div className="w-full flex justify-center items-center mb-12">
-          <img 
-            src={bottomBannerImg} 
-            alt="Divine Hindu Feature Banner" 
-            className="w-full h-auto object-cover rounded-none sm:rounded-xl shadow-none sm:shadow-sm"
-          />
-        </div>
+       
 
         {/* Bottom 4 Feature Icons / Cards Section (Screenshot Match) */}
         <div className="max-w-[1600px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 py-4">
@@ -34,7 +27,7 @@ const MediaInNews = () => {
             <div key={item.id} className="flex flex-col items-center text-center px-2">
               
               {/* Circular Icon Container */}
-              <div className="w-16 h-16 sm:w-20 sm:h-20  flex items-center justify-center p-3 mb-4 shadow-sm">
+              <div className="w-16 h-16 sm:w-20 sm:h-20  flex items-center justify-center p-3 mb-4 ">
                 <img 
                   src={item.image} 
                   alt={item.title} 
