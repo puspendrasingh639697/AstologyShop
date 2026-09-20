@@ -53,7 +53,7 @@ const ShopByCollection = () => {
             <button
               key={index}
               onClick={() => setActiveTab(category)}
-              className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm cursor-pointer ${
+              className={`px-6 py-2.5 rounded-md text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm cursor-pointer ${
                 activeTab === category
                   ? "bg-[#6b2314] text-white shadow-md scale-105"
                   : "bg-white text-[#4a2e18] border border-[#e6d0b3] hover:bg-[#fdf2f0] hover:border-[#8b3a2b]"
