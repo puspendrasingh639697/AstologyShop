@@ -32,6 +32,17 @@ const recommendedProducts = [
     badge: "BEST MATCH",
     image: "/src/assets/Rudraksha.webp"
   },
+
+   {
+    id: 3,
+    title: "Customized Name Energized Rudraksha Mala",
+    price: "Rs. 1,450.00",
+    originalPrice: "Rs. 2,100.00",
+    rating: 5.0,
+    reviews: 36,
+    badge: "BEST MATCH",
+    image: "/src/assets/Rudraksha.webp"
+  }
   
 ];
 
@@ -56,8 +67,8 @@ const PersonalizedRecommendations = () => {
   };
 
   return (
-    <section className="bg-[#fff3df] py-16 px-4 overflow-hidden font-sans">
-      <div className="max-w-[1200px] mx-auto">
+    <section className="bg-[#fff3df] py-16 px-4 overflow-hidden ">
+      <div className="max-w-[1400px] mx-auto">
 
         {/* Section Header */}
         <div className="text-center mb-4">
@@ -73,7 +84,7 @@ const PersonalizedRecommendations = () => {
         
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {recommendedProducts.map((product) => (
             <div 
               key={product.id}
@@ -119,9 +130,7 @@ const PersonalizedRecommendations = () => {
 
               {/* Product Info */}
               <div className="p-5 flex flex-col items-center text-center flex-grow">
-                <span className="text-[10px] uppercase tracking-[0.15em] text-black font-bold mb-1.5">
-                  Puja Hindu
-                </span>
+                
                 <h3 className="text-xs sm:text-sm font-serif text-[#3d2314] font-medium leading-snug line-clamp-2 mb-3 group-hover:text-[#8b3a2b] transition-colors duration-200">
                   {product.title}
                 </h3>

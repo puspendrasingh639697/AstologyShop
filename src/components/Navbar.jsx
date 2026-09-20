@@ -744,7 +744,7 @@ function Navbar() {
                             <BiSearch className="text-black text-lg mr-2" />
                             <input 
                                 type="text" 
-                                placeholder='Search for "Gemstone"' 
+                                placeholder='Search for ...'
                                 className="w-full border-none outline-none text-sm bg-transparent" 
                             />
                         </div>

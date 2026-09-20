@@ -62,7 +62,6 @@ const CustomerReviews = () => {
               </div>
 
               <div className="pt-4 border-t border-[#f3e5d8] flex items-center justify-between text-xs sm:text-sm">
-                <span className="font-serif font-semibold text-[#4a2e18] truncate max-w-[70%]">{review.productName}</span>
                 <span className="font-bold text-[#8b3a2b] text-base">{review.price}</span>
               </div>
             </div>
