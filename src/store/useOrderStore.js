@@ -1,5 +1,109 @@
+// import { create } from 'zustand';
+// import axios from 'axios';
+
+// const useOrderStore = create((set) => ({
+//   orders: [],
+//   loading: false,
+//   error: null,
+//   successOrder: null,
+
+//   // 1. Order Place API
+//   placeOrder: async (orderData, token) => {
+//     set({ loading: true, error: null });
+//     try {
+//       const response = await axios.post('https://astologyshop-e.onrender.com/api/orders/place', orderData, {
+//         headers: { 'Authorization': `Bearer ${token}` },
+//         withCredentials: true
+//       });
+//       set({ loading: false, successOrder: response.data.order });
+//       return { success: true, data: response.data };
+//     } catch (error) {
+//       const errorMsg = error.response?.data?.message || 'Failed to place order';
+//       set({ loading: false, error: errorMsg });
+//       return { success: false, error: errorMsg };
+//     }
+//   },
+
+//   // 2. Fetch User Orders API (My Orders)
+//   fetchMyOrders: async (token) => {
+//     set({ loading: true, error: null });
+//     try {
+//       const response = await axios.get('https://astologyshop-e.onrender.com/api/orders/my-orders', {
+//         headers: { 'Authorization': `Bearer ${token}` },
+//         withCredentials: true
+//       });
+      
+//       set({ 
+//         orders: response.data.orders || response.data, 
+//         loading: false 
+//       });
+//     } catch (error) {
+//       set({ 
+//         loading: false, 
+//         error: error.response?.data?.message || 'Failed to fetch orders' 
+//       });
+//     }
+//   },
+
+//   // 3. Cancel Order API
+//   cancelOrder: async (orderId, token) => {
+//     try {
+//       const response = await axios.put(`https://astologyshop-e.onrender.com/api/orders/${orderId}/cancel`, {}, {
+//         headers: { 'Authorization': `Bearer ${token}` },
+//         withCredentials: true
+//       });
+
+//       set((state) => ({
+//         orders: state.orders.map((ord) => 
+//           ord._id === orderId ? { ...ord, status: 'Cancelled', isCancelled: true } : ord
+//         )
+//       }));
+
+//       return { success: true, data: response.data };
+//     } catch (error) {
+//       return { 
+//         success: false, 
+//         error: error.response?.data?.message || 'Failed to cancel order' 
+//       };
+//     }
+//   },
+
+//   // 4. Razorpay Checkout API
+//   createRazorpayOrder: async (amount, orderId, token) => {
+//     try {
+//       const response = await axios.post('https://astologyshop-e.onrender.com/api/payment/checkout', {
+//         amount,
+//         orderId
+//       }, {
+//         headers: { 'Authorization': `Bearer ${token}` },
+//         withCredentials: true
+//       });
+//       return { success: true, data: response.data };
+//     } catch (error) {
+//       return { success: false, error: error.response?.data?.message || 'Payment initiation failed' };
+//     }
+//   },
+
+//   // 5. Razorpay Verify API
+//   verifyRazorpayPayment: async (paymentData, token) => {
+//     try {
+//       const response = await axios.post('https://astologyshop-e.onrender.com/api/payment/verify', paymentData, {
+//         headers: { 'Authorization': `Bearer ${token}` },
+//         withCredentials: true
+//       });
+//       return { success: true, data: response.data };
+//     } catch (error) {
+//       return { success: false, error: error.response?.data?.message || 'Payment verification failed' };
+//     }
+//   }
+// }));
+
+// export default useOrderStore;
+
+
 import { create } from 'zustand';
 import axios from 'axios';
+import API_BASE_URL from '../config/api'; // ✅ Central URL
 
 const useOrderStore = create((set) => ({
   orders: [],
@@ -11,7 +115,8 @@ const useOrderStore = create((set) => ({
   placeOrder: async (orderData, token) => {
     set({ loading: true, error: null });
     try {
-      const response = await axios.post('https://astologyshop-e.onrender.com/api/orders/place', orderData, {
+      // ✅ API_BASE_URL use karein
+      const response = await axios.post(`${API_BASE_URL}/orders/place`, orderData, {
         headers: { 'Authorization': `Bearer ${token}` },
         withCredentials: true
       });
@@ -28,19 +133,20 @@ const useOrderStore = create((set) => ({
   fetchMyOrders: async (token) => {
     set({ loading: true, error: null });
     try {
-      const response = await axios.get('https://astologyshop-e.onrender.com/api/orders/my-orders', {
+      // ✅ API_BASE_URL use karein
+      const response = await axios.get(`${API_BASE_URL}/orders/my-orders`, {
         headers: { 'Authorization': `Bearer ${token}` },
         withCredentials: true
       });
-      
-      set({ 
-        orders: response.data.orders || response.data, 
-        loading: false 
+
+      set({
+        orders: response.data.orders || response.data,
+        loading: false
       });
     } catch (error) {
-      set({ 
-        loading: false, 
-        error: error.response?.data?.message || 'Failed to fetch orders' 
+      set({
+        loading: false,
+        error: error.response?.data?.message || 'Failed to fetch orders'
       });
     }
   },
@@ -48,22 +154,23 @@ const useOrderStore = create((set) => ({
   // 3. Cancel Order API
   cancelOrder: async (orderId, token) => {
     try {
-      const response = await axios.put(`https://astologyshop-e.onrender.com/api/orders/${orderId}/cancel`, {}, {
+      // ✅ API_BASE_URL use karein
+      const response = await axios.put(`${API_BASE_URL}/orders/${orderId}/cancel`, {}, {
         headers: { 'Authorization': `Bearer ${token}` },
         withCredentials: true
       });
 
       set((state) => ({
-        orders: state.orders.map((ord) => 
+        orders: state.orders.map((ord) =>
           ord._id === orderId ? { ...ord, status: 'Cancelled', isCancelled: true } : ord
         )
       }));
 
       return { success: true, data: response.data };
     } catch (error) {
-      return { 
-        success: false, 
-        error: error.response?.data?.message || 'Failed to cancel order' 
+      return {
+        success: false,
+        error: error.response?.data?.message || 'Failed to cancel order'
       };
     }
   },
@@ -71,7 +178,8 @@ const useOrderStore = create((set) => ({
   // 4. Razorpay Checkout API
   createRazorpayOrder: async (amount, orderId, token) => {
     try {
-      const response = await axios.post('https://astologyshop-e.onrender.com/api/payment/checkout', {
+      // ✅ API_BASE_URL use karein
+      const response = await axios.post(`${API_BASE_URL}/payment/checkout`, {
         amount,
         orderId
       }, {
@@ -87,7 +195,8 @@ const useOrderStore = create((set) => ({
   // 5. Razorpay Verify API
   verifyRazorpayPayment: async (paymentData, token) => {
     try {
-      const response = await axios.post('https://astologyshop-e.onrender.com/api/payment/verify', paymentData, {
+      // ✅ API_BASE_URL use karein
+      const response = await axios.post(`${API_BASE_URL}/payment/verify`, paymentData, {
         headers: { 'Authorization': `Bearer ${token}` },
         withCredentials: true
       });
