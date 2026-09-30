@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 
 const FAQSection = () => {
-  // State to track which FAQ item is currently open. Set to null or a number (e.g., 0 for the first one open by default)
   const [openIndex, setOpenIndex] = useState(null);
 
   const faqData = [
@@ -45,51 +44,83 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#fff3df] border-y border-[#edd5b9]">
+    <section className="w-full pt-0 pb-10 sm:pb-12 md:pb-16 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-[1000px] mx-auto">
-        
-        {/* Section Heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl  font-normal text-[#4a2e18] tracking-wide">
+
+        {/* ====== HEADING ====== */}
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl  font-bold text-[#4a2e18] leading-tight tracking-wide">
             Frequently Asked Questions
           </h2>
-          <div className="w-24 h-0.5 bg-[#d35400]/30 mx-auto mt-4"></div>
+
+          {/* Decorative Divider */}
+          <div className="flex items-center justify-center gap-3 mt-4">
+            <span className="w-12 sm:w-16 h-[1px] bg-gradient-to-r from-transparent to-[#8c0a15]/50"></span>
+            <span className="w-2 h-2 rounded-full bg-[#8c0a15]/60"></span>
+            <span className="w-12 sm:w-16 h-[1px] bg-gradient-to-l from-transparent to-[#8c0a15]/50"></span>
+          </div>
         </div>
 
-        {/* FAQ Accordion List */}
-        <div className="space-y-4">
+        {/* ====== FAQ ACCORDION ====== */}
+        <div className="space-y-3 sm:space-y-4">
           {faqData.map((faq, index) => {
             const isOpen = openIndex === index;
+
             return (
-              <div 
+              <div
                 key={index}
-                className="bg-[#fff3df] border border-[#edd5b9] rounded-xl shadow-sm transition-all duration-300 overflow-hidden"
+                className={`bg-white rounded-xl overflow-hidden border transition-all duration-500 ${
+                  isOpen
+                    ? "border-transparent shadow-[0_15px_40px_-15px_rgba(140,10,21,0.35)] scale-[1.01]"
+                    : "border-[#f0dcbf] shadow-sm hover:shadow-md hover:border-[#8c0a15]/30"
+                }`}
               >
-                {/* Question Header */}
+
+                {/* ===== QUESTION HEADER ===== */}
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none group cursor-pointer"
+                  className={`w-full flex items-center justify-between gap-4 px-5 sm:px-6 py-4 sm:py-5 text-left focus:outline-none cursor-pointer transition-all duration-500 ${
+                    isOpen
+                      ? "bg-gradient-to-r from-red-800 to-red-600"
+                      : "bg-white group hover:bg-[#fff9f0]"
+                  }`}
                 >
-                  <span className="font-medium text-[#4a2e18] text-base sm:text-lg group-hover:text-[#d35400] transition-colors pr-4">
+                  <span
+                    className={`text-[14px] sm:text-base md:text-lg  tracking-wide pr-2 transition-colors duration-500 ${
+                      isOpen
+                        ? "text-white"
+                        : "text-black group-hover:text-[#8c0a15]"
+                    }`}
+                  >
                     {faq.question}
                   </span>
-                  
-                  {/* Plus / Minus Icon Container */}
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-300 shrink-0 ${
-                    isOpen 
-                      ? "bg-[#fff3df] border-[#d35400] text-[#d35400] rotate-180" 
-                      : "bg-[#fdfaf6] border-[#edd5b9] text-[#4a2e18] group-hover:border-[#d35400]"
-                  }`}>
-                    {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+
+                  {/* Plus / Minus Icon */}
+                  <div
+                    className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center border-2 shrink-0 transition-all duration-500 ${
+                      isOpen
+                        ? "bg-gradient-to-r from-red-800 to-red-600 border-white text-[#8c0a15] rotate-180"
+                        : " bg-gradient-to-r from-red-800 to-red-600 border-[#edd5b9] text-white group-hover:border-[#8c0a15] group-hover:text-[#8c0a15]"
+                    }`}
+                  >
+                    {isOpen ? (
+                      <Minus className="w-4 h-4" />
+                    ) : (
+                      <Plus className="w-4 h-4" />
+                    )}
                   </div>
                 </button>
 
-                {/* Answer Content Dropdown */}
-                <div className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                  isOpen ? "max-h-96 opacity-100 pb-6 px-6" : "max-h-0 opacity-0 px-6"
-                }`}>
-                  <div className="border-t border-[#edd5b9]/50 pt-4 text-black  text-sm sm:text-base leading-relaxed">
-                    {faq.answer}
+                {/* ===== ANSWER CONTENT ===== */}
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                    isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <div className="px-5 sm:px-6 pt-5 pb-5 sm:pb-6">
+                    <div className="border-t border-[#f0dcbf] pt-4 text-black text-[13.5px] sm:text-sm md:text-base leading-relaxed">
+                      {faq.answer}
+                    </div>
                   </div>
                 </div>
               </div>

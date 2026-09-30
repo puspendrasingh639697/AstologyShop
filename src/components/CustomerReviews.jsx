@@ -1,90 +1,120 @@
 import React from "react";
+import { Star } from "lucide-react";
 
-// Images import
+// Images
 import userImg1 from "../assets/pop_3.avif";
 import userImg2 from "../assets/pop_6.avif";
 import userImg3 from "../assets/popo_5.avif";
-import userImg4 from "../assets/pop_1.avif";
-import userImg5 from "../assets/pop_4.webp";
 
-const allReviews = [
-  { id: 1, name: "Neelima", rating: 5, comment: "After wearing this, negative energy reduced. Amazing experience!", productName: "OM Shiva Trishool Karungali Mala", price: "₹991", avatar: userImg1 },
-  { id: 2, name: "Govind", rating: 5, comment: "Got the chance to wear 3 and 5 Mukhi Rudraksha on Maha Shivratri. Har Har Mahadev!", productName: "3 Mukhi Lab Certified Rudraksha", price: "₹751", avatar: userImg2 },
-  { id: 3, name: "Girish Gudadari", rating: 5, comment: "I'm fully satisfied with the product and would definitely recommend it to others.", productName: "1 - 14 Mukhi Rudraksha Mala", price: "₹8,491", avatar: userImg3 },
-  { id: 4, name: "Rahul Sharma", rating: 5, comment: "Very authentic and energized product. Packing was also very secure.", productName: "Original Karungali Bracelet", price: "₹499", avatar: userImg4 },
-  { id: 5, name: "Pooja Verma", rating: 5, comment: "Divine fragrance and peace after placing this in my temple.", productName: "Pure Guggal Loban Dhoop", price: "₹350", avatar: userImg5 },
-  { id: 6, name: "Amitabh Roy", rating: 5, comment: "Genuine gemstone with lab certificate. Highly impressed by the service.", productName: "Natural Blue Sapphire (Neelam)", price: "₹12,500", avatar: userImg1 },
-  { id: 7, name: "Sneha Iyer", rating: 5, comment: "The quality of the mala beads is exceptional. Very peaceful to chant on.", productName: "Panchmukhi Rudraksha Mala", price: "₹650", avatar: userImg2 },
-  { id: 8, name: "Vikramaditya", rating: 5, comment: "Brings immense positivity to the house. Authentic Vedic item.", productName: "Vastu Tortoise Plate", price: "₹1,299", avatar: userImg3 },
-  { id: 9, name: "Sunita Menon", rating: 5, comment: "Fast delivery and great customer support. Will shop again.", productName: "Spheric Crystal Shivalingam", price: "₹1,899", avatar: userImg4 },
-  { id: 10, name: "Manoj Kumar", rating: 5, comment: "Original wood texture and heavy quality. Truly blessed.", productName: "Original Karungali Wood Stick", price: "₹899", avatar: userImg5 },
-  { id: 11, name: "Ananya Deshmukh", rating: 5, comment: "Wonderful packaging, received original energized beads with certificate.", productName: "7 Mukhi Rudraksha", price: "₹1,450", avatar: userImg1 },
-  { id: 12, name: "Rajeshwar Rao", rating: 5, comment: "Excellent spiritual items available here. Very trustworthy store.", productName: "Kuber Akshat Jar", price: "₹299", avatar: userImg2 },
-  { id: 13, name: "Divya Nambiar", rating: 5, comment: "I feel positive vibes from morning to evening after wearing this.", productName: "Karungali Silver Cap Mala", price: "₹1,699", avatar: userImg3 },
-  { id: 14, name: "Sanjay Mishra", rating: 5, comment: "Real product, verified through lab test. 100% satisfied.", productName: "10 Mukhi Lab Certified Rudraksha", price: "₹3,200", avatar: userImg4 },
-  { id: 15, name: "Kavita Joshi", rating: 5, comment: "Beautiful design and great spiritual energy. Loved it!", productName: "Sphrystal Shri Yantra", price: "₹2,100", avatar: userImg5 }
+const reviews = [
+  {
+    id: 1,
+    name: "Kavita Lynn",
+    role: "Shashi's Colonial Coffeero",
+    rating: 5,
+    comment: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected randomised words which don't look even slightly believable.",
+    avatar: userImg1,
+  },
+  {
+    id: 2,
+    name: "Tomas Campbell",
+    role: "Service Technician",
+    rating: 5,
+    comment: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected randomised words which don't look even slightly believable.",
+    avatar: userImg2,
+  },
+  {
+    id: 3,
+    name: "Robert Ocampo",
+    role: "Aquatic Biologist",
+    rating: 5,
+    comment: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected randomised words which don't look even slightly believable.",
+    avatar: userImg3,
+  },
 ];
 
 const CustomerReviews = () => {
-  // Duplicate the array so the marquee loops seamlessly
-  const marqueeReviews = [...allReviews, ...allReviews];
-
   return (
-    <section className="relative w-full py-16 bg-[#fff3df] border-b border-[#edd5b9] overflow-hidden">
-      
-      {/* Marquee Container - added py-12 to prevent hover cut-off */}
-      <div className="relative w-full overflow-hidden py-12">
-        
-        {/* CSS Marquee - moves left to right */}
-        <div className="flex w-max animate-marquee-left-to-right gap-6">
-          {marqueeReviews.map((review, idx) => (
-            <div 
-              key={`${review.id}-${idx}`} 
-              /* CHANGED: rounded-2xl -> rounded-md */
-              className="bg-white rounded-md p-6 shadow-xl border border-[#e6d0b3] flex flex-col justify-between w-[320px] sm:w-[360px] flex-shrink-0 transform transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:border-[#d35400] cursor-pointer"
-            >
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full overflow-hidden border border-[#edd5b9] bg-[#fff3df] flex-shrink-0">
-                    <img src={review.avatar} alt={review.name} className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <h4 className="font-serif font-bold text-[#4a2e18] text-base">{review.name}</h4>
-                    <div className="flex text-amber-500 text-sm">
-                      {[...Array(review.rating)].map((_, i) => (<span key={i}>★</span>))}
-                    </div>
-                  </div>
-                </div>
+    <section className="relative w-full py-6 sm:py-8 md:py-10 bg-white overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10">
 
-                <div className="bg-[#fffdfa] p-3 rounded-md border-l-4 border-[#d35400] mb-6 min-h-[80px]">
-                  <p className="text-gray-700 text-sm italic">"{review.comment}"</p>
-                </div>
-              </div>
+        {/* ====== HEADER ====== */}
+        <div className="text-center mb-6 sm:mb-8 md:mb-10">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#4a2e18] tracking-wide">
+            Customers Review
+          </h2>
+          <div className="flex items-center justify-center gap-3 mt-3">
+            <span className="w-12 sm:w-16 h-[1px] bg-gradient-to-r from-transparent to-[#8c0a15]/50"></span>
+            <span className="w-2 h-2 rounded-full bg-[#8c0a15]/60"></span>
+            <span className="w-12 sm:w-16 h-[1px] bg-gradient-to-l from-transparent to-[#8c0a15]/50"></span>
+          </div>
+        </div>
 
-              <div className="pt-4 border-t border-[#f3e5d8] flex items-center justify-between text-xs sm:text-sm">
-                <span className="font-bold text-[#8b3a2b] text-base">{review.price}</span>
-              </div>
-            </div>
+        {/* ====== CARDS GRID ====== */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16 sm:gap-10 md:gap-6 lg:gap-8 mt-6 sm:mt-8 md:mt-10">
+          {reviews.map((review) => (
+            <ReviewCard key={review.id} review={review} />
           ))}
         </div>
       </div>
-
-      {/* Tailwind Custom Animation via style tag */}
-      <style>{`
-        @keyframes marquee-left-to-right {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0%); }
-        }
-        .animate-marquee-left-to-right {
-          /* CHANGED: 40s -> 60s for slower, smoother scroll */
-          animation: marquee-left-to-right 60s linear infinite;
-        }
-        .animate-marquee-left-to-right:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
-
     </section>
+  );
+};
+
+/* ==========================================================
+   REVIEW CARD
+========================================================== */
+const ReviewCard = ({ review }) => {
+  return (
+    <div className="relative group">
+
+      {/* ====== FLOATING AVATAR (top, overlapping card) ====== */}
+      <div className="absolute -top-8 left-1/2 -translate-x-1/2 z-20">
+        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-white shadow-[0_8px_25px_rgba(0,0,0,0.15)] ring-4 ring-white transition-transform duration-500 group-hover:scale-105">
+          <img
+            src={review.avatar}
+            alt={review.name}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+      {/* ====== CARD ====== */}
+      <div className="relative bg-[#f5f5f7] rounded-md px-5 sm:px-6 md:px-7 pt-12 sm:pt-14 pb-5 sm:pb-6 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.15)] hover:bg-white transition-all duration-500 hover:-translate-y-1.5 border border-transparent hover:border-[#8c0a15]/10">
+
+        {/* ====== COMMENT ====== */}
+        <p className="text-[13px] sm:text-[13.5px] md:text-sm text-black leading-[1.7] sm:leading-[1.75] mb-5 sm:mb-6 min-h-[110px] sm:min-h-[120px]">
+          {review.comment}
+        </p>
+
+        {/* ====== DIVIDER ====== */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-[#8c0a15] to-transparent mb-4 sm:mb-5"></div>
+
+        {/* ====== FOOTER: NAME+ROLE (left) | STARS (right) ====== */}
+        <div className="flex items-center justify-between gap-3 sm:gap-4">
+
+          {/* Left: Name + Role */}
+          <div className="min-w-0 flex-1">
+            <h4 className="text-[13.5px] sm:text-[14px] md:text-[15px] font-bold text-[#1a1a2e] leading-tight truncate">
+              {review.name}
+            </h4>
+            <p className="text-[11px] sm:text-[11.5px] md:text-xs text-gray-500 leading-tight mt-1 truncate">
+              {review.role}
+            </p>
+          </div>
+
+          {/* Right: Stars */}
+          <div className="flex gap-0.5 flex-shrink-0">
+            {[...Array(review.rating)].map((_, i) => (
+              <Star
+                key={i}
+                className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 fill-amber-400 text-amber-400"
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

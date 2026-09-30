@@ -17,10 +17,11 @@ const Home = () => {
     <>
       <HeroSection />
       <ShopByCategory />
-      <AstrologyRemedies />
+      
       <ShopByCollection />
-      <PersonalizedRecommendations />
+      {/* <PersonalizedRecommendations /> */}
       <MediaInNews />
+      <AstrologyRemedies />
       <CustomerReviews />
       <SpiritualBlog />
       <LatestTrending />

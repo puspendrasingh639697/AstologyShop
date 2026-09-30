@@ -1,75 +1,31 @@
 import React from "react";
 
-// Importing your specific asset images for the badges and bottom banner
-import featureImg1 from "../assets/pop_1.avif";
-import featureImg2 from "../assets/pop_3.avif";
-import featureImg3 from "../assets/pop_6.avif";
-import featureImg4 from "../assets/popo_5.avif";
+// Only these two images needed
+import logoBanner from "../assets/Logobaner.png";
 import bannerImage from "../assets/pop_4.webp";
 
 const CleanFeatureSection = () => {
-  const featuresData = [
-    {
-      id: 0,
-      title: "Certified by Authorized Labs",
-      description: "Every product is tested for quality and safety, so what touches your body honours it.",
-      image: featureImg1,
-    },
-    {
-      id: 1,
-      title: "Sacredly Sourced",
-      description: "Every product begins at its rightful origin, sourced through traditional channels that honour ritual, lineage, and purpose.",
-      image: featureImg2,
-    },
-    {
-      id: 2,
-      title: "Traceable for Life",
-      description: "Your product’s authenticity stays accessible to you always. Simply check, verify, and download your certificate whenever you need it.",
-      image: featureImg3,
-    },
-    {
-      id: 3,
-      title: "Blessed through Sacred Rituals",
-      description: "Elevate your daily journey with authentic tools for spiritual awakening.",
-      image: featureImg4,
-    }
-  ];
-
   return (
-    <section className="w-full py-16 bg-[#fff3df]  border-y border-[#edd5b9]">
-      <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* 4 Items Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center mb-16">
-          {featuresData.map((item) => (
-            <div key={item.id} className="flex flex-col items-center">
-              <div className="w-24 h-24 rounded-full overflow-hidden flex items-center justify-center mb-4 border-2 border-[#edd589] bg-white">
-                <img 
-                  src={item.image} 
-                  alt={item.title} 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h4 className="font-serif font-bold text-[#4a2e18] text-base sm:text-lg mb-2">
-                {item.title}
-              </h4>
-              <p className="text-gray-600 text-xs sm:text-sm leading-relaxed max-w-xs font-sans font-normal">
-                {item.description}
-              </p>
-            </div>
-          ))}
-        </div>
+    <section className="w-full bg-[#fff3df] border-y border-[#edd5b9]">
 
-      </div>
-
-      {/* Edge-to-Edge Fluid Banner matching reference screenshot style */}
-      <div className="w-full overflow-hidden bg-white border-y border-[#edd5b9]">
-        <img 
-          src={bannerImage} 
-          alt="Authentic Community Banner" 
-          className="w-full h-[150px] sm:h-[230px] md:h-[290px] lg:h-[350px] object-cover block"
+      {/* ====== TOP BANNER IMAGE (full width, edge-to-edge) ====== */}
+      <div className="w-full overflow-hidden">
+        <img
+          src={logoBanner}
+          alt="Logo Banner"
+          className="w-full h-auto object-cover object-center block"
         />
       </div>
+
+      {/* ====== BOTTOM BANNER (30% height of top) ====== */}
+      <div className="w-full overflow-hidden bg-white border-y border-[#edd5b9]">
+        <img
+          src={bannerImage}
+          alt="Authentic Community Banner"
+          className="w-full h-[60px] sm:h-[85px] md:h-[105px] lg:h-[130px] object-cover object-center block"
+        />
+      </div>
+
     </section>
   );
 };

@@ -1,15 +1,15 @@
 import React from "react";
-import whyChooseImage from "../assets/WhatsApp Image 2026-09-20 at 11.58.01 AM.jpeg";
+import whyChooseImage from "../assets/topbaner.png";
 
 export default function WhyChooseUsSection() {
   return (
-    <section className="w-full bg-[#fff3df] py-8">
-      {/* 80% Width Centered Banner - Reduced Height */}
-      <div className="w-[100%] mx-auto  overflow-hidden">
-        <img 
-          src={whyChooseImage} 
-          alt="Why Choose Divine Hindu" 
-          className="w-full h-[450px] md:h-[550px] object-cover block"
+    <section className="w-full bg-white py-16">
+      {/* Full Width Banner - Fully Responsive */}
+      <div className="w-full mx-auto overflow-hidden">
+        <img
+          src={whyChooseImage}
+          alt="Why Choose Divine Hindu"
+          className="w-full h-auto object-cover object-center block"
         />
       </div>
     </section>

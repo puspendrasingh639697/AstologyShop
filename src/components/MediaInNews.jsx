@@ -16,7 +16,7 @@ const featureItems = [
 
 const MediaInNews = () => {
   return (
-    <section className="bg-[#fff3df] py-6 px-0 w-full overflow-hidden border-b border-[#edd5b9]">
+    <section className="bg-[linear-gradient(120deg,#FFFFFF_0%,#FECACA_30%,#F87171_65%,#B91C1C_100%)] py-6 px-0 w-full overflow-hidden border-b border-[#edd5b9]">
       <div className="w-full px-4 mx-auto text-center">
 
        
@@ -27,7 +27,7 @@ const MediaInNews = () => {
             <div key={item.id} className="flex flex-col items-center text-center px-2">
               
               {/* Circular Icon Container */}
-              <div className="w-16 h-16 sm:w-20 sm:h-20  flex items-center justify-center p-3 mb-4 ">
+              <div className="w-16 h-16 sm:w-20 sm:h-20  flex items-center justify-center p-3 mb-2 ">
                 <img 
                   src={item.image} 
                   alt={item.title} 
@@ -36,7 +36,7 @@ const MediaInNews = () => {
               </div>
 
               {/* Title */}
-              <h3 className="text-base font-serif font-bold text-[#4a2e18] mb-2">
+              <h3 className="text-base  font-bold text-black mb-2">
                 {item.title}
               </h3>
 

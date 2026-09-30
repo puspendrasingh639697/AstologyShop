@@ -35,17 +35,22 @@ const ShopByCollection = () => {
   };
 
   return (
-    <div className="bg-[#fff3df] py-16 px-4 overflow-hidden border-y border-[#edd5b9]">
+    <div className="bg-white py-4 px-4 overflow-hidden ">
       <div className="max-w-[1400px] mx-auto">
         <div className="text-center mb-8">
-          <h2 className="text-3xl sm:text-4xl font-serif text-[#4a2e18] tracking-wide inline-block font-semibold">
+          <h2 className="text-3xl sm:text-4xl  text-[#4a2e18] tracking-wide inline-block font-semibold">
             {activeTab === "Best Sellers" ? (
-              <>Bestsellers of <span className="italic font-normal">the Month</span></>
+              <>Bestsellers of the Month
+              <div className="flex items-center justify-center gap-3 mt-3">
+            <span className="w-16 h-[1px] bg-gradient-to-r from-transparent to-[#8c0a15]/50"></span>
+            <span className="w-2 h-2 rounded-full bg-[#8c0a15]/60"></span>
+            <span className="w-16 h-[1px] bg-gradient-to-l from-transparent to-[#8c0a15]/50"></span>
+          </div> </>
             ) : (
               <>Shop by <span className="italic font-normal">Collection</span></>
             )}
           </h2>
-          <div className="w-16 h-[2px] bg-[#8b3a2b] mx-auto mt-3 rounded-full"></div>
+          
         </div>
 
         <div className="flex flex-wrap justify-center items-center gap-3 mb-12">
@@ -55,8 +60,8 @@ const ShopByCollection = () => {
               onClick={() => setActiveTab(category)}
               className={`px-6 py-2.5 rounded-md text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm cursor-pointer ${
                 activeTab === category
-                  ? "bg-[#6b2314] text-white shadow-md scale-105"
-                  : "bg-white text-[#4a2e18] border border-[#e6d0b3] hover:bg-[#fdf2f0] hover:border-[#8b3a2b]"
+                  ? "bg-gradient-to-r from-red-800 to-red-600 text-white shadow-md scale-105"
+                  : "bg-white text-black border border-[#e6d0b3] hover:bg-[#fdf2f0] hover:border-[#8b3a2b]"
               }`}
             >
               {category}
