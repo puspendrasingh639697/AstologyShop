@@ -33,17 +33,17 @@ export default function ReturnsTab() {
     return (
       <div className="space-y-6">
         <div className="pb-4 border-b border-stone-200">
-          <h3 className="text-base font-serif font-bold text-[#4a2e18]">
+          <h3 className="text-base  font-bold text-black">
             My Returns
           </h3>
-          <p className="text-xs text-stone-500">
+          <p className="text-xs text-black">
             Track your return requests and refunds.
           </p>
         </div>
 
         <div className="bg-stone-50 border border-stone-200 rounded-sm p-8 text-center">
           <BiRefresh className="text-5xl text-stone-300 mx-auto mb-3" />
-          <p className="text-sm text-stone-500">
+          <p className="text-sm text-black">
             Aapne abhi tak koi return request nahi banayi.
           </p>
         </div>
@@ -55,10 +55,10 @@ export default function ReturnsTab() {
   return (
     <div className="space-y-6">
       <div className="pb-4 border-b border-stone-200">
-        <h3 className="text-base font-serif font-bold text-[#4a2e18]">
+        <h3 className="text-base  font-bold text-black">
           My Returns
         </h3>
-        <p className="text-xs text-stone-500">
+        <p className="text-xs text-black">
           Total <strong>{returns.length}</strong> return requests.
         </p>
       </div>
@@ -67,15 +67,15 @@ export default function ReturnsTab() {
         {returns.map((ret) => (
           <div
             key={ret._id}
-            className="bg-white border border-stone-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+            className="bg-gradient-to-r from-red-800 to-red-600 border border-stone-200 rounded-md p-4 hover:shadow-md transition-shadow"
           >
             {/* Header */}
             <div className="flex justify-between items-start mb-3">
               <div>
-                <p className="text-[10px] text-stone-400 uppercase font-bold">
+                <p className="text-[12px] text-white uppercase font-bold">
                   Return ID
                 </p>
-                <p className="text-sm font-bold text-[#8b3a2b]">
+                <p className="text-sm font-bold text-white">
                   #{ret._id?.slice(-8)}
                 </p>
               </div>
@@ -95,29 +95,29 @@ export default function ReturnsTab() {
             </div>
 
             {/* Order ID */}
-            <p className="text-sm font-bold text-[#4a2e18]">
+            <p className="text-sm font-bold text-white">
               Order #{ret.order?._id?.slice(-6) || ret.order?.slice(-6) || 'N/A'}
             </p>
 
             {/* Reason */}
-            <p className="text-xs text-stone-600 mt-1">
+            <p className="text-xs text-white mt-1">
               <strong>Reason:</strong> {ret.reason}
             </p>
 
             {/* Description */}
             {ret.description && (
-              <p className="text-xs text-stone-500 mt-1">{ret.description}</p>
+              <p className="text-xs text-white mt-1">{ret.description}</p>
             )}
 
             {/* Footer */}
             <div className="flex justify-between items-center mt-3 pt-3 border-t border-stone-100">
-              <span className="text-xs text-stone-400">
+              <span className="text-xs text-white">
                 {ret.createdAt
                   ? new Date(ret.createdAt).toLocaleDateString('en-IN')
                   : 'N/A'}
               </span>
               {ret.refundAmount && (
-                <span className="text-sm font-bold text-[#8b3a2b]">
+                <span className="text-sm font-bold text-white">
                   ₹{ret.refundAmount.toLocaleString('en-IN')}
                 </span>
               )}

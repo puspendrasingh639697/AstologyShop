@@ -1,9 +1,9 @@
 
 
-
 // import React, { useState } from "react";
 // import { BiEdit } from "react-icons/bi";
 // import axios from "axios";
+// import API_BASE_URL from "../../config/api"; // ✅ Central URL (path apne folder ke hisaab se adjust karein)
 
 // export default function ProfileTab({ profile, setProfile }) {
 //   const [isEditing, setIsEditing] = useState(false);
@@ -19,19 +19,20 @@
 
 //     try {
 //       const token = localStorage.getItem('token');
-      
+
 //       // ✅ Phone number se +91 aur spaces hata kar sirf 10 digits clean kar rahe hain
 //       const cleanedPhone = (profile.phone || '').replace(/\D/g, '').slice(-10);
 
+//       // ✅ API_BASE_URL use karein
 //       const response = await axios.put(
-//         'https://astologyshop-e.onrender.com/api/user/profile', 
+//         `${API_BASE_URL}/user/profile`,
 //         {
 //           name: profile.fullName,
-//           phone: cleanedPhone, // Cleaned 10-digit phone
+//           phone: cleanedPhone,
 //           email: profile.email,
 //           gender: profile.gender,
 //           dob: profile.dob
-//         }, 
+//         },
 //         {
 //           headers: { Authorization: `Bearer ${token}` }
 //         }
@@ -39,9 +40,9 @@
 
 //       // LocalStorage update karein
 //       const localUser = JSON.parse(localStorage.getItem('user') || '{}');
-//       const updatedUser = { 
-//         ...localUser, 
-//         name: profile.fullName, 
+//       const updatedUser = {
+//         ...localUser,
+//         name: profile.fullName,
 //         phone: cleanedPhone,
 //         email: profile.email,
 //         gender: profile.gender,
@@ -63,13 +64,13 @@
 //     <div className="space-y-6">
 //       <div className="flex justify-between items-center pb-4 border-b border-stone-200">
 //         <div>
-//           <h3 className="text-base font-serif font-bold text-[#4a2e18]">Personal Profile</h3>
+//           <h3 className="text-base font-bold text-[#4a2e18]">Personal Profile</h3>
 //           <p className="text-xs text-stone-500">Manage your personal details and preferences.</p>
 //         </div>
 //         {!isEditing && (
-//           <button 
+//           <button
 //             onClick={() => { setIsEditing(true); setSuccessMsg(""); setErrorMsg(""); }}
-//             className="bg-[#8c0a15] hover:bg-[#722d21] text-white text-xs font-bold uppercase px-4 py-2 rounded-sm cursor-pointer flex items-center gap-1.5 transition"
+//             className="bg-gradient-to-r from-red-800 to-red-600 hover:bg-[#722d21] text-white text-xs font-bold uppercase px-4 py-2 rounded-sm cursor-pointer flex items-center gap-1.5 transition"
 //           >
 //             <BiEdit /> Edit Profile
 //           </button>
@@ -105,8 +106,8 @@
 //           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 //             <div>
 //               <label className="block font-bold uppercase text-stone-600 mb-1">Full Name</label>
-//               <input 
-//                 type="text" 
+//               <input
+//                 type="text"
 //                 value={profile.fullName || ""}
 //                 onChange={(e) => setProfile({...profile, fullName: e.target.value})}
 //                 className="w-full p-2.5 border border-stone-300 rounded-sm bg-white focus:outline-none"
@@ -116,8 +117,8 @@
 //             </div>
 //             <div>
 //               <label className="block font-bold uppercase text-stone-600 mb-1">Phone Number</label>
-//               <input 
-//                 type="text" 
+//               <input
+//                 type="text"
 //                 value={profile.phone || ""}
 //                 onChange={(e) => setProfile({...profile, phone: e.target.value})}
 //                 className="w-full p-2.5 border border-stone-300 rounded-sm bg-white focus:outline-none"
@@ -127,8 +128,8 @@
 //             </div>
 //             <div>
 //               <label className="block font-bold uppercase text-stone-600 mb-1">Email Address</label>
-//               <input 
-//                 type="email" 
+//               <input
+//                 type="email"
 //                 value={profile.email || ""}
 //                 onChange={(e) => setProfile({...profile, email: e.target.value})}
 //                 className="w-full p-2.5 border border-stone-300 rounded-sm bg-white focus:outline-none"
@@ -138,8 +139,8 @@
 //             </div>
 //             <div>
 //               <label className="block font-bold uppercase text-stone-600 mb-1">Date of Birth</label>
-//               <input 
-//                 type="date" 
+//               <input
+//                 type="date"
 //                 value={profile.dob || ""}
 //                 onChange={(e) => setProfile({...profile, dob: e.target.value})}
 //                 className="w-full p-2.5 border border-stone-300 rounded-sm bg-white focus:outline-none"
@@ -148,7 +149,7 @@
 //             </div>
 //             <div>
 //               <label className="block font-bold uppercase text-stone-600 mb-1">Gender</label>
-//               <select 
+//               <select
 //                 value={profile.gender || "Male"}
 //                 onChange={(e) => setProfile({...profile, gender: e.target.value})}
 //                 className="w-full p-2.5 border border-stone-300 rounded-sm bg-white focus:outline-none"
@@ -162,7 +163,7 @@
 //           </div>
 
 //           <div className="flex gap-3 pt-2">
-//             <button 
+//             <button
 //               type="button"
 //               onClick={() => setIsEditing(false)}
 //               className="bg-stone-200 hover:bg-stone-300 text-stone-700 px-5 py-2.5 font-bold uppercase cursor-pointer"
@@ -170,7 +171,7 @@
 //             >
 //               Cancel
 //             </button>
-//             <button 
+//             <button
 //               type="submit"
 //               className="bg-[#4a2e18] hover:bg-[#321e10] text-white px-5 py-2.5 font-bold uppercase tracking-wider cursor-pointer disabled:bg-stone-400"
 //               disabled={loading}
@@ -183,7 +184,6 @@
 //     </div>
 //   );
 // }
-
 
 import React, { useState } from "react";
 import { BiEdit } from "react-icons/bi";
@@ -246,16 +246,16 @@ export default function ProfileTab({ profile, setProfile }) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 bg-white">
       <div className="flex justify-between items-center pb-4 border-b border-stone-200">
         <div>
-          <h3 className="text-base font-serif font-bold text-[#4a2e18]">Personal Profile</h3>
+          <h3 className="text-base font-bold text-[#4a2e18]">Personal Profile</h3>
           <p className="text-xs text-stone-500">Manage your personal details and preferences.</p>
         </div>
         {!isEditing && (
           <button
             onClick={() => { setIsEditing(true); setSuccessMsg(""); setErrorMsg(""); }}
-            className="bg-[#8c0a15] hover:bg-[#722d21] text-white text-xs font-bold uppercase px-4 py-2 rounded-sm cursor-pointer flex items-center gap-1.5 transition"
+            className="bg-red-700 hover:bg-[#722d21] text-white text-xs font-bold uppercase px-4 py-2 rounded-sm cursor-pointer flex items-center gap-1.5 transition"
           >
             <BiEdit /> Edit Profile
           </button>
@@ -266,7 +266,7 @@ export default function ProfileTab({ profile, setProfile }) {
       {errorMsg && <div className="bg-rose-100 text-rose-800 p-3 rounded text-xs">{errorMsg}</div>}
 
       {!isEditing ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs font-serif">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs">
           <div className="bg-stone-50 p-4 border border-stone-200 rounded-sm space-y-1">
             <span className="text-stone-400 block uppercase font-bold text-[10px]">Full Name</span>
             <p className="font-bold text-stone-800 text-sm">{profile.fullName || "N/A"}</p>

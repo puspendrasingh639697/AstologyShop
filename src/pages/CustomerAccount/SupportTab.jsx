@@ -16,35 +16,35 @@ export default function SupportTab() {
 
   return (
     <div className="space-y-6">
-      <h3 className="text-xl font-serif font-bold text-[#4a2e18]">Customer Support & Help Center</h3>
-      <p className="text-xs text-stone-600">Aapko kisi bhi tarah ki sahayata chahiye ho, toh humse sampark karein.</p>
+      <h3 className="text-xl font-bold text-black">Customer Support & Help Center</h3>
+      <p className="text-xs text-black">Aapko kisi bhi tarah ki sahayata chahiye ho, toh humse sampark karein.</p>
 
       {/* Quick Contact Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="border border-stone-200 bg-stone-50 p-4 rounded-sm flex items-center gap-3">
-          <div className="w-10 h-10 bg-[#8b3a2b] text-white rounded-full flex items-center justify-center text-lg">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+        <div className="border border-stone-200 bg-gradient-to-r from-red-800 to-red-600 p-4 rounded-sm flex items-center gap-3">
+          <div className="w-10 h-10  text-white rounded-full flex items-center justify-center text-lg">
             <BiPhoneCall />
           </div>
           <div>
-            <span className="text-[10px] text-stone-400 uppercase font-bold block">Call Support</span>
-            <span className="text-xs font-bold text-[#4a2e18]">+91 98765 43210</span>
+            <span className="text-[10px] text-white uppercase font-bold block">Call Support</span>
+            <span className="text-xs font-bold text-white">+91 98765 43210</span>
           </div>
         </div>
 
-        <div className="border border-stone-200 bg-stone-50 p-4 rounded-sm flex items-center gap-3">
-          <div className="w-10 h-10 bg-[#8b3a2b] text-white rounded-full flex items-center justify-center text-lg">
+        <div className="border border-stone-200 bg-gradient-to-r from-red-800 to-red-600 p-4 rounded-sm flex items-center gap-3">
+          <div className="w-10 h-10  text-white rounded-full flex items-center justify-center text-lg">
             <BiEnvelope />
           </div>
           <div>
-            <span className="text-[10px] text-stone-400 uppercase font-bold block">Email Support</span>
-            <span className="text-xs font-bold text-[#4a2e18]">support@japam.com</span>
+            <span className="text-[10px] text-white uppercase font-bold block">Email Support</span>
+            <span className="text-xs font-bold text-white">support@pujahetu.com</span>
           </div>
         </div>
       </div>
 
       {/* Support Ticket Form */}
-      <div className="border border-stone-200 p-6 rounded-sm bg-white space-y-4">
-        <h4 className="font-serif font-bold text-sm text-[#4a2e18] flex items-center gap-2">
+      <div className="border border-stone-100 p-6 rounded-sm bg-white space-y-4">
+        <h4 className="font-bold text-sm text-black flex items-center gap-2">
           <BiMessageSquareDetail /> Raise a Support Ticket
         </h4>
 
@@ -56,7 +56,7 @@ export default function SupportTab() {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-[11px] font-bold text-stone-700 uppercase mb-1">Subject / Issue Type</label>
+              <label className="block text-[11px] font-bold text-black uppercase mb-1">Subject / Issue Type</label>
               <input 
                 type="text" 
                 placeholder="e.g. Order Delay, Payment Issue" 
@@ -81,7 +81,7 @@ export default function SupportTab() {
 
             <button 
               type="submit" 
-              className="bg-[#4a2e18] hover:bg-[#321e10] text-white text-xs font-bold uppercase px-5 py-2.5 rounded-sm cursor-pointer transition"
+              className="bg-gradient-to-r from-red-800 to-red-600 hover:bg-[#321e10] text-white text-xs font-bold uppercase px-5 py-2.5 rounded-sm cursor-pointer transition"
             >
               Submit Ticket
             </button>

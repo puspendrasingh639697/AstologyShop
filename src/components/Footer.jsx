@@ -23,7 +23,7 @@ const Footer = () => {
   const siteLogo = settings?.siteLogo || logo;
 
   return (
-    <footer className="w-full bg-white border-t border-[#edd5b9] text-[#1a1a1a]">
+    <footer className="w-full bg-white border-t border-[#edd5b9] text-black">
 
       {/* ============ TOP SECTION ============ */}
       <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 pt-14 sm:pt-16 pb-10 sm:pb-12">
@@ -40,12 +40,12 @@ const Footer = () => {
               />
             </div>
 
-            <p className="text-[#4a4a4a] text-[13.5px] sm:text-sm leading-relaxed font-normal mb-6">
+            <p className="text-black text-[13.5px] sm:text-sm leading-relaxed font-normal mb-6">
               At {siteName}, our mission is to make authentic spiritual and cultural products accessible across the world. Rooted in faith and tradition, we curate trusted puja essentials to help every devotee stay connected.
             </p>
 
             {/* Social Media */}
-            <h4 className="text-xs font-bold text-[#8c0a15] uppercase tracking-widest mb-3">
+            <h4 className="text-xs font-bold text-black uppercase tracking-widest mb-3">
               Follow Us
             </h4>
             <div className="flex items-center space-x-3">

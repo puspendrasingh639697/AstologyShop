@@ -27,11 +27,11 @@ export default function DashboardOverviewTab({
     return acc + amount;
   }, 0);
 
-  // 2. User ka First Name nikalna safely
+  // 2. User ka First Name nikalna safely-
   const firstName = profile?.fullName ? profile.fullName.split(" ")[0] : (profile?.name?.split(" ")[0] || "User");
 
   return (
-    <div className="space-y-6 bg-[#fff3df] p-4 sm:p-6 rounded-xl">
+    <div className="space-y-6 bg-white p-4 sm:p-6">
       {/* 1. Header Welcome Section */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div>
@@ -48,15 +48,15 @@ export default function DashboardOverviewTab({
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         
         {/* Total Orders Card */}
-        <div className="bg-white border border-stone-200 rounded-xl p-4 flex items-center gap-3.5 shadow-sm">
-          <div className="w-11 h-11 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center text-xl shrink-0">
+        <div className="bg-gradient-to-r from-red-800 to-red-600 border border-stone-200 rounded-md p-4 flex items-center gap-3.5 shadow-sm">
+          <div className="w-11 h-11  text-white rounded-lg flex items-center justify-center text-xl shrink-0">
             <BiShoppingBag />
           </div>
           <div>
-            <span className="text-[11px] font-semibold text-stone-400 block uppercase tracking-wider">Total Orders</span>
+            <span className="text-[14px]  text-white block uppercase tracking-wider">Total Orders</span>
             <div className="flex items-baseline gap-2">
-              <span className="text-lg font-bold text-stone-800">{orders.length}</span>
-              <button onClick={() => setActiveTab("orders")} className="text-[10px] text-blue-600 font-bold hover:underline flex items-center">
+              <span className="text-lg font-bold text-white">{orders.length}</span>
+              <button onClick={() => setActiveTab("orders")} className="text-[12px] text-white font-bold hover:underline flex items-center">
                 View <BiChevronRight />
               </button>
             </div>
@@ -64,28 +64,28 @@ export default function DashboardOverviewTab({
         </div>
 
         {/* Total Spent Card */}
-        <div className="bg-white border border-stone-200 rounded-xl p-4 flex items-center gap-3.5 shadow-sm">
-          <div className="w-11 h-11 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center text-xl shrink-0">
+        <div className="bg-gradient-to-r from-red-800 to-red-600 border border-stone-200 rounded-md p-4 flex items-center gap-3.5 shadow-sm">
+          <div className="w-11 h-11  text-white rounded-lg flex items-center justify-center text-xl shrink-0">
             <BiWallet />
           </div>
           <div>
-            <span className="text-[11px] font-semibold text-stone-400 block uppercase tracking-wider">Total Spent</span>
+            <span className="text-[12px]  text-white block uppercase tracking-wider">Total Spent</span>
             <div className="flex items-baseline gap-2">
-              <span className="text-lg font-bold text-stone-800">₹{totalSpent}</span>
+              <span className="text-lg font-bold text-white">₹{totalSpent}</span>
             </div>
           </div>
         </div>
 
         {/* Wishlist Items Card */}
-        <div className="bg-white border border-stone-200 rounded-xl p-4 flex items-center gap-3.5 shadow-sm">
-          <div className="w-11 h-11 bg-rose-50 text-rose-600 rounded-lg flex items-center justify-center text-xl shrink-0">
+        <div className="bg-gradient-to-r from-red-800 to-red-600 border border-stone-200 rounded-md p-4 flex items-center gap-3.5 shadow-sm">
+          <div className="w-11 h-11  text-white rounded-lg flex items-center justify-center text-xl shrink-0">
             <BiHeart />
           </div>
           <div>
-            <span className="text-[11px] font-semibold text-stone-400 block uppercase tracking-wider">Wishlist</span>
+            <span className="text-[12px]  text-white block uppercase tracking-wider">Wishlist</span>
             <div className="flex items-baseline gap-2">
-              <span className="text-lg font-bold text-stone-800">{wishlist.length} Items</span>
-              <button onClick={() => setActiveTab("wishlist")} className="text-[10px] text-rose-600 font-bold hover:underline flex items-center">
+              <span className="text-lg font-bold text-white">{wishlist.length} Items</span>
+              <button onClick={() => setActiveTab("wishlist")} className="text-[10px] text-white font-bold hover:underline flex items-center">
                 View <BiChevronRight />
               </button>
             </div>
@@ -93,14 +93,14 @@ export default function DashboardOverviewTab({
         </div>
 
         {/* Loyalty Points Card (Dynamic or Static fallback) */}
-        <div className="bg-white border border-stone-200 rounded-xl p-4 flex items-center gap-3.5 shadow-sm">
-          <div className="w-11 h-11 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center text-xl shrink-0">
+        <div className="bg-gradient-to-r from-red-800 to-red-600 border border-stone-200 rounded-md p-4 flex items-center gap-3.5 shadow-sm">
+          <div className="w-11 h-11  text-white rounded-lg flex items-center justify-center text-xl shrink-0">
             <BiStar />
           </div>
           <div>
-            <span className="text-[11px] font-semibold text-stone-400 block uppercase tracking-wider">Loyalty Points</span>
+            <span className="text-[12px]  text-white block uppercase tracking-wider">Loyalty Points</span>
             <div className="flex items-baseline gap-2">
-              <span className="text-lg font-bold text-stone-800">{profile.loyaltyPoints || 450} Pts</span>
+              <span className="text-lg font-bold text-white">{profile.loyaltyPoints || 450} Pts</span>
             </div>
           </div>
         </div>
@@ -113,20 +113,20 @@ export default function DashboardOverviewTab({
         <div className="lg:col-span-2 space-y-6">
           
           {/* Recent Orders Box */}
-          <div className="bg-white border border-stone-200 rounded-xl p-5 shadow-sm space-y-4">
+          <div className="bg-white   p-5 shadow-sm space-y-4">
             <div className="flex justify-between items-center">
-              <h3 className="font-serif font-bold text-stone-800 text-sm">Recent Orders</h3>
+              <h3 className="font-bold text-black text-sm">Recent Orders</h3>
               <button 
                 onClick={() => setActiveTab("orders")}
-                className="text-xs text-[#8b3a2b] font-bold hover:underline flex items-center"
+                className="text-xs text-red-800 font-bold hover:underline flex items-center"
               >
                 View All <BiChevronRight />
               </button>
             </div>
 
-            <div className="divide-y divide-stone-100">
+            <div className="divide-y divide-black">
               {orders.length === 0 ? (
-                <p className="text-xs text-stone-500 py-4 text-center">No recent orders found.</p>
+                <p className="text-xs text-black py-4 text-center">No recent orders found.</p>
               ) : (
                 orders.slice(0, 3).map((item) => {
                   const orderId = item._id || item.id;
@@ -137,20 +137,20 @@ export default function DashboardOverviewTab({
                   return (
                     <div key={orderId} className="py-3.5 flex items-center justify-between gap-4 first:pt-0 last:pb-0">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center text-stone-500 shrink-0">
-                          <BiShoppingBag className="text-lg text-[#8c0a15]" />
+                        <div className="w-10 h-10   flex items-center justify-center text-black shrink-0">
+                          <BiShoppingBag className="text-lg text-red-800" />
                         </div>
                         <div>
-                          <h4 className="text-xs font-bold text-stone-800">#{orderId.slice(-6)}</h4>
-                          <p className="text-[11px] text-stone-500 truncate max-w-[200px] sm:max-w-xs">{itemNames}</p>
+                          <h4 className="text-xs font-bold text-black">#{orderId.slice(-6)}</h4>
+                          <p className="text-[11px] text-black truncate max-w-[200px] sm:max-w-xs">{itemNames}</p>
                         </div>
                       </div>
 
                       <div className="text-right">
-                        <span className="text-xs font-bold text-stone-800 block">₹{itemTotal}</span>
+                        <span className="text-xs font-bold text-black block">₹{itemTotal}</span>
                         <span className={`inline-block text-[10px] px-2 py-0.5 rounded-full font-bold ${
-                          itemStatus === 'Delivered' ? 'bg-emerald-50 text-emerald-700' : 
-                          itemStatus === 'Cancelled' ? 'bg-red-50 text-red-700' : 'bg-amber-50 text-amber-700'
+                          itemStatus === 'Delivered' ? 'bg-gradient-to-r from-red-800 to-red-600 text-emerald-700' : 
+                          itemStatus === 'Cancelled' ? 'bg-gradient-to-r from-red-800 to-red-600 text-red-700' : 'bg-amber-50 text-amber-700'
                         }`}>
                           {itemStatus}
                         </span>
@@ -162,50 +162,18 @@ export default function DashboardOverviewTab({
             </div>
           </div>
 
-          {/* Saved Kundli & Astro Consultations Quick View */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            
-            {/* Saved Kundli Widget */}
-            <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#4a2e18] flex items-center gap-1.5">
-                  <BiBookOpen className="text-[#8c0a15] text-base" /> Saved Kundlis
-                </span>
-                <button onClick={() => setActiveTab("kundli")} className="text-[10px] text-[#8b3a2b] font-bold hover:underline">
-                  Manage
-                </button>
-              </div>
-              <p className="text-[11px] text-stone-500">
-                You have <strong>{kundliData.length} saved profiles</strong> for Kundli & Horoscope matching.
-              </p>
-            </div>
-
-            {/* Consultations Widget */}
-            <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#4a2e18] flex items-center gap-1.5">
-                  <BiPhoneCall className="text-[#8c0a15] text-base" /> Astro Consultations
-                </span>
-                <button onClick={() => setActiveTab("consultations")} className="text-[10px] text-[#8b3a2b] font-bold hover:underline">
-                  History
-                </button>
-              </div>
-              <p className="text-[11px] text-stone-500">
-                Total consultations completed: <strong>{consultations.length} calls</strong>.
-              </p>
-            </div>
-
-          </div>
+          
+          
         </div>
 
         {/* Right Column (1 Col wide on desktop) */}
         <div className="space-y-6">
           
           {/* Account Information Card */}
-          <div className="bg-white border border-stone-200 rounded-xl p-5 shadow-sm space-y-4">
+          <div className="bg-white border border-stone-200 rounded-md p-5 shadow-sm space-y-4">
             <div className="flex justify-between items-center border-b border-stone-100 pb-3">
-              <h3 className="font-serif font-bold text-stone-800 text-sm flex items-center gap-1.5">
-                <BiUser className="text-[#8c0a15]" /> Account Info
+              <h3 className="font-bold text-stone-800 text-sm flex items-center gap-1.5">
+                <BiUser className="text-red-800" /> Account Info
               </h3>
               <button 
                 onClick={() => setActiveTab("profile")}
@@ -217,37 +185,25 @@ export default function DashboardOverviewTab({
 
             <div className="space-y-3 text-xs">
               <div>
-                <span className="text-[10px] text-stone-400 font-bold uppercase block">Full Name</span>
-                <span className="font-bold text-stone-700">{profile.fullName || profile.name || "N/A"}</span>
+                <span className="text-[10px] text-black font-bold uppercase block">Full Name</span>
+                <span className="font-bold text-black">{profile.fullName || profile.name || "N/A"}</span>
               </div>
               <div>
-                <span className="text-[10px] text-stone-400 font-bold uppercase block">Email Address</span>
-                <span className="font-medium text-stone-700">{profile.email || "N/A"}</span>
+                <span className="text-[10px] text-black font-bold uppercase block">Email Address</span>
+                <span className="font-bold text-black">{profile.email || "N/A"}</span>
               </div>
               <div>
-                <span className="text-[10px] text-stone-400 font-bold uppercase block">Phone Number</span>
-                <span className="font-medium text-stone-700">{profile.phone || profile.mobile || "N/A"}</span>
+                <span className="text-[10px] text-black font-bold uppercase block">Phone Number</span>
+                <span className="font-bold text-black">{profile.phone || profile.mobile || "N/A"}</span>
               </div>
               <div>
-                <span className="text-[10px] text-stone-400 font-bold uppercase block">Date of Birth</span>
-                <span className="font-medium text-stone-700">{profile.dob || "Not Provided"}</span>
+                <span className="text-[10px] text-black font-bold uppercase block">Date of Birth</span>
+                <span className="font-bold text-black">{profile.dob || "Not Provided"}</span>
               </div>
             </div>
           </div>
 
-          {/* Customer Support Banner */}
-          <div className="bg-[#8c0a15] text-white rounded-xl p-5 shadow-sm space-y-3">
-            <h4 className="font-serif font-bold text-sm">Need Assistance?</h4>
-            <p className="text-[11px] text-stone-200">
-              Our spiritual guidance & customer support team is here to help you.
-            </p>
-            <button 
-              onClick={() => setActiveTab("support")}
-              className="w-full bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold py-2 rounded-lg transition"
-            >
-              Contact Support
-            </button>
-          </div>
+          
 
         </div>
 

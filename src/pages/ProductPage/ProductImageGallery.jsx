@@ -18,7 +18,7 @@ const ProductImageGallery = ({ product, selectedImage, setSelectedImage }) => {
   return (
     <div className="flex flex-col gap-4">
       <div 
-        className="relative w-full h-[380px] sm:h-[480px] bg-[#fff3df] border border-stone-200 rounded-sm overflow-hidden flex items-center justify-center cursor-crosshair"
+        className="relative w-full h-[380px] sm:h-[480px]  rounded-sm overflow-hidden flex items-center justify-center cursor-crosshair"
         onMouseEnter={() => setIsZoomed(true)}
         onMouseLeave={() => setIsZoomed(false)}
         onMouseMove={handleMouseMove}

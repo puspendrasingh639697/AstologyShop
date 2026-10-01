@@ -66,32 +66,45 @@ const ProductTabs = ({ product, reviewsList, onAddReview }) => {
       )}
 
       {/* Customer Ratings & Reviews */}
-      <div className="bg-white p-6 border border-stone-200 rounded-sm">
-        <h3 className="text-xl font-serif text-[#4a2e18] mb-6">Customer Ratings & Reviews</h3>
+      <div className="bg-white p-6  rounded-sm">
+
+
+         <div className="mb-8 pb-4 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#8c0a15]">
+            Customer Ratings & Reviews
+          </h2>
+          <div className="flex items-center justify-center gap-3 mt-3">
+            <span className="w-16 h-[1px] bg-gradient-to-r from-transparent to-[#8c0a15]/50"></span>
+            <span className="w-2 h-2 rounded-full bg-[#8c0a15]/60"></span>
+            <span className="w-16 h-[1px] bg-gradient-to-l from-transparent to-[#8c0a15]/50"></span>
+          </div>
+        </div>
+        
+
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-4">
             {reviewsList.map((rev) => (
-              <div key={rev.id} className="bg-stone-50 p-4 border border-stone-200 rounded-sm shadow-sm">
+              <div key={rev.id} className="bg-gradient-to-r from-red-800 to-red-600 p-4 border border-stone-200 rounded-sm shadow-sm">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="font-bold text-sm text-[#4a2e18]">{rev.name}</span>
-                  <span className="text-xs text-stone-400">{rev.date}</span>
+                  <span className="font-bold text-sm text-white">{rev.name}</span>
+                  <span className="text-xs text-white">{rev.date}</span>
                 </div>
                 <div className="flex items-center text-amber-500 mb-2">
                   {[...Array(rev.rating)].map((_, i) => (
                     <BiStar key={i} className="fill-amber-500 text-sm" />
                   ))}
                 </div>
-                <p className="text-xs text-stone-600 leading-relaxed">{rev.comment}</p>
+                <p className="text-xs text-white leading-relaxed">{rev.comment}</p>
               </div>
             ))}
           </div>
 
-          <div className="bg-stone-50 p-6 border border-stone-200 rounded-sm shadow-sm h-fit">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-[#4a2e18] mb-4">Write a Review</h4>
+          <div className="bg-gradient-to-r from-red-800 to-red-600 p-6 border border-stone-200 rounded-sm shadow-sm h-fit">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4">Write a Review</h4>
             <form onSubmit={handleReviewSubmit} className="space-y-4">
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-stone-600 mb-1">Your Name</label>
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-white mb-1">Your Name</label>
                 <input 
                   type="text" 
                   value={newReview.name}
@@ -101,7 +114,7 @@ const ProductTabs = ({ product, reviewsList, onAddReview }) => {
                 />
               </div>
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-stone-600 mb-1">Rating</label>
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-white mb-1">Rating</label>
                 <select 
                   value={newReview.rating}
                   onChange={(e) => setNewReview({...newReview, rating: e.target.value})}
@@ -115,7 +128,7 @@ const ProductTabs = ({ product, reviewsList, onAddReview }) => {
                 </select>
               </div>
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-stone-600 mb-1">Review</label>
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-white mb-1">Review</label>
                 <textarea 
                   rows="3"
                   value={newReview.comment}
@@ -126,7 +139,7 @@ const ProductTabs = ({ product, reviewsList, onAddReview }) => {
               </div>
               <button 
                 type="submit"
-                className="w-full bg-[#4a2e18] hover:bg-[#321e10] text-white py-2.5 text-xs font-bold tracking-widest uppercase transition-all shadow-sm cursor-pointer"
+                className="w-full bg-white hover:bg-[#321e10] text-black py-2.5 text-xs font-bold tracking-widest uppercase transition-all shadow-sm cursor-pointer"
               >
                 Submit Review
               </button>

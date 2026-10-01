@@ -1,31 +1,4 @@
-// import React from "react";
-// import { BiStar } from "react-icons/bi";
 
-// const ReviewsTab = ({ reviews }) => {
-//   return (
-//     <div className="space-y-6">
-//       <h3 className="text-xl font-serif font-bold text-[#4a2e18]">My Reviews & Ratings</h3>
-//       <div className="space-y-4">
-//         {reviews.map((item) => (
-//           <div key={item.id} className="border border-stone-200 p-4 rounded-sm bg-stone-50 space-y-2">
-//             <div className="flex justify-between items-center">
-//               <h4 className="font-bold text-sm text-[#4a2e18]">{item.productName}</h4>
-//               <div className="flex text-amber-500">
-//                 {[...Array(item.rating)].map((_, i) => (
-//                   <BiStar key={i} className="fill-current text-sm" />
-//                 ))}
-//               </div>
-//             </div>
-//             <p className="text-xs text-stone-600">"{item.comment}"</p>
-//             <span className="text-[10px] text-stone-400 block">Reviewed on {item.date}</span>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ReviewsTab;
 
 import React from "react";
 import { Link } from "react-router-dom";
@@ -37,7 +10,7 @@ const ReviewsTab = ({ reviews = [] }) => {
     return (
       <div className="space-y-6">
         <div className="pb-4 border-b border-stone-200">
-          <h3 className="text-xl font-serif font-bold text-[#4a2e18]">
+          <h3 className="text-xl font-bold text-black">
             My Reviews & Ratings
           </h3>
           <p className="text-xs text-stone-500 mt-1">
@@ -59,10 +32,10 @@ const ReviewsTab = ({ reviews = [] }) => {
     <div className="space-y-6">
       {/* Header */}
       <div className="pb-4 border-b border-stone-200">
-        <h3 className="text-xl font-serif font-bold text-[#4a2e18]">
+        <h3 className="text-xl font-bold text-black">
           My Reviews & Ratings
         </h3>
-        <p className="text-xs text-stone-500 mt-1">
+        <p className="text-xs text-black mt-1">
           You have submitted <strong>{reviews.length}</strong>{" "}
           {reviews.length === 1 ? "review" : "reviews"}.
         </p>
@@ -92,7 +65,7 @@ const ReviewsTab = ({ reviews = [] }) => {
           return (
             <div
               key={review._id || idx}
-              className="bg-white border border-stone-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+              className="bg-gradient-to-r from-red-800 to-red-600 border border-stone-200 rounded-md p-4 hover:shadow-md transition-shadow"
             >
               <div className="flex gap-4">
                 {/* ✅ Product Image — clickable */}
@@ -108,13 +81,13 @@ const ReviewsTab = ({ reviews = [] }) => {
                     <img
                       src={productImage}
                       alt={productName}
-                      className="w-16 h-16 object-cover rounded-lg border border-stone-200"
+                      className="w-16 h-16 object-cover rounded-lg"
                       onError={(e) => {
                         e.target.style.display = "none";
                       }}
                     />
                   ) : (
-                    <div className="w-16 h-16 bg-stone-100 rounded-lg border border-stone-200 flex items-center justify-center">
+                    <div className="w-16 h-16 bg-white rounded-lg border border-stone-200 flex items-center justify-center">
                       <BiShoppingBag className="text-stone-400 text-2xl" />
                     </div>
                   )}
@@ -131,7 +104,7 @@ const ReviewsTab = ({ reviews = [] }) => {
                     }
                     className="hover:text-[#8c0a15] transition-colors"
                   >
-                    <h4 className="font-bold text-sm text-[#4a2e18] line-clamp-1">
+                    <h4 className="font-bold text-sm text-white line-clamp-1">
                       {productName}
                     </h4>
                   </Link>
@@ -143,24 +116,24 @@ const ReviewsTab = ({ reviews = [] }) => {
                         key={i}
                         className={
                           i < review.rating
-                            ? "text-amber-500 fill-current text-sm"
+                            ? "text-white fill-current text-sm"
                             : "text-stone-300 text-sm"
                         }
                       />
                     ))}
-                    <span className="text-xs text-stone-500 ml-1">
+                    <span className="text-xs text-white ml-1">
                       {review.rating}/5
                     </span>
                   </div>
 
                   {/* ✅ Comment */}
-                  <p className="text-xs text-stone-700 mt-2">
+                  <p className="text-xs text-white mt-2">
                     "{review.comment}"
                   </p>
 
                   {/* ✅ Date + Status */}
                   <div className="flex items-center gap-3 mt-2 flex-wrap">
-                    <span className="text-[10px] text-stone-400">
+                    <span className="text-[10px] text-white">
                       Reviewed on {reviewDate}
                     </span>
 

@@ -1,10 +1,353 @@
 
 
+
+// // // // import React, { useState, useEffect } from "react";
+// // // // import { useParams, useNavigate } from "react-router-dom";
+// // // // import axios from "axios";
+// // // // import API_BASE_URL from "../config/api";
+// // // // import { shopCategories } from "../data/categories";
+// // // // import useProductStore from "../store/useProductStore";
+
+// // // // import ProductImageGallery from "./ProductPage/ProductImageGallery";
+// // // // import ProductInfo from "./ProductPage/ProductInfo";
+// // // // import DeliveryChecker from "./ProductPage/DeliveryChecker";
+// // // // import ActionButtons from "./ProductPage/ActionButtons";
+// // // // import ProductTabs from "./ProductTabs";
+// // // // import RelatedProducts from "./ProductPage/RelatedProducts";
+// // // // import useCartStore from "../store/useCartStore";
+
+// // // // const ProductDetails = () => {
+// // // //   const { id } = useParams();
+// // // //   const navigate = useNavigate();
+
+// // // //   const [currentProduct, setCurrentProduct] = useState(null);
+// // // //   const [loading, setLoading] = useState(true);
+// // // //   const [error, setError] = useState(null);
+
+// // // //   const [selectedVariant, setSelectedVariant] = useState(null);
+// // // //   const [selectedImage, setSelectedImage] = useState("");
+// // // //   const [quantity, setQuantity] = useState(1);
+
+// // // //   const { addToCart } = useCartStore();
+// // // //   const { products, fetchProducts } = useProductStore();
+
+// // // //   // ✅ Product fetch — API (slug/id) → Store → Local
+// // // //   useEffect(() => {
+// // // //     const fetchProduct = async () => {
+// // // //       try {
+// // // //         setLoading(true);
+// // // //         setError(null);
+
+// // // //         // ✅ Check karo — ObjectId hai ya slug?
+// // // //         const isObjectId = /^[0-9a-fA-F]{24}$/.test(id);
+
+// // // //         console.log("🔍 Fetching product:", id, "| isObjectId:", isObjectId);
+
+// // // //         // Try 1: API
+// // // //         try {
+// // // //           let response;
+
+// // // //           if (isObjectId) {
+// // // //             // ✅ ID se fetch
+// // // //             response = await axios.get(`${API_BASE_URL}/products/${id}`);
+// // // //           } else {
+// // // //             // ✅ Slug se fetch
+// // // //             response = await axios.get(`${API_BASE_URL}/products/slug/${id}`);
+// // // //           }
+
+// // // //           console.log("✅ Product API Response:", response.data);
+
+// // // //           const product =
+// // // //             response.data.product ||
+// // // //             response.data.data ||
+// // // //             response.data;
+
+// // // //           if (product && product._id) {
+// // // //             setCurrentProduct(product);
+// // // //             setLoading(false);
+// // // //             return;
+// // // //           }
+// // // //         } catch (apiErr) {
+// // // //           console.warn("⚠️ Product API failed, trying store...", apiErr.message);
+// // // //         }
+
+// // // //         // Try 2: Store
+// // // //         if (products.length === 0) {
+// // // //           await fetchProducts();
+// // // //         }
+
+// // // //         const storeProducts = useProductStore.getState().products;
+
+// // // //         // ✅ ID ya slug se match karo
+// // // //         const storeProduct = storeProducts.find(
+// // // //           (p) => p._id === id || p.slug === id
+// // // //         );
+
+// // // //         if (storeProduct) {
+// // // //           console.log("✅ Found product in store:", storeProduct.name);
+// // // //           setCurrentProduct(storeProduct);
+// // // //           setLoading(false);
+// // // //           return;
+// // // //         }
+
+// // // //         // Try 3: Local fallback
+// // // //         const localProduct = shopCategories.find(
+// // // //           (item) => item.id?.toString() === id || item.slug === id
+// // // //         );
+
+// // // //         if (localProduct) {
+// // // //           console.warn("⚠️ Using local fallback product data");
+// // // //           setCurrentProduct(localProduct);
+// // // //           setLoading(false);
+// // // //           return;
+// // // //         }
+
+// // // //         setError("Product not found");
+// // // //       } catch (err) {
+// // // //         console.error("❌ Error fetching product:", err);
+// // // //         setError("Failed to load product. Please try again.");
+// // // //       } finally {
+// // // //         setLoading(false);
+// // // //       }
+// // // //     };
+
+// // // //     if (id) fetchProduct();
+// // // //   }, [id, products, fetchProducts]);
+
+// // // //   // ✅ Product load hone par variant/image set karo
+// // // //   useEffect(() => {
+// // // //     if (currentProduct) {
+// // // //       setSelectedVariant(
+// // // //         currentProduct.variants ? currentProduct.variants[0] : null
+// // // //       );
+// // // //       setSelectedImage(
+// // // //         currentProduct.image || currentProduct.images?.[0] || ""
+// // // //       );
+// // // //       setQuantity(1);
+// // // //     }
+// // // //   }, [currentProduct]);
+
+// // // //   const [reviewsList, setReviewsList] = useState([
+// // // //     {
+// // // //       id: 1,
+// // // //       name: "Aarav Sharma",
+// // // //       rating: 5,
+// // // //       date: "12 May, 2026",
+// // // //       comment: "Pure and authentic products. Very satisfied!",
+// // // //     },
+// // // //     {
+// // // //       id: 2,
+// // // //       name: "Priya Verma",
+// // // //       rating: 4,
+// // // //       date: "02 June, 2026",
+// // // //       comment: "Packaging was great and delivery was fast.",
+// // // //     },
+// // // //   ]);
+
+// // // //   if (loading)
+// // // //     return (
+// // // //       <div className="text-center py-20 text-xl text-[#4a2e18]">
+// // // //         Loading product...
+// // // //       </div>
+// // // //     );
+
+// // // //   if (error || !currentProduct)
+// // // //     return (
+// // // //       <div className="text-center py-20 text-red-800 text-xl">
+// // // //         {error || "Product not found"}
+// // // //       </div>
+// // // //     );
+
+// // // //   // ✅ Price calculation — MRP ke saath
+// // // //   const currentPrice =
+// // // //     selectedVariant?.price || currentProduct.price || 0;
+
+// // // //   const currentOldPrice =
+// // // //     selectedVariant?.oldPrice ||
+// // // //     currentProduct.mrp ||
+// // // //     currentProduct.oldPrice ||
+// // // //     null;
+
+// // // //   const currentSku =
+// // // //     selectedVariant?.sku ||
+// // // //     currentProduct.sku ||
+// // // //     currentProduct._id?.slice(-8) ||
+// // // //     "";
+
+// // // //   const discountPercent =
+// // // //     currentProduct.discountPercent ||
+// // // //     (currentOldPrice && currentOldPrice > currentPrice
+// // // //       ? Math.round(((currentOldPrice - currentPrice) / currentOldPrice) * 100)
+// // // //       : null);
+
+// // // //   // ✅ Add to Cart handler
+// // // //   const handleAddToCart = async () => {
+// // // //     const token = localStorage.getItem("token");
+
+// // // //     if (!token) {
+// // // //       alert("Please login to add items to cart.");
+// // // //       navigate("/login");
+// // // //       return { success: false };
+// // // //     }
+
+// // // //     const productForCart = {
+// // // //       _id: currentProduct._id || currentProduct.id,
+// // // //       name: currentProduct.name || currentProduct.title || "Product",
+// // // //       price: currentPrice,
+// // // //       oldPrice: currentOldPrice,
+// // // //       mrp: currentProduct.mrp || currentOldPrice || 0,
+// // // //       discountPercent: discountPercent || 0,
+// // // //       image:
+// // // //         currentProduct.image ||
+// // // //         currentProduct.images?.[0] ||
+// // // //         "",
+// // // //       sku: currentSku || "",
+// // // //     };
+
+// // // //     console.log("🛒 Sending to cart:", productForCart);
+
+// // // //     try {
+// // // //       const result = await addToCart(productForCart, quantity);
+
+// // // //       if (result?.success) {
+// // // //         alert(`Successfully added ${quantity} item(s) to your Cart!`);
+// // // //         return { success: true };
+// // // //       } else {
+// // // //         alert(result?.error || "Could not add to cart.");
+// // // //         return { success: false };
+// // // //       }
+// // // //     } catch (error) {
+// // // //       console.error("Cart add error:", error);
+// // // //       alert("Please login again to add items to cart.");
+// // // //       return { success: false };
+// // // //     }
+// // // //   };
+
+// // // //   // ✅ Buy Now handler — cart mein add karke checkout par jao
+// // // //   const handleBuyNow = async () => {
+// // // //     const result = await handleAddToCart();
+
+// // // //     if (result.success) {
+// // // //       navigate("/checkout");
+// // // //     }
+// // // //   };
+
+// // // //   const handleAddReview = async (newRev) => {
+// // // //     try {
+// // // //       const token =
+// // // //         localStorage.getItem("token") ||
+// // // //         JSON.parse(localStorage.getItem("user") || "{}").token;
+
+// // // //       if (!token) {
+// // // //         alert("Please login to submit a review.");
+// // // //         return;
+// // // //       }
+
+// // // //       const reviewPayload = {
+// // // //         targetId: currentProduct._id || currentProduct.id,
+// // // //         targetModel: "Product",
+// // // //         rating: Number(newRev.rating),
+// // // //         comment: newRev.comment,
+// // // //       };
+
+// // // //       const response = await axios.post(
+// // // //         `${API_BASE_URL}/reviews/add`,
+// // // //         reviewPayload,
+// // // //         {
+// // // //           headers: {
+// // // //             Authorization: `Bearer ${token}`,
+// // // //             "Content-Type": "application/json",
+// // // //           },
+// // // //           withCredentials: true,
+// // // //         }
+// // // //       );
+
+// // // //       if (response.data.success) {
+// // // //         const reviewObj = {
+// // // //           id: response.data.review?._id || reviewsList.length + 1,
+// // // //           name: "You",
+// // // //           rating: Number(newRev.rating),
+// // // //           date: "Just now",
+// // // //           comment: newRev.comment,
+// // // //         };
+// // // //         setReviewsList([reviewObj, ...reviewsList]);
+// // // //         alert("Thank you! Your review has been added successfully 🎉");
+// // // //       }
+// // // //     } catch (error) {
+// // // //       console.error("Review submission error:", error);
+// // // //       alert(
+// // // //         error.response?.data?.message ||
+// // // //           "Failed to submit review. Please try again."
+// // // //       );
+// // // //     }
+// // // //   };
+
+// // // //   return (
+// // // //     <div className="w-full bg-[#fff3df] min-h-screen py-10 px-4 sm:px-6 lg:px-12 font-sans">
+// // // //       <div className="max-w-[1300px] mx-auto bg-white rounded-sm shadow-xl overflow-hidden border border-stone-200">
+// // // //         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6 sm:p-10">
+// // // //           <ProductImageGallery
+// // // //             product={currentProduct}
+// // // //             selectedImage={selectedImage}
+// // // //             setSelectedImage={setSelectedImage}
+// // // //           />
+
+// // // //           <div className="flex flex-col justify-between">
+// // // //             <div>
+// // // //               <ProductInfo
+// // // //                 product={currentProduct}
+// // // //                 selectedVariant={selectedVariant}
+// // // //                 setSelectedVariant={setSelectedVariant}
+// // // //                 currentPrice={currentPrice}
+// // // //                 currentOldPrice={currentOldPrice}
+// // // //                 currentSku={currentSku}
+// // // //                 discountPercent={discountPercent}
+// // // //                 reviewsCount={reviewsList.length}
+// // // //               />
+// // // //               <DeliveryChecker />
+// // // //             </div>
+
+// // // //             {/* ✅ Add to Cart + Buy Now */}
+// // // //             <ActionButtons
+// // // //               quantity={quantity}
+// // // //               setQuantity={setQuantity}
+// // // //               onAddToCart={handleAddToCart}
+// // // //               onBuyNow={handleBuyNow}
+// // // //             />
+// // // //           </div>
+// // // //         </div>
+
+// // // //         <div className="border-t border-stone-200 p-6 sm:p-10 bg-[#fdfaf5]">
+// // // //           <ProductTabs
+// // // //             product={currentProduct}
+// // // //             reviewsList={reviewsList}
+// // // //             onAddReview={handleAddReview}
+// // // //           />
+// // // //         </div>
+
+// // // //         <RelatedProducts
+// // // //           currentProductId={currentProduct._id || currentProduct.id}
+// // // //           currentCategory={
+// // // //             currentProduct.category?.name || currentProduct.category
+// // // //           }
+// // // //         />
+// // // //       </div>
+// // // //     </div>
+// // // //   );
+// // // // };
+
+// // // // export default ProductDetails;
+
+
+
+
+
 // // // import React, { useState, useEffect } from "react";
-// // // import { useParams } from "react-router-dom";
+// // // import { useParams, useNavigate } from "react-router-dom";
 // // // import axios from "axios";
-// // // import API_BASE_URL from "../config/api"; // ✅ Central URL
+// // // import API_BASE_URL from "../config/api";
 // // // import { shopCategories } from "../data/categories";
+// // // import useProductStore from "../store/useProductStore";
 
 // // // import ProductImageGallery from "./ProductPage/ProductImageGallery";
 // // // import ProductInfo from "./ProductPage/ProductInfo";
@@ -16,8 +359,8 @@
 
 // // // const ProductDetails = () => {
 // // //   const { id } = useParams();
+// // //   const navigate = useNavigate();
 
-// // //   // ✅ Product state (API se aayega)
 // // //   const [currentProduct, setCurrentProduct] = useState(null);
 // // //   const [loading, setLoading] = useState(true);
 // // //   const [error, setError] = useState(null);
@@ -27,55 +370,99 @@
 // // //   const [quantity, setQuantity] = useState(1);
 
 // // //   const { addToCart } = useCartStore();
+// // //   const { products, fetchProducts } = useProductStore();
 
-// // //   // ✅ API se product fetch karo
+// // //   // ✅ Product fetch — API (slug/id) → Store → Local
 // // //   useEffect(() => {
 // // //     const fetchProduct = async () => {
 // // //       try {
 // // //         setLoading(true);
 // // //         setError(null);
 
-// // //         const response = await axios.get(`${API_BASE_URL}/products/${id}`);
-// // //         console.log("Product API Response:", response.data);
+// // //         // ✅ Check karo — ObjectId hai ya slug?
+// // //         const isObjectId = /^[0-9a-fA-F]{24}$/.test(id);
 
-// // //         const product =
-// // //           response.data.product ||
-// // //           response.data.data ||
-// // //           response.data;
+// // //         console.log("🔍 Fetching product:", id, "| isObjectId:", isObjectId);
 
-// // //         setCurrentProduct(product);
-// // //       } catch (err) {
-// // //         console.error("Error fetching product:", err);
+// // //         // Try 1: API
+// // //         try {
+// // //           let response;
 
-// // //         // ✅ Fallback: Local data se try karo (agar API fail ho)
-// // //         const localProduct =
-// // //           shopCategories.find((item) => item.id?.toString() === id) ||
-// // //           shopCategories[0];
+// // //           if (isObjectId) {
+// // //             // ✅ ID se fetch
+// // //             response = await axios.get(`${API_BASE_URL}/products/${id}`);
+// // //           } else {
+// // //             // ✅ Slug se fetch
+// // //             response = await axios.get(`${API_BASE_URL}/products/slug/${id}`);
+// // //           }
+
+// // //           console.log("✅ Product API Response:", response.data);
+
+// // //           const product =
+// // //             response.data.product ||
+// // //             response.data.data ||
+// // //             response.data;
+
+// // //           if (product && product._id) {
+// // //             setCurrentProduct(product);
+// // //             setLoading(false);
+// // //             return;
+// // //           }
+// // //         } catch (apiErr) {
+// // //           console.warn("⚠️ Product API failed, trying store...", apiErr.message);
+// // //         }
+
+// // //         // Try 2: Store
+// // //         if (products.length === 0) {
+// // //           await fetchProducts();
+// // //         }
+
+// // //         const storeProducts = useProductStore.getState().products;
+
+// // //         // ✅ ID ya slug se match karo
+// // //         const storeProduct = storeProducts.find(
+// // //           (p) => p._id === id || p.slug === id
+// // //         );
+
+// // //         if (storeProduct) {
+// // //           console.log("✅ Found product in store:", storeProduct.name);
+// // //           setCurrentProduct(storeProduct);
+// // //           setLoading(false);
+// // //           return;
+// // //         }
+
+// // //         // Try 3: Local fallback
+// // //         const localProduct = shopCategories.find(
+// // //           (item) => item.id?.toString() === id || item.slug === id
+// // //         );
 
 // // //         if (localProduct) {
-// // //           console.warn("Using local fallback product data");
+// // //           console.warn("⚠️ Using local fallback product data");
 // // //           setCurrentProduct(localProduct);
-// // //         } else {
-// // //           setError("Product not found");
+// // //           setLoading(false);
+// // //           return;
 // // //         }
+
+// // //         setError("Product not found");
+// // //       } catch (err) {
+// // //         console.error("❌ Error fetching product:", err);
+// // //         setError("Failed to load product. Please try again.");
 // // //       } finally {
 // // //         setLoading(false);
 // // //       }
 // // //     };
 
 // // //     if (id) fetchProduct();
-// // //   }, [id]);
+// // //   }, [id, products, fetchProducts]);
 
-// // //   // ✅ Jab product load ho jaaye, tab variant aur image set karo
+// // //   // ✅ Product load hone par variant/image set karo
 // // //   useEffect(() => {
 // // //     if (currentProduct) {
 // // //       setSelectedVariant(
 // // //         currentProduct.variants ? currentProduct.variants[0] : null
 // // //       );
 // // //       setSelectedImage(
-// // //         currentProduct.image ||
-// // //           currentProduct.images?.[0] ||
-// // //           ""
+// // //         currentProduct.image || currentProduct.images?.[0] || ""
 // // //       );
 // // //       setQuantity(1);
 // // //     }
@@ -98,7 +485,6 @@
 // // //     },
 // // //   ]);
 
-// // //   // ✅ Loading / Error handling
 // // //   if (loading)
 // // //     return (
 // // //       <div className="text-center py-20 text-xl text-[#4a2e18]">
@@ -108,57 +494,85 @@
 
 // // //   if (error || !currentProduct)
 // // //     return (
-// // //       <div className="text-center py-20 text-red-600 text-xl">
+// // //       <div className="text-center py-20 text-red-800 text-xl">
 // // //         {error || "Product not found"}
 // // //       </div>
 // // //     );
 
-// // //   const currentPrice = selectedVariant
-// // //     ? selectedVariant.price
-// // //     : currentProduct.price;
-// // //   const currentOldPrice = selectedVariant
-// // //     ? selectedVariant.oldPrice
-// // //     : currentProduct.oldPrice;
-// // //   const currentSku = selectedVariant
-// // //     ? selectedVariant.sku
-// // //     : currentProduct.sku;
+// // //   // ✅ Price calculation — MRP ke saath
+// // //   const currentPrice =
+// // //     selectedVariant?.price || currentProduct.price || 0;
 
-// // //   const discountPercent = currentOldPrice
-// // //     ? Math.round(
-// // //         ((currentOldPrice - currentPrice) / currentOldPrice) * 100
-// // //       )
-// // //     : null;
+// // //   const currentOldPrice =
+// // //     selectedVariant?.oldPrice ||
+// // //     currentProduct.mrp ||
+// // //     currentProduct.oldPrice ||
+// // //     null;
 
+// // //   const currentSku =
+// // //     selectedVariant?.sku ||
+// // //     currentProduct.sku ||
+// // //     currentProduct._id?.slice(-8) ||
+// // //     "";
+
+// // //   const discountPercent =
+// // //     currentProduct.discountPercent ||
+// // //     (currentOldPrice && currentOldPrice > currentPrice
+// // //       ? Math.round(((currentOldPrice - currentPrice) / currentOldPrice) * 100)
+// // //       : null);
+
+// // //   // ✅ Add to Cart handler
 // // //   const handleAddToCart = async () => {
-// // //     const user = JSON.parse(localStorage.getItem("user") || "{}");
-// // //     const userId =
-// // //       user.id || user._id || localStorage.getItem("cartUserId");
 // // //     const token = localStorage.getItem("token");
 
 // // //     if (!token) {
 // // //       alert("Please login to add items to cart.");
-// // //       return;
+// // //       navigate("/login");
+// // //       return { success: false };
 // // //     }
 
-// // //     const productId = currentProduct._id || currentProduct.id;
+// // //     const productForCart = {
+// // //       _id: currentProduct._id || currentProduct.id,
+// // //       name: currentProduct.name || currentProduct.title || "Product",
+// // //       price: currentPrice,
+// // //       oldPrice: currentOldPrice,
+// // //       mrp: currentProduct.mrp || currentOldPrice || 0,
+// // //       discountPercent: discountPercent || 0,
+// // //       image:
+// // //         currentProduct.image ||
+// // //         currentProduct.images?.[0] ||
+// // //         "",
+// // //       sku: currentSku || "",
+// // //     };
+
+// // //     console.log("🛒 Sending to cart:", productForCart);
 
 // // //     try {
-// // //       const result = await addToCart(userId, productId, quantity);
+// // //       const result = await addToCart(productForCart, quantity);
 
 // // //       if (result?.success) {
 // // //         alert(`Successfully added ${quantity} item(s) to your Cart!`);
+// // //         return { success: true };
 // // //       } else {
-// // //         alert(
-// // //           result?.error || "Could not add to cart. Please try again."
-// // //         );
+// // //         alert(result?.error || "Could not add to cart.");
+// // //         return { success: false };
 // // //       }
 // // //     } catch (error) {
 // // //       console.error("Cart add error:", error);
 // // //       alert("Please login again to add items to cart.");
+// // //       return { success: false };
 // // //     }
 // // //   };
 
-// // //   // ✅ Review submission — ab API_BASE_URL use karega
+// // //   // ✅ Buy Now handler — cart mein add karke checkout par jao
+// // //   const handleBuyNow = async () => {
+// // //     const result = await handleAddToCart();
+
+// // //     if (result.success) {
+// // //       navigate("/checkout");
+// // //     }
+// // //   };
+
 // // //   const handleAddReview = async (newRev) => {
 // // //     try {
 // // //       const token =
@@ -178,7 +592,7 @@
 // // //       };
 
 // // //       const response = await axios.post(
-// // //         `${API_BASE_URL}/reviews/add`, // ✅ Central URL
+// // //         `${API_BASE_URL}/reviews/add`,
 // // //         reviewPayload,
 // // //         {
 // // //           headers: {
@@ -210,9 +624,8 @@
 // // //   };
 
 // // //   return (
-// // //     <div className="w-full bg-[#fff3df] min-h-screen py-10 px-4 sm:px-6 lg:px-12 font-sans">
+// // //     <div className="w-full bg- min-h-screen py-10 px-4 sm:px-6 lg:px-12 font-sans">
 // // //       <div className="max-w-[1300px] mx-auto bg-white rounded-sm shadow-xl overflow-hidden border border-stone-200">
-// // //         {/* Top Split Section */}
 // // //         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6 sm:p-10">
 // // //           <ProductImageGallery
 // // //             product={currentProduct}
@@ -235,19 +648,16 @@
 // // //               <DeliveryChecker />
 // // //             </div>
 
+// // //             {/* ✅ Add to Cart + Buy Now */}
 // // //             <ActionButtons
 // // //               quantity={quantity}
 // // //               setQuantity={setQuantity}
 // // //               onAddToCart={handleAddToCart}
-// // //               onBuyNow={() => {
-// // //                 handleAddToCart();
-// // //                 alert("Redirecting to Secure Checkout...");
-// // //               }}
+// // //               onBuyNow={handleBuyNow}
 // // //             />
 // // //           </div>
 // // //         </div>
 
-// // //         {/* Bottom Detailed Sections */}
 // // //         <div className="border-t border-stone-200 p-6 sm:p-10 bg-[#fdfaf5]">
 // // //           <ProductTabs
 // // //             product={currentProduct}
@@ -269,13 +679,13 @@
 
 // // // export default ProductDetails;
 
-
+// // // src/pages/ProductDetails.jsx
 // // import React, { useState, useEffect } from "react";
-// // import { useParams } from "react-router-dom";
+// // import { useParams, useNavigate } from "react-router-dom";
 // // import axios from "axios";
 // // import API_BASE_URL from "../config/api";
 // // import { shopCategories } from "../data/categories";
-// // import useProductStore from "../store/useProductStore"; // ✅ Store se product dhoondhne ke liye
+// // import useProductStore from "../store/useProductStore";
 
 // // import ProductImageGallery from "./ProductPage/ProductImageGallery";
 // // import ProductInfo from "./ProductPage/ProductInfo";
@@ -287,6 +697,7 @@
 
 // // const ProductDetails = () => {
 // //   const { id } = useParams();
+// //   const navigate = useNavigate();
 
 // //   const [currentProduct, setCurrentProduct] = useState(null);
 // //   const [loading, setLoading] = useState(true);
@@ -299,17 +710,22 @@
 // //   const { addToCart } = useCartStore();
 // //   const { products, fetchProducts } = useProductStore();
 
-// //   // ✅ Product fetch logic — 3 tarike se try karega
+// //   // ✅ Product fetch
 // //   useEffect(() => {
 // //     const fetchProduct = async () => {
 // //       try {
 // //         setLoading(true);
 // //         setError(null);
 
-// //         // ✅ Try 1: API se direct product fetch
+// //         const isObjectId = /^[0-9a-fA-F]{24}$/.test(id);
+
 // //         try {
-// //           const response = await axios.get(`${API_BASE_URL}/products/${id}`);
-// //           console.log("✅ Product API Response:", response.data);
+// //           let response;
+// //           if (isObjectId) {
+// //             response = await axios.get(`${API_BASE_URL}/products/${id}`);
+// //           } else {
+// //             response = await axios.get(`${API_BASE_URL}/products/slug/${id}`);
+// //           }
 
 // //           const product =
 // //             response.data.product ||
@@ -325,38 +741,34 @@
 // //           console.warn("⚠️ Product API failed, trying store...");
 // //         }
 
-// //         // ✅ Try 2: useProductStore se product dhoondho
 // //         if (products.length === 0) {
 // //           await fetchProducts();
 // //         }
 
 // //         const storeProducts = useProductStore.getState().products;
-// //         const storeProduct = storeProducts.find((p) => p._id === id);
+// //         const storeProduct = storeProducts.find(
+// //           (p) => p._id === id || p.slug === id
+// //         );
 
 // //         if (storeProduct) {
-// //           console.log("✅ Found product in store:", storeProduct.name);
 // //           setCurrentProduct(storeProduct);
 // //           setLoading(false);
 // //           return;
 // //         }
 
-// //         // ✅ Try 3: Local data se fallback
 // //         const localProduct = shopCategories.find(
-// //           (item) => item.id?.toString() === id
+// //           (item) => item.id?.toString() === id || item.slug === id
 // //         );
 
 // //         if (localProduct) {
-// //           console.warn("⚠️ Using local fallback product data");
 // //           setCurrentProduct(localProduct);
 // //           setLoading(false);
 // //           return;
 // //         }
 
-// //         // ❌ Kuch nahi mila
 // //         setError("Product not found");
 // //       } catch (err) {
-// //         console.error("❌ Error fetching product:", err);
-// //         setError("Failed to load product. Please try again.");
+// //         setError("Failed to load product.");
 // //       } finally {
 // //         setLoading(false);
 // //       }
@@ -365,7 +777,6 @@
 // //     if (id) fetchProduct();
 // //   }, [id, products, fetchProducts]);
 
-// //   // ✅ Product load hone par variant aur image set karo
 // //   useEffect(() => {
 // //     if (currentProduct) {
 // //       setSelectedVariant(
@@ -409,50 +820,64 @@
 // //       </div>
 // //     );
 
-// //   const currentPrice = selectedVariant
-// //     ? selectedVariant.price
-// //     : currentProduct.price;
-// //   const currentOldPrice = selectedVariant
-// //     ? selectedVariant.oldPrice
-// //     : currentProduct.oldPrice;
-// //   const currentSku = selectedVariant
-// //     ? selectedVariant.sku
-// //     : currentProduct.sku;
+// //   const currentPrice = selectedVariant?.price || currentProduct.price || 0;
+// //   const currentOldPrice =
+// //     selectedVariant?.oldPrice ||
+// //     currentProduct.mrp ||
+// //     currentProduct.oldPrice ||
+// //     null;
+// //   const currentSku =
+// //     selectedVariant?.sku ||
+// //     currentProduct.sku ||
+// //     currentProduct._id?.slice(-8) ||
+// //     "";
 
-// //   const discountPercent = currentOldPrice
-// //     ? Math.round(
-// //         ((currentOldPrice - currentPrice) / currentOldPrice) * 100
-// //       )
-// //     : null;
+// //   const discountPercent =
+// //     currentProduct.discountPercent ||
+// //     (currentOldPrice && currentOldPrice > currentPrice
+// //       ? Math.round(((currentOldPrice - currentPrice) / currentOldPrice) * 100)
+// //       : null);
 
-// // const handleAddToCart = async () => {
-// //   const user = JSON.parse(localStorage.getItem("user") || "{}");
-// //   const userId = user.id || user._id || localStorage.getItem("cartUserId");
-// //   const token = localStorage.getItem("token");
-
-// //   if (!token) {
-// //     alert("Please login to add items to cart.");
-// //     return { success: false };
-// //   }
-
-// //   const productId = currentProduct._id || currentProduct.id;
-
-// //   try {
-// //     const result = await addToCart(productId, quantity);  // ✅ sahi call
-
-// //     if (result?.success) {
-// //       alert(`Successfully added ${quantity} item(s) to your Cart!`);
-// //       return { success: true };
-// //     } else {
-// //       alert(result?.error || "Could not add to cart. Please try again.");
+// //   const handleAddToCart = async () => {
+// //     const token = localStorage.getItem("token");
+// //     if (!token) {
+// //       alert("Please login to add items to cart.");
+// //       navigate("/login");
 // //       return { success: false };
 // //     }
-// //   } catch (error) {
-// //     console.error("Cart add error:", error);
-// //     alert("Please login again to add items to cart.");
-// //     return { success: false };
-// //   }
-// // };
+
+// //     const productForCart = {
+// //       _id: currentProduct._id || currentProduct.id,
+// //       name: currentProduct.name || currentProduct.title || "Product",
+// //       price: currentPrice,
+// //       oldPrice: currentOldPrice,
+// //       mrp: currentProduct.mrp || currentOldPrice || 0,
+// //       discountPercent: discountPercent || 0,
+// //       image: currentProduct.image || currentProduct.images?.[0] || "",
+// //       sku: currentSku || "",
+// //     };
+
+// //     try {
+// //       const result = await addToCart(productForCart, quantity);
+// //       if (result?.success) {
+// //         alert(`Successfully added ${quantity} item(s) to your Cart!`);
+// //         return { success: true };
+// //       } else {
+// //         alert(result?.error || "Could not add to cart.");
+// //         return { success: false };
+// //       }
+// //     } catch (error) {
+// //       alert("Please login again to add items to cart.");
+// //       return { success: false };
+// //     }
+// //   };
+
+// //   const handleBuyNow = async () => {
+// //     const result = await handleAddToCart();
+// //     if (result.success) {
+// //       navigate("/checkout");
+// //     }
+// //   };
 
 // //   const handleAddReview = async (newRev) => {
 // //     try {
@@ -496,7 +921,6 @@
 // //         alert("Thank you! Your review has been added successfully 🎉");
 // //       }
 // //     } catch (error) {
-// //       console.error("Review submission error:", error);
 // //       alert(
 // //         error.response?.data?.message ||
 // //           "Failed to submit review. Please try again."
@@ -505,17 +929,24 @@
 // //   };
 
 // //   return (
-// //     <div className="w-full bg-[#fff3df] min-h-screen py-10 px-4 sm:px-6 lg:px-12 font-sans">
-// //       <div className="max-w-[1300px] mx-auto bg-white rounded-sm shadow-xl overflow-hidden border border-stone-200">
-// //         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6 sm:p-10">
-// //           <ProductImageGallery
-// //             product={currentProduct}
-// //             selectedImage={selectedImage}
-// //             setSelectedImage={setSelectedImage}
-// //           />
+// //     <div className="w-full bg-white min-h-screen">
+// //       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-// //           <div className="flex flex-col justify-between">
-// //             <div>
+// //         {/* ==================== PRODUCT SECTION ==================== */}
+// //         <div className="bg-white rounded-lg border border-stone-200 p-5 sm:p-6">
+// //           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+// //             {/* LEFT: Image Gallery */}
+// //             <ProductImageGallery
+// //               product={currentProduct}
+// //               selectedImage={selectedImage}
+// //               setSelectedImage={setSelectedImage}
+// //             />
+
+// //             {/* RIGHT: Info + Delivery + Coupon + Buttons */}
+// //             <div className="flex flex-col gap-4">
+
+// //               {/* Product Info */}
 // //               <ProductInfo
 // //                 product={currentProduct}
 // //                 selectedVariant={selectedVariant}
@@ -526,24 +957,23 @@
 // //                 discountPercent={discountPercent}
 // //                 reviewsCount={reviewsList.length}
 // //               />
-// //               <DeliveryChecker />
-// //             </div>
 
-// //           <ActionButtons
-// //   quantity={quantity}
-// //   setQuantity={setQuantity}
-// //   onAddToCart={handleAddToCart}
-// //   onBuyNow={async () => {
-// //     const result = await handleAddToCart();
-// //     if (result.success) {
-// //       navigate("/checkout");   // ✅ checkout page par le jao
-// //     }
-// //   }}
-// // />
+// //               {/* Delivery + Coupon */}
+// //               <DeliveryChecker />
+
+// //               {/* Quantity + Buttons */}
+// //               <ActionButtons
+// //                 quantity={quantity}
+// //                 setQuantity={setQuantity}
+// //                 onAddToCart={handleAddToCart}
+// //                 onBuyNow={handleBuyNow}
+// //               />
+// //             </div>
 // //           </div>
 // //         </div>
 
-// //         <div className="border-t border-stone-200 p-6 sm:p-10 bg-[#fdfaf5]">
+// //         {/* ==================== TABS SECTION ==================== */}
+// //         <div className="mt-6 bg-white rounded-lg border border-stone-200 p-5 sm:p-6">
 // //           <ProductTabs
 // //             product={currentProduct}
 // //             reviewsList={reviewsList}
@@ -551,12 +981,15 @@
 // //           />
 // //         </div>
 
-// //         <RelatedProducts
-// //           currentProductId={currentProduct._id || currentProduct.id}
-// //           currentCategory={
-// //             currentProduct.category?.name || currentProduct.category
-// //           }
-// //         />
+// //         {/* ==================== RELATED PRODUCTS ==================== */}
+// //         <div className="mt-6">
+// //           <RelatedProducts
+// //             currentProductId={currentProduct._id || currentProduct.id}
+// //             currentCategory={
+// //               currentProduct.category?.name || currentProduct.category
+// //             }
+// //           />
+// //         </div>
 // //       </div>
 // //     </div>
 // //   );
@@ -565,9 +998,9 @@
 // // export default ProductDetails;
 
 
-
+// // src/pages/ProductDetails.jsx
 // import React, { useState, useEffect } from "react";
-// import { useParams, useNavigate } from "react-router-dom";  // ✅ useNavigate add
+// import { useParams, useNavigate } from "react-router-dom";
 // import axios from "axios";
 // import API_BASE_URL from "../config/api";
 // import { shopCategories } from "../data/categories";
@@ -583,7 +1016,7 @@
 
 // const ProductDetails = () => {
 //   const { id } = useParams();
-//   const navigate = useNavigate();  // ✅ navigate define kiya
+//   const navigate = useNavigate();
 
 //   const [currentProduct, setCurrentProduct] = useState(null);
 //   const [loading, setLoading] = useState(true);
@@ -596,17 +1029,22 @@
 //   const { addToCart } = useCartStore();
 //   const { products, fetchProducts } = useProductStore();
 
-//   // ✅ Product fetch — API → Store → Local
+//   // ✅ Product fetch
 //   useEffect(() => {
 //     const fetchProduct = async () => {
 //       try {
 //         setLoading(true);
 //         setError(null);
 
-//         // Try 1: API
+//         const isObjectId = /^[0-9a-fA-F]{24}$/.test(id);
+
 //         try {
-//           const response = await axios.get(`${API_BASE_URL}/products/${id}`);
-//           console.log("✅ Product API Response:", response.data);
+//           let response;
+//           if (isObjectId) {
+//             response = await axios.get(`${API_BASE_URL}/products/${id}`);
+//           } else {
+//             response = await axios.get(`${API_BASE_URL}/products/slug/${id}`);
+//           }
 
 //           const product =
 //             response.data.product ||
@@ -622,28 +1060,26 @@
 //           console.warn("⚠️ Product API failed, trying store...");
 //         }
 
-//         // Try 2: Store
 //         if (products.length === 0) {
 //           await fetchProducts();
 //         }
 
 //         const storeProducts = useProductStore.getState().products;
-//         const storeProduct = storeProducts.find((p) => p._id === id);
+//         const storeProduct = storeProducts.find(
+//           (p) => p._id === id || p.slug === id
+//         );
 
 //         if (storeProduct) {
-//           console.log("✅ Found product in store:", storeProduct.name);
 //           setCurrentProduct(storeProduct);
 //           setLoading(false);
 //           return;
 //         }
 
-//         // Try 3: Local fallback
 //         const localProduct = shopCategories.find(
-//           (item) => item.id?.toString() === id
+//           (item) => item.id?.toString() === id || item.slug === id
 //         );
 
 //         if (localProduct) {
-//           console.warn("⚠️ Using local fallback product data");
 //           setCurrentProduct(localProduct);
 //           setLoading(false);
 //           return;
@@ -651,8 +1087,7 @@
 
 //         setError("Product not found");
 //       } catch (err) {
-//         console.error("❌ Error fetching product:", err);
-//         setError("Failed to load product. Please try again.");
+//         setError("Failed to load product.");
 //       } finally {
 //         setLoading(false);
 //       }
@@ -661,7 +1096,6 @@
 //     if (id) fetchProduct();
 //   }, [id, products, fetchProducts]);
 
-//   // ✅ Product load hone par variant/image set karo
 //   useEffect(() => {
 //     if (currentProduct) {
 //       setSelectedVariant(
@@ -706,49 +1140,63 @@
 //     );
 
 //   const currentPrice = selectedVariant?.price || currentProduct.price || 0;
-//   const currentOldPrice = selectedVariant?.oldPrice || currentProduct.oldPrice || null;
-//   const currentSku = selectedVariant?.sku || currentProduct.sku || currentProduct._id?.slice(-8) || "";
+//   const currentOldPrice =
+//     selectedVariant?.oldPrice ||
+//     currentProduct.mrp ||
+//     currentProduct.oldPrice ||
+//     null;
+//   const currentSku =
+//     selectedVariant?.sku ||
+//     currentProduct.sku ||
+//     currentProduct._id?.slice(-8) ||
+//     "";
 
-//   const discountPercent = currentOldPrice
-//     ? Math.round(((currentOldPrice - currentPrice) / currentOldPrice) * 100)
-//     : null;
+//   const discountPercent =
+//     currentProduct.discountPercent ||
+//     (currentOldPrice && currentOldPrice > currentPrice
+//       ? Math.round(((currentOldPrice - currentPrice) / currentOldPrice) * 100)
+//       : null);
 
 //   const handleAddToCart = async () => {
-//   const token = localStorage.getItem("token");
-
-//   if (!token) {
-//     alert("Please login to add items to cart.");
-//     navigate("/login");
-//     return { success: false };
-//   }
-
-//   const productForCart = {
-//   _id: currentProduct._id || currentProduct.id,
-//   name: currentProduct.name || currentProduct.title || "Product",
-//   price: currentPrice,
-//   oldPrice: currentOldPrice,
-//   image: currentProduct.image || currentProduct.images?.[0] || "",  // ✅ yeh
-//   sku: currentSku || "",
-// };
-
-//   console.log("🛒 Sending to cart:", productForCart);
-
-//   try {
-//     const result = await addToCart(productForCart, quantity);
-
-//     if (result?.success) {
-//       alert(`Successfully added ${quantity} item(s) to your Cart!`);
-//       return { success: true };
-//     } else {
-//       alert(result?.error || "Could not add to cart.");
+//     const token = localStorage.getItem("token");
+//     if (!token) {
+//       alert("Please login to add items to cart.");
+//       navigate("/login");
 //       return { success: false };
 //     }
-//   } catch (error) {
-//     console.error("Cart add error:", error);
-//     alert("Please login again to add items to cart.");
-//     return { success: false };
-//   }
-// };
+
+//     const productForCart = {
+//       _id: currentProduct._id || currentProduct.id,
+//       name: currentProduct.name || currentProduct.title || "Product",
+//       price: currentPrice,
+//       oldPrice: currentOldPrice,
+//       mrp: currentProduct.mrp || currentOldPrice || 0,
+//       discountPercent: discountPercent || 0,
+//       image: currentProduct.image || currentProduct.images?.[0] || "",
+//       sku: currentSku || "",
+//     };
+
+//     try {
+//       const result = await addToCart(productForCart, quantity);
+//       if (result?.success) {
+//         alert(`Successfully added ${quantity} item(s) to your Cart!`);
+//         return { success: true };
+//       } else {
+//         alert(result?.error || "Could not add to cart.");
+//         return { success: false };
+//       }
+//     } catch (error) {
+//       alert("Please login again to add items to cart.");
+//       return { success: false };
+//     }
+//   };
+
+//   const handleBuyNow = async () => {
+//     const result = await handleAddToCart();
+//     if (result.success) {
+//       navigate("/checkout");
+//     }
+//   };
 
 //   const handleAddReview = async (newRev) => {
 //     try {
@@ -792,7 +1240,6 @@
 //         alert("Thank you! Your review has been added successfully 🎉");
 //       }
 //     } catch (error) {
-//       console.error("Review submission error:", error);
 //       alert(
 //         error.response?.data?.message ||
 //           "Failed to submit review. Please try again."
@@ -801,17 +1248,25 @@
 //   };
 
 //   return (
-//     <div className="w-full bg-[#fff3df] min-h-screen py-10 px-4 sm:px-6 lg:px-12 font-sans">
-//       <div className="max-w-[1300px] mx-auto bg-white rounded-sm shadow-xl overflow-hidden border border-stone-200">
-//         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6 sm:p-10">
-//           <ProductImageGallery
-//             product={currentProduct}
-//             selectedImage={selectedImage}
-//             setSelectedImage={setSelectedImage}
-//           />
+//     <div className="w-full bg-white min-h-screen">
+//       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-//           <div className="flex flex-col justify-between">
-//             <div>
+//         {/* ==================== PRODUCT SECTION ==================== */}
+//         <div className="bg-white rounded-lg border border-stone-200 p-4 sm:p-6">
+//           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+//             {/* LEFT: Image Gallery — Fixed Height */}
+//             <div className="lg:sticky lg:top-6 h-fit">
+//               <ProductImageGallery
+//                 product={currentProduct}
+//                 selectedImage={selectedImage}
+//                 setSelectedImage={setSelectedImage}
+//               />
+//             </div>
+
+//             {/* RIGHT: Info + Delivery + Coupon + Buttons */}
+//             <div className="flex flex-col gap-4">
+//               {/* Product Info */}
 //               <ProductInfo
 //                 product={currentProduct}
 //                 selectedVariant={selectedVariant}
@@ -822,25 +1277,23 @@
 //                 discountPercent={discountPercent}
 //                 reviewsCount={reviewsList.length}
 //               />
-//               <DeliveryChecker />
-//             </div>
 
-//             {/* ✅ Buy Now ab checkout par le jayega */}
-//             <ActionButtons
-//               quantity={quantity}
-//               setQuantity={setQuantity}
-//               onAddToCart={handleAddToCart}
-//               onBuyNow={async () => {
-//                 const result = await handleAddToCart();
-//                 if (result.success) {
-//                   navigate("/checkout");
-//                 }
-//               }}
-//             />
+//               {/* Delivery + Coupon */}
+//               <DeliveryChecker />
+
+//               {/* Quantity + Buttons */}
+//               <ActionButtons
+//                 quantity={quantity}
+//                 setQuantity={setQuantity}
+//                 onAddToCart={handleAddToCart}
+//                 onBuyNow={handleBuyNow}
+//               />
+//             </div>
 //           </div>
 //         </div>
 
-//         <div className="border-t border-stone-200 p-6 sm:p-10 bg-[#fdfaf5]">
+//         {/* ==================== TABS SECTION ==================== */}
+//         <div className="mt-6 bg-white rounded-lg border border-stone-200 p-4 sm:p-6">
 //           <ProductTabs
 //             product={currentProduct}
 //             reviewsList={reviewsList}
@@ -848,12 +1301,15 @@
 //           />
 //         </div>
 
-//         <RelatedProducts
-//           currentProductId={currentProduct._id || currentProduct.id}
-//           currentCategory={
-//             currentProduct.category?.name || currentProduct.category
-//           }
-//         />
+//         {/* ==================== RELATED PRODUCTS ==================== */}
+//         <div className="mt-6">
+//           <RelatedProducts
+//             currentProductId={currentProduct._id || currentProduct.id}
+//             currentCategory={
+//               currentProduct.category?.name || currentProduct.category
+//             }
+//           />
+//         </div>
 //       </div>
 //     </div>
 //   );
@@ -861,7 +1317,7 @@
 
 // export default ProductDetails;
 
-
+// src/pages/ProductDetails.jsx
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -876,6 +1332,9 @@ import ActionButtons from "./ProductPage/ActionButtons";
 import ProductTabs from "./ProductTabs";
 import RelatedProducts from "./ProductPage/RelatedProducts";
 import useCartStore from "../store/useCartStore";
+
+// ✅ Background Banner Image Import
+import detailsBanner from "../assets/detailsbaner.png";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -892,31 +1351,22 @@ const ProductDetails = () => {
   const { addToCart } = useCartStore();
   const { products, fetchProducts } = useProductStore();
 
-  // ✅ Product fetch — API (slug/id) → Store → Local
+  // ✅ Product fetch
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
         setError(null);
 
-        // ✅ Check karo — ObjectId hai ya slug?
         const isObjectId = /^[0-9a-fA-F]{24}$/.test(id);
 
-        console.log("🔍 Fetching product:", id, "| isObjectId:", isObjectId);
-
-        // Try 1: API
         try {
           let response;
-
           if (isObjectId) {
-            // ✅ ID se fetch
             response = await axios.get(`${API_BASE_URL}/products/${id}`);
           } else {
-            // ✅ Slug se fetch
             response = await axios.get(`${API_BASE_URL}/products/slug/${id}`);
           }
-
-          console.log("✅ Product API Response:", response.data);
 
           const product =
             response.data.product ||
@@ -929,35 +1379,29 @@ const ProductDetails = () => {
             return;
           }
         } catch (apiErr) {
-          console.warn("⚠️ Product API failed, trying store...", apiErr.message);
+          console.warn("⚠️ Product API failed, trying store...");
         }
 
-        // Try 2: Store
         if (products.length === 0) {
           await fetchProducts();
         }
 
         const storeProducts = useProductStore.getState().products;
-
-        // ✅ ID ya slug se match karo
         const storeProduct = storeProducts.find(
           (p) => p._id === id || p.slug === id
         );
 
         if (storeProduct) {
-          console.log("✅ Found product in store:", storeProduct.name);
           setCurrentProduct(storeProduct);
           setLoading(false);
           return;
         }
 
-        // Try 3: Local fallback
         const localProduct = shopCategories.find(
           (item) => item.id?.toString() === id || item.slug === id
         );
 
         if (localProduct) {
-          console.warn("⚠️ Using local fallback product data");
           setCurrentProduct(localProduct);
           setLoading(false);
           return;
@@ -965,8 +1409,7 @@ const ProductDetails = () => {
 
         setError("Product not found");
       } catch (err) {
-        console.error("❌ Error fetching product:", err);
-        setError("Failed to load product. Please try again.");
+        setError("Failed to load product.");
       } finally {
         setLoading(false);
       }
@@ -975,7 +1418,6 @@ const ProductDetails = () => {
     if (id) fetchProduct();
   }, [id, products, fetchProducts]);
 
-  // ✅ Product load hone par variant/image set karo
   useEffect(() => {
     if (currentProduct) {
       setSelectedVariant(
@@ -1019,16 +1461,12 @@ const ProductDetails = () => {
       </div>
     );
 
-  // ✅ Price calculation — MRP ke saath
-  const currentPrice =
-    selectedVariant?.price || currentProduct.price || 0;
-
+  const currentPrice = selectedVariant?.price || currentProduct.price || 0;
   const currentOldPrice =
     selectedVariant?.oldPrice ||
     currentProduct.mrp ||
     currentProduct.oldPrice ||
     null;
-
   const currentSku =
     selectedVariant?.sku ||
     currentProduct.sku ||
@@ -1041,10 +1479,8 @@ const ProductDetails = () => {
       ? Math.round(((currentOldPrice - currentPrice) / currentOldPrice) * 100)
       : null);
 
-  // ✅ Add to Cart handler
   const handleAddToCart = async () => {
     const token = localStorage.getItem("token");
-
     if (!token) {
       alert("Please login to add items to cart.");
       navigate("/login");
@@ -1058,18 +1494,12 @@ const ProductDetails = () => {
       oldPrice: currentOldPrice,
       mrp: currentProduct.mrp || currentOldPrice || 0,
       discountPercent: discountPercent || 0,
-      image:
-        currentProduct.image ||
-        currentProduct.images?.[0] ||
-        "",
+      image: currentProduct.image || currentProduct.images?.[0] || "",
       sku: currentSku || "",
     };
 
-    console.log("🛒 Sending to cart:", productForCart);
-
     try {
       const result = await addToCart(productForCart, quantity);
-
       if (result?.success) {
         alert(`Successfully added ${quantity} item(s) to your Cart!`);
         return { success: true };
@@ -1078,16 +1508,13 @@ const ProductDetails = () => {
         return { success: false };
       }
     } catch (error) {
-      console.error("Cart add error:", error);
       alert("Please login again to add items to cart.");
       return { success: false };
     }
   };
 
-  // ✅ Buy Now handler — cart mein add karke checkout par jao
   const handleBuyNow = async () => {
     const result = await handleAddToCart();
-
     if (result.success) {
       navigate("/checkout");
     }
@@ -1135,7 +1562,6 @@ const ProductDetails = () => {
         alert("Thank you! Your review has been added successfully 🎉");
       }
     } catch (error) {
-      console.error("Review submission error:", error);
       alert(
         error.response?.data?.message ||
           "Failed to submit review. Please try again."
@@ -1144,17 +1570,31 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="w-full bg-[#fff3df] min-h-screen py-10 px-4 sm:px-6 lg:px-12 font-sans">
-      <div className="max-w-[1300px] mx-auto bg-white rounded-sm shadow-xl overflow-hidden border border-stone-200">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6 sm:p-10">
-          <ProductImageGallery
-            product={currentProduct}
-            selectedImage={selectedImage}
-            setSelectedImage={setSelectedImage}
-          />
+    <div className="w-full bg-white min-h-screen">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-          <div className="flex flex-col justify-between">
-            <div>
+        {/* ==================== PRODUCT SECTION (With Banner BG) ==================== */}
+        <div
+          className="relative   p-4 sm:p-6 bg-cover overflow-hidden"
+          style={{ backgroundImage: `url(${detailsBanner})` }}
+        >
+          
+
+          {/* Content */}
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            {/* LEFT: Image Gallery */}
+            <div className="lg:sticky lg:top-6 h-fit">
+              <ProductImageGallery
+                product={currentProduct}
+                selectedImage={selectedImage}
+                setSelectedImage={setSelectedImage}
+              />
+            </div>
+
+            {/* RIGHT: Info + Delivery + Coupon + Buttons */}
+            <div className="flex flex-col gap-4">
+              {/* Product Info */}
               <ProductInfo
                 product={currentProduct}
                 selectedVariant={selectedVariant}
@@ -1165,20 +1605,23 @@ const ProductDetails = () => {
                 discountPercent={discountPercent}
                 reviewsCount={reviewsList.length}
               />
-              <DeliveryChecker />
-            </div>
 
-            {/* ✅ Add to Cart + Buy Now */}
-            <ActionButtons
-              quantity={quantity}
-              setQuantity={setQuantity}
-              onAddToCart={handleAddToCart}
-              onBuyNow={handleBuyNow}
-            />
+              {/* Delivery + Coupon */}
+              <DeliveryChecker />
+
+              {/* Quantity + Buttons */}
+              <ActionButtons
+                quantity={quantity}
+                setQuantity={setQuantity}
+                onAddToCart={handleAddToCart}
+                onBuyNow={handleBuyNow}
+              />
+            </div>
           </div>
         </div>
 
-        <div className="border-t border-stone-200 p-6 sm:p-10 bg-[#fdfaf5]">
+        {/* ==================== TABS SECTION (White BG) ==================== */}
+        <div className="mt-6 bg-white rounded-lg p-4 sm:p-6">
           <ProductTabs
             product={currentProduct}
             reviewsList={reviewsList}
@@ -1186,12 +1629,15 @@ const ProductDetails = () => {
           />
         </div>
 
-        <RelatedProducts
-          currentProductId={currentProduct._id || currentProduct.id}
-          currentCategory={
-            currentProduct.category?.name || currentProduct.category
-          }
-        />
+        {/* ==================== RELATED PRODUCTS (White BG) ==================== */}
+        <div className="mt-6">
+          <RelatedProducts
+            currentProductId={currentProduct._id || currentProduct.id}
+            currentCategory={
+              currentProduct.category?.name || currentProduct.category
+            }
+          />
+        </div>
       </div>
     </div>
   );

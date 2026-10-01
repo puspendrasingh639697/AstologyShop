@@ -49,7 +49,7 @@ const FAQSection = () => {
 
         {/* ====== HEADING ====== */}
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl  font-bold text-[#4a2e18] leading-tight tracking-wide">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl  font-bold text-black leading-tight tracking-wide">
             Frequently Asked Questions
           </h2>
 

@@ -313,10 +313,10 @@ export default function AddressesTab() {
       {/* Header */}
       <div className="flex justify-between items-center pb-4 border-b border-stone-200">
         <div>
-          <h3 className="text-base font-serif font-bold text-[#4a2e18]">
+          <h3 className="text-base  font-bold text-[#4a2e18]">
             Saved Addresses
           </h3>
-          <p className="text-xs text-stone-500">
+          <p className="text-xs text-black">
             Manage your delivery locations.
           </p>
         </div>
@@ -325,7 +325,7 @@ export default function AddressesTab() {
             setShowAddBox(!showAddBox);
             setSuccessMsg("");
           }}
-          className="bg-[#8c0a15] hover:bg-[#722d21] text-white text-xs font-bold uppercase px-4 py-2 rounded-sm cursor-pointer flex items-center gap-1.5 transition"
+          className="bg-gradient-to-r from-red-800 to-red-600 hover:bg-[#722d21] text-white text-xs font-bold uppercase px-4 py-2 rounded-sm cursor-pointer flex items-center gap-1.5 transition"
         >
           <BiPlusCircle /> Add Address
         </button>
@@ -333,7 +333,7 @@ export default function AddressesTab() {
 
       {/* Success/Error Messages */}
       {successMsg && (
-        <div className="bg-emerald-100 text-emerald-800 p-3 rounded text-xs">
+        <div className="bg-emerald-100 text-black p-3 rounded text-xs">
           {successMsg}
         </div>
       )}
@@ -347,16 +347,16 @@ export default function AddressesTab() {
       {showAddBox && (
         <form
           onSubmit={handleSubmit}
-          className="bg-[#fff9f0] border border-amber-200 p-4 rounded-sm space-y-3 text-xs"
+          className="bg-white border border-black/20 p-4 rounded-sm space-y-3 text-xs"
         >
-          <h4 className="font-bold text-[#8b3a2b] uppercase">
+          <h4 className="font-bold text-black uppercase">
             Add New Delivery Address
           </h4>
 
           {/* Type + Phone */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold uppercase text-stone-600 mb-1">
+              <label className="block font-bold uppercase text-black mb-1">
                 Address Label
               </label>
               <select
@@ -480,7 +480,7 @@ export default function AddressesTab() {
                 setNewAddress({ ...newAddress, isDefault: e.target.checked })
               }
             />
-            <span className="text-xs font-bold text-stone-700">
+            <span className="text-xs font-bold text-blue-500">
               Set as default address
             </span>
           </label>
@@ -489,14 +489,14 @@ export default function AddressesTab() {
           <div className="flex gap-2">
             <button
               type="submit"
-              className="bg-[#4a2e18] text-white px-4 py-2 font-bold uppercase rounded-sm cursor-pointer hover:bg-[#321e10] transition"
+              className="bg-gradient-to-r from-red-800 to-red-600 text-white px-4 py-2 font-bold uppercase rounded-sm cursor-pointer hover:bg-[#321e10] transition"
             >
               Save Address
             </button>
             <button
               type="button"
               onClick={() => setShowAddBox(false)}
-              className="bg-stone-200 text-stone-700 px-4 py-2 font-bold uppercase rounded-sm cursor-pointer hover:bg-stone-300 transition"
+              className="bg-green-500 text-white px-4 py-2 font-bold uppercase rounded-sm cursor-pointer hover:bg-stone-300 transition"
             >
               Cancel
             </button>
@@ -516,25 +516,25 @@ export default function AddressesTab() {
             return (
               <div
                 key={addrId}
-                className="bg-stone-50 border border-stone-200 rounded-sm p-4 flex justify-between items-start text-xs"
+                className="bg-gradient-to-r from-red-800 to-red-600 border border-stone-200 rounded-sm p-4 flex justify-between items-start text-x1"
               >
                 <div className="space-y-1">
-                  <span className="bg-[#8b3a2b]/10 text-[#8b3a2b] font-bold px-2 py-0.5 rounded text-[10px] uppercase">
+                  <span className="bg-[#8b3a2b]/10 text-white font-bold px-2 py-0.5 rounded text-[10px]">
                     {addr.type || "Home"}
                   </span>
 
                   {addr.fullName && (
-                    <p className="font-bold text-stone-800 mt-1">
+                    <p className="font-bold text-white mt-1">
                       {addr.fullName}
                     </p>
                   )}
 
-                  <p className="font-bold text-stone-800 mt-1">
+                  <p className="font-bold text-white mt-1">
                     {addr.street}, {addr.city}, {addr.state} - {addr.zipCode}
                   </p>
 
                   {addr.phone && (
-                    <p className="text-stone-500 text-[11px]">
+                    <p className="text-white text-[11px]">
                       Phone: {addr.phone}
                     </p>
                   )}
@@ -548,7 +548,7 @@ export default function AddressesTab() {
 
                 <button
                   onClick={() => handleDelete(addrId)}
-                  className="text-stone-400 hover:text-red-600 cursor-pointer"
+                  className="text-white hover:text-red-600 cursor-pointer"
                 >
                   <BiTrash className="text-base" />
                 </button>
