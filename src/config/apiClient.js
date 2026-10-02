@@ -9,8 +9,7 @@ const apiClient = axios.create({
   headers: { 'Content-Type': 'application/json' },
   withCredentials: true,
 });
-
-// ✅ Request Interceptor — token auto-add
+//  Request Interceptor — token auto-add
 apiClient.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
