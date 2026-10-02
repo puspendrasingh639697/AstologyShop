@@ -185,21 +185,22 @@
 // // };
 
 // // export default HeroSection;
-
-import heroImg from "../assets/PujaSamagribaner1.jpeg";
+import heroImg from "../assets/topbaner2.png";
 
 function HeroSection() {
   return (
     <section className="relative w-full overflow-hidden bg-white">
       {/* 
-        aspect-[16/7] = height 80% of natural 16:9 image 
-        object-top = top se align, bottom 20% crop
+        Aardhya-style banner:
+        - aspect-[16/6] = very wide, short banner
+        - object-cover = full width, no gaps
+        - object-center = center crop
       */}
-      <div className="relative w-full aspect-[16/7] overflow-hidden">
+      <div className="relative w-full aspect-[16/6] sm:aspect-[16/6.5] md:aspect-[16/6] overflow-hidden">
         <img
           src={heroImg}
           alt="Hero Banner"
-          className="w-full h-full object-cover object-top block"
+          className="w-full h-full object-cover object-center block"
         />
       </div>
     </section>

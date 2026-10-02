@@ -289,7 +289,7 @@ const ProductInfo = ({
     : [];
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-1">
       {/* Vendor / SKU */}
       {(displayVendor || displaySku) && (
         <div className="flex justify-between items-center">
@@ -308,7 +308,7 @@ const ProductInfo = ({
 
       {/* Product Name */}
       {displayName && (
-        <h1 className="text-xl sm:text-2xl font-bold text-[#4a2e18] leading-tight">
+        <h1 className="text-xl sm:text-2xl  text-[#4a2e18]">
           {displayName}
         </h1>
       )}
@@ -335,16 +335,16 @@ const ProductInfo = ({
       {/* Price + Stock */}
       <div className="flex items-center justify-between border-b border-stone-100 pb-3">
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-2xl font-bold text-[#8b3a2b]">
+          <span className="text-2xl font-bold text-black">
             Rs. {currentPrice}
           </span>
           {currentOldPrice && (
-            <span className="text-stone-400 line-through text-sm">
+            <span className="text-red-800 line-through text-sm">
               Rs. {currentOldPrice}
             </span>
           )}
           {discountPercent && (
-            <span className="bg-red-100 text-red-700 text-[10px] font-bold px-2 py-0.5 rounded">
+            <span className="bg-gradient-to-r from-red-800 to-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">
               {discountPercent}% OFF
             </span>
           )}
@@ -352,10 +352,10 @@ const ProductInfo = ({
 
         {hasStockInfo && (
           <span
-            className={`text-[10px] px-2 py-1 font-semibold border rounded flex items-center gap-1 ${
+            className={`text-[12px] px-2 py-1  rounded flex items-center gap-1 ${
               stockAvailable
-                ? "bg-emerald-50 text-emerald-700 border-emerald-200"
-                : "bg-red-50 text-red-700 border-red-200"
+                ? "bg-gradient-to-r from-red-800 to-red-600 text-white border-emerald-200"
+                : "bg-gradient-to-r from-red-800 to-red-600 text-white border-red-200"
             }`}
           >
             <BiCheckCircle />{" "}
@@ -366,7 +366,7 @@ const ProductInfo = ({
 
       {/* Description */}
       {displayDescription && (
-        <p className="text-sm text-stone-600 leading-relaxed">
+        <p className="text-sm text-black leading-relaxed">
           {displayDescription}
         </p>
       )}
@@ -374,7 +374,7 @@ const ProductInfo = ({
       {/* Variants */}
       {variants.length > 0 && (
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-2">
+          <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">
             Select Pack / Size:
           </label>
           <div className="flex flex-wrap gap-2">

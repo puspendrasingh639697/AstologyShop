@@ -5,7 +5,7 @@ const ActionButtons = ({ quantity, setQuantity, onAddToCart, onBuyNow }) => {
   return (
     <div className="mt-2 pt-4 border-t border-stone-200">
       <div className="flex items-center gap-4 mb-4">
-        <span className="text-xs font-bold uppercase tracking-wider text-stone-600">Quantity:</span>
+        <span className="text-xs font-bold uppercase tracking-wider text-black">Quantity:</span>
         <div className="flex items-center border border-stone-300 rounded-sm">
           <button 
             onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -22,13 +22,13 @@ const ActionButtons = ({ quantity, setQuantity, onAddToCart, onBuyNow }) => {
       <div className="flex gap-4">
         <button 
           onClick={onAddToCart}
-          className="flex-1 bg-gradient-to-r from-red-800 to-red-600 hover:bg-[#321e10] text-white py-3.5 text-xs font-bold tracking-widest uppercase transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+          className="flex-1 bg-gradient-to-r from-red-800 to-red-600  rounded-md hover:bg-[#321e10] text-white py-3.5 text-xs font-bold tracking-widest uppercase transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
         >
           <BiShoppingBag className="text-lg" /> Add to Cart
         </button>
         <button 
           onClick={onBuyNow}
-          className="flex-1  bg-gradient-to-r from-red-800 to-red-600 hover:bg-[#6b0710] text-white py-3.5 text-xs font-bold tracking-widest uppercase transition-all shadow-sm cursor-pointer"
+          className="flex-1  bg-gradient-to-r from-red-800 to-red-600 rounded-md hover:bg-[#6b0710] text-white py-3.5 text-xs font-bold tracking-widest uppercase transition-all shadow-sm cursor-pointer"
         >
           Buy Now
         </button>

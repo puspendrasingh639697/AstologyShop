@@ -421,10 +421,19 @@ const Checkout = () => {
   };
 
   return (
-    <div className="max-w-[1400px] mx-auto px-4 py-8 bg-[#fff3df] min-h-[70vh]">
-      <h2 className="text-2xl sm:text-3xl font-serif text-[#4a2e18] mb-6">
-        Checkout
-      </h2>
+    <div className="max-w-[1400px] mx-auto px-4 py-8 bg-white min-h-[70vh]">
+
+       <div className="mb-8 pb-4 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#8c0a15]">
+            Checkout
+          </h2>
+          <div className="flex items-center justify-center gap-3 mt-3">
+            <span className="w-16 h-[1px] bg-gradient-to-r from-transparent to-[#8c0a15]/50"></span>
+            <span className="w-2 h-2 rounded-full bg-[#8c0a15]/60"></span>
+            <span className="w-16 h-[1px] bg-gradient-to-l from-transparent to-[#8c0a15]/50"></span>
+          </div>
+        </div>
+      
 
       <CheckoutStep
         shippingDetails={shippingDetails}
