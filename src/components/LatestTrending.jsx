@@ -580,7 +580,7 @@ const LatestTrending = () => {
 
         {/* ===== HEADING ROW — Left + Right ===== */}
         <div className="flex items-end justify-between gap-4 mb-5 sm:mb-6">
-          {/* LEFT — Title + Subtitle */}
+          
           <div>
             <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#5A1F1F] tracking-wide">
               Latest & Trending

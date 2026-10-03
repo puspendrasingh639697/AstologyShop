@@ -61,7 +61,7 @@
 //   };
 
 //   return (
-//     <div className="space-y-6">
+//     <div className="space-y-6 bg-white">
 //       <div className="flex justify-between items-center pb-4 border-b border-stone-200">
 //         <div>
 //           <h3 className="text-base font-bold text-[#4a2e18]">Personal Profile</h3>
@@ -70,7 +70,7 @@
 //         {!isEditing && (
 //           <button
 //             onClick={() => { setIsEditing(true); setSuccessMsg(""); setErrorMsg(""); }}
-//             className="bg-gradient-to-r from-red-800 to-red-600 hover:bg-[#722d21] text-white text-xs font-bold uppercase px-4 py-2 rounded-sm cursor-pointer flex items-center gap-1.5 transition"
+//             className="bg-red-700 hover:bg-[#722d21] text-white text-xs font-bold uppercase px-4 py-2 rounded-sm cursor-pointer flex items-center gap-1.5 transition"
 //           >
 //             <BiEdit /> Edit Profile
 //           </button>
@@ -81,7 +81,7 @@
 //       {errorMsg && <div className="bg-rose-100 text-rose-800 p-3 rounded text-xs">{errorMsg}</div>}
 
 //       {!isEditing ? (
-//         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs font-serif">
+//         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs">
 //           <div className="bg-stone-50 p-4 border border-stone-200 rounded-sm space-y-1">
 //             <span className="text-stone-400 block uppercase font-bold text-[10px]">Full Name</span>
 //             <p className="font-bold text-stone-800 text-sm">{profile.fullName || "N/A"}</p>
@@ -188,7 +188,7 @@
 import React, { useState } from "react";
 import { BiEdit } from "react-icons/bi";
 import axios from "axios";
-import API_BASE_URL from "../../config/api"; // ✅ Central URL (path apne folder ke hisaab se adjust karein)
+import API_BASE_URL from "../../config/api";
 
 export default function ProfileTab({ profile, setProfile }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -208,7 +208,6 @@ export default function ProfileTab({ profile, setProfile }) {
       // ✅ Phone number se +91 aur spaces hata kar sirf 10 digits clean kar rahe hain
       const cleanedPhone = (profile.phone || '').replace(/\D/g, '').slice(-10);
 
-      // ✅ API_BASE_URL use karein
       const response = await axios.put(
         `${API_BASE_URL}/user/profile`,
         {
@@ -249,13 +248,13 @@ export default function ProfileTab({ profile, setProfile }) {
     <div className="space-y-6 bg-white">
       <div className="flex justify-between items-center pb-4 border-b border-stone-200">
         <div>
-          <h3 className="text-base font-bold text-[#4a2e18]">Personal Profile</h3>
+          <h3 className="text-base font-bold text-[#5A1F1F]">Personal Profile</h3>
           <p className="text-xs text-stone-500">Manage your personal details and preferences.</p>
         </div>
         {!isEditing && (
           <button
             onClick={() => { setIsEditing(true); setSuccessMsg(""); setErrorMsg(""); }}
-            className="bg-red-700 hover:bg-[#722d21] text-white text-xs font-bold uppercase px-4 py-2 rounded-sm cursor-pointer flex items-center gap-1.5 transition"
+            className="bg-[#5A1F1F] hover:bg-[#3d1414] text-white text-xs font-bold uppercase px-4 py-2 rounded-sm cursor-pointer flex items-center gap-1.5 transition"
           >
             <BiEdit /> Edit Profile
           </button>
@@ -358,7 +357,7 @@ export default function ProfileTab({ profile, setProfile }) {
             </button>
             <button
               type="submit"
-              className="bg-[#4a2e18] hover:bg-[#321e10] text-white px-5 py-2.5 font-bold uppercase tracking-wider cursor-pointer disabled:bg-stone-400"
+              className="bg-[#5A1F1F] hover:bg-[#3d1414] text-white px-5 py-2.5 font-bold uppercase tracking-wider cursor-pointer disabled:bg-stone-400"
               disabled={loading}
             >
               {loading ? "Saving to DB..." : "Save Changes"}

@@ -1,6 +1,5 @@
 
 
-
 // import React, { useState, useEffect } from "react";
 // import { 
 //   BiGridAlt, BiUser, BiPackage, BiHeart, BiMap, BiGift, 
@@ -285,7 +284,7 @@
 //         </aside>
 
 //         {/* Right Main Content Panel */}
-//         <main className="lg:col-span-9 bg-[#fff3df] sm:p-4 shadow-xs min-h-[600px]">
+//         <main className="lg:col-span-9 bg-white sm:p-4 shadow-xs min-h-[600px]">
 //           {activeTab === "dashboard" && (
 //             <DashboardOverviewTab
 //               profile={profile}
@@ -346,7 +345,7 @@ import {
   BiGridAlt, BiUser, BiPackage, BiHeart, BiMap, BiGift, 
   BiStar, BiHistory, BiBell, BiSupport, BiBookOpen, 
   BiSun, BiPhoneCall, BiLogOut, BiChevronRight, BiSearch, BiShoppingBag,
-  BiRefresh   // ✅ ADD karo
+  BiRefresh
 } from "react-icons/bi";
 
 import DashboardOverviewTab from "./DashboardOverviewTab";
@@ -362,7 +361,7 @@ import SupportTab from "./SupportTab";
 import KundliTab from "./KundliTab";
 import RemediesTab from "./RemediesTab";
 import ConsultationsTab from "./ConsultationsTab";
-import ReturnsTab from "./ReturnsTab";   // ✅ ADD karo
+import ReturnsTab from "./ReturnsTab";
 
 import useAuthStore from "../../store/useAuthStore";
 import useWishlistStore from "../../store/useWishlistStore";
@@ -501,28 +500,24 @@ export default function CustomerAccount({ onNavigateTracking, onNavigateCart, on
     { id: "wishlist", label: "Sacred Wishlist", icon: <BiHeart className="text-base" /> },
     { id: "addresses", label: "Saved Addresses", icon: <BiMap className="text-base" /> },
     { id: "coupons", label: "Coupons & Offers", icon: <BiGift className="text-base" /> },
-   
     { id: "reviews", label: "My Reviews", icon: <BiStar className="text-base" /> },
-    { id: "returns", label: "My Returns", icon: <BiRefresh className="text-base" /> },   // ✅ ADD karo
+    { id: "returns", label: "My Returns", icon: <BiRefresh className="text-base" /> },
     { id: "recently-viewed", label: "Recently Viewed", icon: <BiHistory className="text-base" /> },
     { id: "notifications", label: "Notifications", icon: <BiBell className="text-base" /> },
     { id: "support", label: "Help & Support", icon: <BiSupport className="text-base" /> },
   ];
 
   return (
-    <div className="min-h-screen bg-stone-50  flex flex-col">
-      {/* 🌟 Professional Header */}
-      <header className="bg-gradient-to-r from-red-800 to-red-600 text-white border-b border-[#6e0710] px-4 h-12 flex items-center justify-between sticky top-0 z-30 shadow-sm">
+    <div className="min-h-screen bg-stone-50 flex flex-col">
+      {/* 🌟 Professional Header — Maroon */}
+      <header className="bg-[#5A1F1F] text-white border-b border-[#3d1414] px-4 h-12 flex items-center justify-between sticky top-0 z-30 shadow-sm">
         <div className="flex items-center gap-2">
-         
           <div className="flex items-center">
             <h3 className="font-bold text-white text-xs sm:text-sm m-0">
               Account Dashboard
             </h3>
           </div>
         </div>
-
-        
 
         <div className="flex items-center gap-2">
           <button
@@ -531,11 +526,11 @@ export default function CustomerAccount({ onNavigateTracking, onNavigateCart, on
             title="Notifications"
           >
             <BiBell className="text-base" />
-            <span className="absolute top-1 right-1 w-1.5 h-1.5 bg-white rounded-full ring-1 ring-[#8c0a15]"></span>
+            <span className="absolute top-1 right-1 w-1.5 h-1.5 bg-white rounded-full ring-1 ring-[#5A1F1F]"></span>
           </button>
 
           <div className="flex items-center gap-2 pl-2 border-l border-white/20">
-            <div className="w-6 h-6 rounded bg-white text-black flex items-center justify-center font-bold text-xs">
+            <div className="w-6 h-6 rounded bg-white text-[#5A1F1F] flex items-center justify-center font-bold text-xs">
               {profile.fullName ? profile.fullName.charAt(0) : "U"}
             </div>
             <div className="hidden sm:block text-left leading-tight">
@@ -552,8 +547,8 @@ export default function CustomerAccount({ onNavigateTracking, onNavigateCart, on
 
       {/* Main Dashboard Body Grid */}
       <div className="bg-white flex-1 max-w-[1400px] w-full top-0 grid grid-cols-1 lg:grid-cols-12 gap-6 mx-auto">
-        {/* 🌟 Refined Left Sidebar */}
-        <aside className="lg:col-span-3 bg-gradient-to-r from-red-800 to-red-600 p-3.5 space-y-3 h-fit shadow-xs">
+        {/* 🌟 Refined Left Sidebar — Maroon */}
+        <aside className="lg:col-span-3 bg-[#5A1F1F] p-3.5 space-y-3 h-fit shadow-xs">
           <div className="space-y-1">
             {menuItems.map((item) => {
               const isActive = activeTab === item.id;
@@ -561,10 +556,10 @@ export default function CustomerAccount({ onNavigateTracking, onNavigateCart, on
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
-                  className={`w-full flex items-center justify-between px-3 py-2.5 text-xs  rounded-md cursor-pointer transition-all duration-200 group relative ${
+                  className={`w-full flex items-center justify-between px-3 py-2.5 text-xs rounded-md cursor-pointer transition-all duration-200 group relative ${
                     isActive
-                      ? "bg-gradient-to-r from-red-600 to-red-400 text-white shadow-sm font-bold"
-                      : "text-stone-700 hover:bg-white/10 hover:text-white"
+                      ? "bg-[#3d1414] text-white shadow-sm font-bold"
+                      : "text-stone-200 hover:bg-white/10 hover:text-white"
                   }`}
                 >
                   <span className="flex items-center gap-2.5">
@@ -661,7 +656,7 @@ export default function CustomerAccount({ onNavigateTracking, onNavigateCart, on
             <ConsultationsTab consultations={consultations} />
           )}
           {activeTab === "reviews" && <ReviewsTab reviews={myReviews} />}
-          {activeTab === "returns" && <ReturnsTab returns={returns} />}   {/* ✅ YEH ADD KARO */}
+          {activeTab === "returns" && <ReturnsTab returns={returns} />}
           {activeTab === "recently-viewed" && (
             <RecentlyViewedTab
               recentlyViewed={recentlyViewed}

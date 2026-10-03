@@ -23,11 +23,12 @@ const Home = () => {
       {/* <PersonalizedRecommendations /> */}
       <MediaInNews />
       <AstrologyRemedies />
+      <LatestTrending />
       <CustomerReviews />
       <SpiritualBlog />
 
       <SimpleBanner/>
-      <LatestTrending />
+      
       {/* <DivineWisdomHub /> */}
       <WhyChooseUsSection/>
       <FAQSection />
