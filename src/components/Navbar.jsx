@@ -1504,7 +1504,7 @@ import {
   BiMenu,
   BiX,
 } from "react-icons/bi";
-import logo from "../assets/Logo.png";
+import logo from "../assets/logo2.png";
 import useAuthStore from "../store/useAuthStore";
 import useCartStore from "../store/useCartStore";
 import useWishlistStore from "../store/useWishlistStore";
@@ -1573,7 +1573,7 @@ function Navbar() {
       {/* ============================================================
           🟢 TOP STRIP — Auto-scrolling marquee
           ============================================================ */}
-      <div className="w-full bg-[#173B32] text-[#F5EBDD] text-[11px] sm:text-xs overflow-hidden">
+      <div className="w-full bg-[#5A1F1F] text-[#F5EBDD] text-[11px] sm:text-xs overflow-hidden">
         <div className="marquee-track py-1.5 flex items-center gap-10 whitespace-nowrap">
           {[1, 2].map((group) => (
             <div key={group} className="flex items-center gap-10 shrink-0">

@@ -185,7 +185,7 @@
 // // };
 
 // // export default HeroSection;
-import heroImg from "../assets/topbaner2.png";
+import heroImg from "../assets/topbaner3.png";
 
 function HeroSection() {
   return (

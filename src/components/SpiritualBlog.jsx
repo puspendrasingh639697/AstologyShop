@@ -76,16 +76,16 @@ const SpiritualBlog = () => {
   });
 
   return (
-    <section className="relative w-full bg-white">
+    <section className="relative w-full bg-[#F5EBDD]">
 
       {/* =============================================
           SECTION 1: EXPLORE SACRED CATEGORIES
       ============================================= */}
-      <div className="relative w-full py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="relative w-full py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-[#F5EBDD]">
         <div className="max-w-[1400px] mx-auto">
 
           {/* Section Heading */}
-          <div className="text-center mb-10 sm:mb-12">
+          <div className="text-center mb-2 sm:mb-12">
             <h2 className="text-3xl sm:text-4xl md:text-5xl text-[#0f172a] leading-tight tracking-tight">
               Explore Sacred{" "}
               <span className="italic font-serif font-normal bg-red-800 bg-clip-text text-transparent">
@@ -120,11 +120,11 @@ const SpiritualBlog = () => {
                 </div>
 
                 {/* === FLOATING OVERLAY BOX === */}
-                <div className="absolute bottom-4 left-4 right-4 bg-white backdrop-blur-md rounded-xl p-4 shadow-[0_8px_25px_rgba(0,0,0,0.15)] group-hover:bg-white transition-all duration-500">
-                  <h3 className="text-base sm:text-lg font-bold text-black mb-1.5">
+                <div className="absolute bottom-4 left-4 right-4 bg-[#5A1F1F] backdrop-blur-md rounded-xl p-4 shadow-[0_8px_25px_rgba(0,0,0,0.15)] group-hover:bg-white transition-all duration-500">
+                  <h3 className="text-base sm:text-lg font-bold text-white mb-1.5">
                     {cat.title}
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-black leading-relaxed mb-3 line-clamp-3">
+                  <p className="text-[11px] sm:text-xs text-white leading-relaxed mb-3 line-clamp-3">
                     {cat.description}
                   </p>
                   <span className="text-[#1e6db8] text-[11px] sm:text-xs font-bold flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
@@ -141,7 +141,7 @@ const SpiritualBlog = () => {
       {/* =============================================
           SECTION 2: RECENT BLOG POSTS
       ============================================= */}
-      <div className="relative w-full  bg-white">
+      <div className="relative w-full  bg-[#F5EBDD]">
         <div className="max-w-[1200px] mx-auto">
 
           {/* Section Heading */}
@@ -170,10 +170,10 @@ const SpiritualBlog = () => {
               {filteredArticles.map((article) => (
                 <article
                   key={article.id}
-                  className="group bg-white rounded-xl overflow-hidden border border-gray-100 shadow-[0_4px_20px_-5px_rgba(15,23,42,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(15,23,42,0.1)] transition-all duration-500 hover:-translate-y-1 cursor-pointer flex flex-col"
+                  className="group bg-[#F5EBDD] rounded-xl overflow-hidden border border-gray-100 shadow-[0_4px_20px_-5px_rgba(15,23,42,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(15,23,42,0.1)] transition-all duration-500 hover:-translate-y-1 cursor-pointer flex flex-col"
                 >
                   {/* Image Banner */}
-                  <div className="relative w-full aspect-[16/10] overflow-hidden bg-gray-100">
+                  <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#F5EBDD]">
                     <img
                       src={article.image}
                       alt={article.title}
@@ -181,7 +181,7 @@ const SpiritualBlog = () => {
                     />
 
                     {/* Category Badge (red) */}
-                    <span className="absolute top-3 left-3 bg-gradient-to-r from-red-800 to-red-600 text-white text-[10px] sm:text-[11px] font-semibold uppercase tracking-wide px-2.5 py-1 rounded-md shadow-md">
+                    <span className="absolute top-3 left-3 bg-[#5A1F1F] text-white text-[10px] sm:text-[11px] font-semibold uppercase tracking-wide px-2.5 py-1 rounded-md shadow-md">
                       {article.category}
                     </span>
                   </div>
