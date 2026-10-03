@@ -3,7 +3,7 @@ import whyChooseImage from "../assets/topbaner.png";
 
 export default function WhyChooseUsSection() {
   return (
-    <section className="w-full bg-white py-16">
+    <section className="w-full bg-red-500 py-0">
       {/* Full Width Banner - Fully Responsive */}
       <div className="w-full mx-auto overflow-hidden">
         <img
