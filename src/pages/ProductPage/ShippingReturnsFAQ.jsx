@@ -27,7 +27,7 @@ const ShippingReturnsFAQ = () => {
     <div className="space-y-6">
       {/* Shipping & Returns Overview Boxes */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="bg-white p-4 border border-stone-200 rounded-sm flex items-start gap-3">
+        <div className="bg-stone-50 p-4 border border-stone-200 rounded-sm flex items-start gap-3">
           <span className="text-2xl shrink-0">🚚</span>
           <div>
             <h4 className="font-bold text-xs uppercase tracking-wider text-[#4a2e18] mb-1">Shipping Information</h4>
@@ -37,7 +37,7 @@ const ShippingReturnsFAQ = () => {
           </div>
         </div>
 
-        <div className="bg-white p-4 border border-stone-200 rounded-sm flex items-start gap-3">
+        <div className="bg-stone-50 p-4 border border-stone-200 rounded-sm flex items-start gap-3">
           <span className="text-2xl shrink-0">🔄</span>
           <div>
             <h4 className="font-bold text-xs uppercase tracking-wider text-[#4a2e18] mb-1">Returns & Exchange</h4>

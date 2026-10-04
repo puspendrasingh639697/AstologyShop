@@ -115,7 +115,7 @@ const RelatedProducts = ({ currentProductId, currentCategory }) => {
   if (relatedList.length === 0) return null;
 
   return (
-    <div className="border-t border-stone-200 p-6 sm:p-10 bg-white">
+    <div className="border-t border-stone-200 p-6 sm:p-10 bg-[#F5EBDD]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
 
@@ -159,7 +159,7 @@ const RelatedProducts = ({ currentProductId, currentCategory }) => {
                   navigate(`/product/${product.slug || pid}`);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="bg-white border border-stone-200 rounded-sm p-4 flex flex-col justify-between hover:shadow-md transition-all cursor-pointer group"
+                className="bg-white/50 border border-stone-200 rounded-sm p-4 flex flex-col justify-between hover:shadow-md transition-all cursor-pointer group"
               >
                 <div>
                   <div className="w-full h-48 bg-white border border-stone-200 rounded-sm mb-3 overflow-hidden flex items-center justify-center relative">
@@ -211,7 +211,7 @@ const RelatedProducts = ({ currentProductId, currentCategory }) => {
                       navigate(`/product/${product.slug || pid}`);
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="bg-gradient-to-r from-red-800 to-red-600 hover:bg-[#321e10] text-white p-2 rounded-sm text-xs transition flex items-center gap-1"
+                    className="bg-[#5A1F1F] hover:bg-[#321e10] text-white p-2 rounded-sm text-xs transition flex items-center gap-1"
                   >
                     <BiShoppingBag className="text-base" /> View
                   </button>

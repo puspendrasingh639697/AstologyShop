@@ -66,7 +66,7 @@ const ProductTabs = ({ product, reviewsList, onAddReview }) => {
       )}
 
       {/* Customer Ratings & Reviews */}
-      <div className="bg-white p-6  rounded-sm">
+      <div className="bg-[#F5EBDD] p-6  rounded-sm">
 
 
          <div className="mb-8 pb-4 text-center">
@@ -85,7 +85,7 @@ const ProductTabs = ({ product, reviewsList, onAddReview }) => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-4">
             {reviewsList.map((rev) => (
-              <div key={rev.id} className="bg-gradient-to-r from-red-800 to-red-600 p-4 border border-stone-200 rounded-sm shadow-sm">
+              <div key={rev.id} className="bg-[#5A1F1F] p-4 border border-stone-200 rounded-sm shadow-sm">
                 <div className="flex justify-between items-center mb-2">
                   <span className="font-bold text-sm text-white">{rev.name}</span>
                   <span className="text-xs text-white">{rev.date}</span>
@@ -100,7 +100,7 @@ const ProductTabs = ({ product, reviewsList, onAddReview }) => {
             ))}
           </div>
 
-          <div className="bg-gradient-to-r from-red-800 to-red-600 p-6 border border-stone-200 rounded-sm shadow-sm h-fit">
+          <div className="bg-[#5A1F1F] p-6 border border-stone-200 rounded-sm shadow-sm h-fit">
             <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4">Write a Review</h4>
             <form onSubmit={handleReviewSubmit} className="space-y-4">
               <div>

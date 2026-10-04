@@ -959,13 +959,13 @@ const CartCheckoutFlow = () => {
   return (
     <>
       {/* ==================== PAGE (Checkout + Success) ==================== */}
-      <div className="w-full bg-white min-h-screen py-10 px-4 sm:px-6 lg:px-12 font-sans">
-        <div className="max-w-[1100px] mx-auto bg-white rounded-sm shadow-xl p-6 sm:p-10">
+      <div className="w-full bg-[#F5EBDD] min-h-screen py-10 px-4 sm:px-6 lg:px-12 font-sans">
+        <div className="max-w-[1100px] mx-auto bg-[#F5EBDD] p-6 sm:p-10">
           <div className="text-center mb-8 pb-6">
-            <h1 className="text-1xl sm:text-2xl text-[#4a2e18] mt-0 mb-2">
+            <h3 className="text-1xl sm:text-2xl text-[#4a2e18] mt-0 mb-2">
               {step === 3 && "Delivery Address & Payment Methods"}
               {step === 4 && "Order Confirmation & Receipt"}
-            </h1>
+            </h3>
             <div className="flex justify-center gap-4 sm:gap-6 mt-3 text-xs font-bold uppercase tracking-wider text-stone-400">
               <span className={step >= 3 ? "text-[#8b3a2b]" : ""}>
                 1. Checkout & Payment

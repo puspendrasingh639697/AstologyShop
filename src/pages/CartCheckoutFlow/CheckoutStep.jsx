@@ -367,7 +367,7 @@ const CheckoutStep = ({
       <div className="lg:col-span-2 space-y-6">
 
         {/* Address & Pincode Section */}
-        <div className="bg-white p-6 border border-stone-200 rounded-sm space-y-4 text-xs shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div className="bg-[#F5EBDD] p-6 border border-stone-200 rounded-sm space-y-4 text-xs shadow-md hover:shadow-lg transition-shadow duration-300">
           <h3 className="font-bold uppercase tracking-wider text-black flex items-center gap-2 pb-2 border-b border-stone-200">
             <BiMap className="text-base text-red-900" /> Shipping Address & Pincode
           </h3>
@@ -436,7 +436,7 @@ const CheckoutStep = ({
         </div>
 
         {/* Shipping Method Section */}
-        <div className="bg-white p-6 border border-stone-200 rounded-sm space-y-4 text-xs shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div className="bg-[#F5EBDD] p-6 border border-stone-200 rounded-sm space-y-4 text-xs shadow-md hover:shadow-lg transition-shadow duration-300">
           <h3 className="font-bold uppercase tracking-wider text-black flex items-center gap-2 pb-2 border-b border-stone-200">
             <BiShoppingBag className="text-base text-red-800" /> Shipping Method
           </h3>
@@ -474,7 +474,7 @@ const CheckoutStep = ({
         </div>
 
         {/* PAYMENT METHODS SECTION */}
-        <div className="bg-stone-50 p-6 border border-stone-200 rounded-sm space-y-4 text-xs shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div className="bg-[#F5EBDD] p-6 border border-stone-200 rounded-sm space-y-4 text-xs shadow-md hover:shadow-lg transition-shadow duration-300">
           <h3 className="font-bold uppercase tracking-wider text-black flex items-center gap-2 pb-2 border-b border-stone-200">
             <BiWallet className="text-base text-red-800" /> Payment Options
           </h3>
@@ -597,7 +597,7 @@ const CheckoutStep = ({
       </div>
 
       {/* Right: Final Review Sidebar */}
-      <div className="bg-white p-6 border border-stone-200 rounded-sm h-fit space-y-4 shadow-md hover:shadow-lg transition-shadow duration-300">
+      <div className="bg-[#F5EBDD] p-6 border border-stone-200 rounded-sm h-fit space-y-4 shadow-md hover:shadow-lg transition-shadow duration-300">
         <h3 className="text-xs font-bold uppercase tracking-wider text-black pb-3 border-b border-stone-200">
           Final Review
         </h3>
@@ -654,13 +654,13 @@ const CheckoutStep = ({
           <button
             type="button"
             onClick={() => setStep(1)}
-            className="w-1/3 bg-gradient-to-r from-red-800 to-red-600 rounded-md hover:bg-stone-300 text-white py-3 text-xs font-bold uppercase cursor-pointer"
+            className="w-1/3 bg-[#5A1F1F] rounded-md hover:bg-stone-300 text-white py-3 text-xs font-bold uppercase cursor-pointer"
           >
             &larr; Back
           </button>
           <button
             type="submit"
-            className="w-2/3 bg-gradient-to-r from-red-800 to-red-600 rounded-md hover:bg-[#321e10] text-white py-3 text-xs font-bold uppercase tracking-widest cursor-pointer"
+            className="w-2/3 bg-[#5A1F1F] rounded-md hover:bg-[#321e10] text-white py-3 text-xs font-bold uppercase tracking-widest cursor-pointer"
           >
             Place Order
           </button>

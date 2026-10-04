@@ -67,7 +67,7 @@ export default function ReturnsTab() {
         {returns.map((ret) => (
           <div
             key={ret._id}
-            className="bg-gradient-to-r from-red-800 to-red-600 border border-stone-200 rounded-md p-4 hover:shadow-md transition-shadow"
+            className="bg-[#5A1F1F] border border-stone-200 rounded-md p-4 hover:shadow-md transition-shadow"
           >
             {/* Header */}
             <div className="flex justify-between items-start mb-3">
