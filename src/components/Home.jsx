@@ -27,7 +27,7 @@ const Home = () => {
       <CustomerReviews />
       <SpiritualBlog />
 
-      <SimpleBanner/>
+      {/* <SimpleBanner/> */}
       
       {/* <DivineWisdomHub /> */}
       <WhyChooseUsSection/>
