@@ -1,5 +1,5 @@
 import React from "react";
-import whyChooseImage from "../assets/topbaner.png";
+import whyChooseImage from "../assets/topbaner11.png";
 
 export default function WhyChooseUsSection() {
   return (

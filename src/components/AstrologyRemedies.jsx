@@ -20,7 +20,7 @@ const MAROON_FILTER =
 
 const AstrologyRemedies = () => {
   return (
-    <section className="bg-[#F5EBDD] py-6 sm:py-8 px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#F7F1E5] py-6 sm:py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-[1400px] mx-auto">
         <div className="text-center mb-12 sm:mb-14">
           <div className="flex items-center justify-center gap-3 mb-2">
