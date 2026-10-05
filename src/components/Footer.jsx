@@ -177,24 +177,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* NEWSLETTER */}
-        <div className="w-full border-t border-[#B58A3A]/30 py-4 px-4">
-          <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
-            <p className="text-[#F5EBDD]/90 text-xs sm:text-[13px]">
-              Join our spiritual journey – updates, offers, and more.
-            </p>
-            <div className="flex w-full md:w-auto max-w-md">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 px-3 py-2 bg-transparent border border-[#B58A3A]/40 rounded-l-md text-xs sm:text-[13px] text-[#F5EBDD] placeholder-[#F5EBDD]/50 focus:outline-none focus:border-[#B58A3A]"
-              />
-              <button className="px-4 py-2 bg-[#B58A3A] hover:bg-[#9a7530] text-[#173B32] rounded-r-md text-xs sm:text-[13px] font-bold transition-colors">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
+       
 
         {/* BOTTOM BAR */}
         <div className="w-full border-t border-[#B58A3A]/30 py-3 px-4">

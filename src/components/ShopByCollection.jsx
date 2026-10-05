@@ -279,7 +279,7 @@ const ShopByCollection = () => {
   };
 
   return (
-    <div className="bg-[#F5EBDD] py-8 px-4 overflow-hidden">
+    <div className="bg-[#F7F1E5] py-8 px-4 overflow-hidden">
       <div className="max-w-[1400px] mx-auto">
 
         {/* HEADING ROW */}

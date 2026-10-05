@@ -77,11 +77,11 @@ const CustomerReviews = () => {
   };
 
   return (
-    <section className="relative w-full py-10 sm:py-12 md:py-14 bg-[#F5EBDD] overflow-hidden">
+    <section className="relative w-full py-4 sm:py-8 md:py-10 bg-[#F7F1E5] overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10">
 
         {/* ====== HEADER ====== */}
-        <div className="text-center mb-10 sm:mb-12">
+        <div className="text-center mb-4 sm:mb-6">
           <div className="flex items-center justify-center gap-3 mb-3">
             <span className="w-8 sm:w-12 h-[1px] bg-gradient-to-r from-transparent to-[#B58A3A]"></span>
             <span className="text-[#B58A3A] text-xs">✦</span>

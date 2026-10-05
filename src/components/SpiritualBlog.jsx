@@ -134,13 +134,11 @@ const sacredCategories = [
 
 const SpiritualBlog = () => {
   return (
-    <section className="relative w-full bg-[#F5EBDD] py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+    <section className="relative w-full bg-[#F7F1E5] py-2 sm:py-4 px-4 sm:px-6 lg:px-8">
       <div className="max-w-[1400px] mx-auto">
 
-        {/* =============================================
-            HEADING — Same as before (✦ + lines style)
-        ============================================= */}
-        <div className="text-center mb-12 sm:mb-14">
+        
+        <div className="text-center mb-4 sm:mb-6">
           <div className="flex items-center justify-center gap-3 mb-2">
             <span className="w-10 sm:w-14 h-[1px] bg-gradient-to-r from-transparent to-[#B58A3A]"></span>
             <span className="text-[#B58A3A] text-sm">✦</span>
@@ -168,7 +166,7 @@ const SpiritualBlog = () => {
               {/* ============================================
                   IMAGE — Full width, rounded corners
               ============================================ */}
-              <div className="relative w-full h-52 sm:h-56 overflow-hidden rounded-2xl">
+              <div className="relative w-full h-52 sm:h-56 overflow-hidden rounded-md">
                 <img
                   src={cat.image}
                   alt={cat.title}

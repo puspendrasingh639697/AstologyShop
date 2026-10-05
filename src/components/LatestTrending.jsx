@@ -575,30 +575,28 @@ const LatestTrending = () => {
     trending.length > 0 ? trending : products?.slice(0, 5) || [];
 
   return (
-    <section className="bg-[#F5EBDD] py-6 sm:py-8">
+    <section className="bg-[#F7F1E5] py-2 sm:py-4">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
 
-        {/* ===== HEADING ROW — Left + Right ===== */}
-        <div className="flex items-end justify-between gap-4 mb-5 sm:mb-6">
-          
-          <div>
+         <div className="text-center mb-12 sm:mb-14">
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <span className="w-10 sm:w-14 h-[1px] bg-gradient-to-r from-transparent to-[#B58A3A]"></span>
+            <span className="text-[#B58A3A] text-sm">✦</span>
             <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#5A1F1F] tracking-wide">
               Latest & Trending
             </h2>
-            <p className="text-[11px] sm:text-xs text-[#6B5038] italic mt-1">
-              New arrivals. Trending favourites.
-            </p>
+            <span className="text-[#B58A3A] text-sm">✦</span>
+            <span className="w-10 sm:w-14 h-[1px] bg-gradient-to-l from-transparent to-[#B58A3A]"></span>
           </div>
-
-          {/* RIGHT — View All */}
-          <button
-            onClick={() => navigate("/")}
-            className="text-[11px] sm:text-xs md:text-sm font-medium text-[#B58A3A] hover:text-[#5A1F1F] transition-colors whitespace-nowrap flex items-center gap-1"
-          >
-            View All
-            <span className="text-base">→</span>
-          </button>
+          <p className="text-[11px] sm:text-xs text-[#6B5038] italic">
+            New arrivals. Trending favourites.
+          </p>
         </div>
+
+       
+         
+
+         
 
         {loading && (
           <div className="flex justify-center items-center py-12">
