@@ -193,7 +193,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="w-full pt-4 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-[#F5EBDD]">
+    <section className="w-full pt-4 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-[#F7F1E5]">
       <div className="max-w-[1000px] mx-auto">
 
         {/* Heading */}
