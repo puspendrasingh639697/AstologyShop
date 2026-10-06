@@ -1267,10 +1267,10 @@ const ShopByCategory = () => {
         onMouseLeave={() => setHoveredId(null)}
         className="group flex flex-col items-center cursor-pointer relative"
       >
-        {/* Circle wrapper — same size */}
+        
         <div className="relative w-[70%] sm:w-[65%] aspect-square">
 
-          {/* 💡 BULB GLOW — bahar nikalti hui warm light */}
+        
           <div
             className="absolute inset-0 rounded-full pointer-events-none transition-all duration-700"
             style={{
