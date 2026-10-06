@@ -1262,7 +1262,7 @@ const ShopByCategory = () => {
 
     return (
       <div
-        onClick={() => navigate(`/category/${item.slug}`)}
+        // onClick={() => navigate(`/category/${item.slug}`)}
         onMouseEnter={() => setHoveredId(item._id)}
         onMouseLeave={() => setHoveredId(null)}
         className="group flex flex-col items-center cursor-pointer relative"
