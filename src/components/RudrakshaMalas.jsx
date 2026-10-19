@@ -703,7 +703,7 @@ const RudrakshaMalas = () => {
   }
 
   return (
-    <div className="w-full bg-[#F5EBDD] min-h-screen pb-16">
+    <div className="w-full bg-white min-h-screen pb-16">
       <div className="max-w-7xl mx-auto px-4 md:px-8 pt-4">
 
         {showToast && (

@@ -30,7 +30,7 @@ const Home = () => {
       {/* <SimpleBanner/> */}
       
       {/* <DivineWisdomHub /> */}
-      <WhyChooseUsSection/>
+      {/* <WhyChooseUsSection/> */}
       <FAQSection />
     </>
   );

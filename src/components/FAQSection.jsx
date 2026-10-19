@@ -65,8 +65,8 @@ const FAQSection = () => {
                     <span
                       className={`text-[15px] sm:text-base md:text-lg tracking-wide transition-colors duration-300 ${
                         isOpen
-                          ? "text-[#B58A3A] font-medium"
-                          : "text-[#2E1F1F] group-hover:text-[#5A1F1F]"
+                          ? "text-black font-medium"
+                          : "text-black group-hover:text-[#5A1F1F]"
                       }`}
                     >
                       {faq.question}
@@ -75,8 +75,8 @@ const FAQSection = () => {
                     <div
                       className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
                         isOpen
-                          ? "bg-[#5A1F1F] text-white rotate-180"
-                          : "bg-[#F5EBDD] text-[#5A1F1F] group-hover:bg-[#5A1F1F] group-hover:text-white"
+                          ? " text-white rotate-180"
+                          : " text-[#5A1F1F] group-hover:bg-[#5A1F1F] group-hover:text-white"
                       }`}
                     >
                       {isOpen ? (

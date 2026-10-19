@@ -339,7 +339,7 @@ function MainLayout() {
   }, [fetchSettings]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F5EBDD]">
+    <div className="min-h-screen flex flex-col bg-white">
       {!isAccountPage && <Navbar />}
 
       <div className="flex-1">

@@ -688,7 +688,7 @@ const Idols = () => {
     );
 
   return (
-    <div className="w-full bg-[#F5EBDD] min-h-screen pb-16">
+    <div className="w-full bg-white min-h-screen pb-16">
 
       {/* Main Content */}
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 mt-4">
