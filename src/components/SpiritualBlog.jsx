@@ -134,7 +134,7 @@ const sacredCategories = [
 
 const SpiritualBlog = () => {
   return (
-    <section className="relative w-full bg-[#F7F1E5] py-2 sm:py-4 px-4 sm:px-6 lg:px-8">
+    <section className="relative w-full bg-white py-2 sm:py-4 px-4 sm:px-6 lg:px-8">
       <div className="max-w-[1400px] mx-auto">
 
         

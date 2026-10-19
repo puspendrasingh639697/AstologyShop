@@ -77,7 +77,7 @@ const CustomerReviews = () => {
   };
 
   return (
-    <section className="relative w-full py-4 sm:py-8 md:py-10 bg-[#F7F1E5] overflow-hidden">
+    <section className="relative w-full py-4 sm:py-8 md:py-10 bg-white overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10">
 
         {/* ====== HEADER ====== */}

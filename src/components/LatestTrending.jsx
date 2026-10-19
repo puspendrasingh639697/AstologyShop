@@ -575,7 +575,7 @@ const LatestTrending = () => {
     trending.length > 0 ? trending : products?.slice(0, 5) || [];
 
   return (
-    <section className="bg-[#F7F1E5] py-2 sm:py-4">
+    <section className="bg-white py-2 sm:py-4">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
 
          <div className="text-center mb-12 sm:mb-14">
