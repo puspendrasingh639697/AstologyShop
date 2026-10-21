@@ -12,6 +12,7 @@ import DivineWisdomHub from "../components/DivineWisdomHub";
 import FAQSection from "../components/FAQSection";
 import WhyChooseUsSection from "./WhyChooseUsSection";
 import SimpleBanner from "../pages/SimpleBanner";
+import Blog from "./Blog";
 
 const Home = () => {
   return (
@@ -25,7 +26,8 @@ const Home = () => {
       <AstrologyRemedies />
       <LatestTrending />
       <CustomerReviews />
-      <SpiritualBlog />
+      {/* <SpiritualBlog /> */}
+      <Blog/>
 
       {/* <SimpleBanner/> */}
       

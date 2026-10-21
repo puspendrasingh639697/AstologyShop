@@ -365,13 +365,18 @@ const ShopByCategory = () => {
     fetchCategories();
   }, [fetchCategories]);
 
-  const allCategories = [
-    { _id: "1", name: "Category 1", slug: "category-1", image: catenme },
-    { _id: "2", name: "Category 2", slug: "category-2", image: catenme1 },
-    { _id: "3", name: "Category 3", slug: "category-3", image: catenme2 },
-    { _id: "4", name: "Category 4", slug: "category-4", image: catenme3 },
-    { _id: "5", name: "Category 5", slug: "category-5", image: catenme4 },
-    { _id: "6", name: "Category 6", slug: "category-6", image: catenme5 },
+   const allCategories = [
+    { _id: "1", name: "Idols", slug: "idols", image: catenme },
+    { _id: "2", name: "Rudraksha", slug: "rudraksha", image: catenme1 },
+    { _id: "3", name: "Spiritual Accessories", slug: "spiritual-accessories--personalized", image: catenme2 },
+    { _id: "4", name: "Astrology & Remedies", slug: "astrology--remedies", image: catenme3 },
+    { _id: "5", name: "Puja Kits & Anushthan", slug: "puja-kits--anushthan", image: catenme4 },
+    { _id: "6", name: "Festival Collections", slug: "festival-collections", image: catenme5 },
+    
+    // Agar aapke paas aur images hain (jaise catenme6, catenme7), toh unko yahan add kar sakte hain:
+    // { _id: "7", name: "Gemstones & Rudraksha", slug: "gemstones--rudraksha", image: catenme6 },
+    // { _id: "8", name: "Daily Puja Essentials", slug: "daily-puja-essentials", image: catenme7 },
+    // { _id: "9", name: "Yantra & Idols", slug: "yantra--idols", image: catenme8 },
   ];
 
   const scroll = (direction) => {
@@ -392,7 +397,7 @@ const ShopByCategory = () => {
         {/* Left Arrow Button */}
         <button
           onClick={() => scroll("left")}
-          className="absolute left-1 sm:left-2 top-[38%] -translate-y-1/2 z-20 w-8 h-8 sm:w-9 sm:h-9 bg-[#B58A3A] hover:bg-[#96702c] text-white rounded-full flex items-center justify-center shadow-md transition-all opacity-80 hover:opacity-100"
+          className="absolute left-1 sm:left-2 top-[38%] -translate-y-1/2 z-20 w-8 h-8 sm:w-9 sm:h-9 bg-[#7b1e2b] hover:bg-[#7b1e2b] text-white rounded-full flex items-center justify-center shadow-md transition-all opacity-80 hover:opacity-100"
           aria-label="Previous categories"
         >
           &#10094;
@@ -401,7 +406,7 @@ const ShopByCategory = () => {
         {/* Right Arrow Button */}
         <button
           onClick={() => scroll("right")}
-          className="absolute right-1 sm:right-2 top-[38%] -translate-y-1/2 z-20 w-8 h-8 sm:w-9 sm:h-9 bg-[#B58A3A] hover:bg-[#96702c] text-white rounded-full flex items-center justify-center shadow-md transition-all opacity-80 hover:opacity-100"
+          className="absolute right-1 sm:right-2 top-[38%] -translate-y-1/2 z-20 w-8 h-8 sm:w-9 sm:h-9 bg-[#7b1e2b] hover:bg-[#7b1e2b] text-white rounded-full flex items-center justify-center shadow-md transition-all opacity-80 hover:opacity-100"
           aria-label="Next categories"
         >
           &#10095;
@@ -456,3 +461,4 @@ const ShopByCategory = () => {
 };
 
 export default ShopByCategory;
+

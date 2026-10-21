@@ -313,6 +313,7 @@ import SuccessStep from "./pages/CartCheckoutFlow/SuccessStep";
 import CreateReturn from "./pages/CustomerAccount/ReturnsTab";
 import ReturnRequest from "./pages/ReturnRequest";
 import CartDrawer from "./pages/CartCheckoutFlow/CartDrawer";
+import BlogDetails from "./components/BlogDetails";
 
 // ✅ Naya import — Cart Drawer
 // import CartDrawer from "./components/Cart/CartDrawer";
@@ -390,6 +391,8 @@ function MainLayout() {
           <Route path="/wishlist" element={<WishlistTab />} />
           <Route path="/return-request" element={<ReturnRequest />} />
           <Route path="/account/return/:orderId" element={<CreateReturn />} />
+          {/* <Route path="/blog" element={<Blog />} /> */}
+          <Route path="/blog/:slug" element={<BlogDetails />} />
 
           <Route
             path="*"
